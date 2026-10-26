@@ -986,7 +986,7 @@
       <div class="polaroid-caption">Coquette Dream</div>
     </div>
     <div class="polaroid-card" onclick="scrollToAesthetic('clean')">
-      <img src="https://images.unsplash.com/photo-1540518614846-7ede433c4ef4?auto=format&fit=crop&w=400&q=80" alt="Clean girl bedroom" class="polaroid-img">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Clean girl bedroom" class="polaroid-img">
       <div class="polaroid-caption">Clean Girl Nook</div>
     </div>
     <div class="polaroid-card" onclick="scrollToAesthetic('boho')">
@@ -1118,6 +1118,26 @@
               <span class="color-dot" style="background:#70D6BC;"></span>
               <span class="color-dot" style="background:#FDE68A;"></span>
             </div>
+          </div>
+        </div>
+        <!-- Optional Secondary Aesthetic Blend Selector -->
+        <div style="margin-top:1.4rem; padding:1rem; background:var(--bg); border:1.5px dashed var(--border); border-radius:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+            <span style="font-size:0.82rem; font-weight:800; color:var(--plum);">
+              ✦ Optional Style Blend: Pair with a secondary aesthetic
+            </span>
+            <span style="font-size:0.75rem; color:var(--text-muted);" id="blendExplanationLabel">
+              (e.g., Earthy Boho + Soft Coquette for a romantic botanical haven)
+            </span>
+          </div>
+          <div class="vibe-pills-row" id="blendPillsRow" style="margin-bottom:0;">
+            <button class="vibe-pill active" onclick="selectQuizSecondaryAesthetic(null, this)">✨ Single Vibe Only</button>
+            <button class="vibe-pill" onclick="selectQuizSecondaryAesthetic('Clean Girl', this)">🕯️ + Clean Girl</button>
+            <button class="vibe-pill" onclick="selectQuizSecondaryAesthetic('Coquette', this)">🎀 + Coquette</button>
+            <button class="vibe-pill" onclick="selectQuizSecondaryAesthetic('Boho', this)">🌿 + Boho</button>
+            <button class="vibe-pill" onclick="selectQuizSecondaryAesthetic('Minimalist', this)">📐 + Minimalist</button>
+            <button class="vibe-pill" onclick="selectQuizSecondaryAesthetic('Dark Academia', this)">☕ + Dark Academia</button>
+            <button class="vibe-pill" onclick="selectQuizSecondaryAesthetic('Pinterest Core', this)">🎨 + Pinterest Core</button>
           </div>
         </div>
       </div>
@@ -1256,23 +1276,70 @@
     <!-- QUIZ RESULTS VIEW -->
     <div class="quiz-results-wrap" id="quizResultsWrap">
       <div class="quiz-result-hero">
-        <span class="sticker-badge sticker-pink">★ Your Personalized Match</span>
+        <span class="sticker-badge sticker-pink" id="resultStickerBadge">★ Your Personalized Match</span>
         <div class="quiz-result-aesthetic" id="resultAestheticTitle">Coquette Dream</div>
-        <p style="color:var(--text-muted); max-width:550px; margin:0 auto;" id="resultAestheticDesc">
+        <div id="resultAestheticTagsRow" style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap; margin:8px 0 12px;"></div>
+        <p style="color:var(--text-muted); max-width:650px; margin:0 auto 1.2rem; font-size:0.92rem; line-height:1.55;" id="resultAestheticDesc">
           Your room is meant to be a dreamy, warm, and romantic retreat with soft pinks, ambient fairy lights, and delicate textures.
         </p>
 
+        <!-- Matched Color Palette Strip with Click-to-Copy -->
+        <div style="font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">
+          Curated Palette (Tap any swatch to copy HEX code):
+        </div>
         <div class="quiz-palette-strip" id="resultPaletteStrip"></div>
       </div>
 
-      <h4 style="font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; color:var(--plum); margin-bottom:1rem;">
-        Top Recommended Makeovers for You:
-      </h4>
+      <!-- Scored Matching Room Makeover Cards -->
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1rem; flex-wrap:wrap; gap:8px;">
+        <h4 style="font-family:'Syne',sans-serif; font-size:1.25rem; font-weight:800; color:var(--plum); margin:0;">
+          Top Makeovers Tailored to Your Vibe:
+        </h4>
+        <span style="font-size:0.8rem; color:#059669; font-weight:700;" id="resultMatchCountLabel">
+          4 matching room transformations
+        </span>
+      </div>
       <div class="quiz-recom-grid" id="quizRecomGrid"></div>
 
-      <div style="text-align:center; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+      <!-- Aesthetic Tailored DIY Project & Budget Package 2-Col -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.2rem; margin:2rem 0; text-align:left;">
+        <!-- Left: Recommended DIY for this aesthetic -->
+        <div style="background:white; border:1px solid var(--border); border-radius:14px; padding:1.2rem; box-shadow:var(--shadow-sm);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span class="sticker-badge sticker-mint">🔨 Matching Weekend DIY</span>
+            <span style="font-size:0.8rem; font-weight:800; color:#059669;" id="resultDIYCost">₹250</span>
+          </div>
+          <h5 style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; color:var(--plum); margin:4px 0 6px;" id="resultDIYTitle">
+            DIY Project
+          </h5>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:8px;" id="resultDIYMaterials">Materials</div>
+          <div style="font-size:0.82rem; color:var(--plum); line-height:1.45; background:var(--bg); padding:10px; border-radius:8px; border:1px solid var(--border);" id="resultDIYSteps"></div>
+        </div>
+
+        <!-- Right: Tailored Budget Essentials Starter -->
+        <div style="background:white; border:1px solid var(--border); border-radius:14px; padding:1.2rem; box-shadow:var(--shadow-sm);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span class="sticker-badge sticker-butter">💸 Makeover Essentials</span>
+            <span style="font-size:0.8rem; font-weight:800; color:#A855F7;" id="resultBudgetStarterEst">Est. ₹1,000</span>
+          </div>
+          <h5 style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; color:var(--plum); margin:4px 0 6px;" id="resultBudgetStarterTitle">
+            Starter Pack
+          </h5>
+          <div style="font-size:0.82rem; color:var(--plum); line-height:1.5; margin-bottom:12px;" id="resultBudgetStarterList">
+            Items list
+          </div>
+          <button class="btn-hero-primary" style="padding:8px 18px; font-size:0.8rem; width:100%; justify-content:center;" onclick="applyQuizResultToBudget()">
+            💸 Load Essentials into Budget Studio
+          </button>
+        </div>
+      </div>
+
+      <div style="text-align:center; display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:1rem;">
         <button class="btn-hero-primary" onclick="saveQuizResultToBoard()">
           📌 Save Collection to My Dream Dorm
+        </button>
+        <button class="btn-hero-secondary" onclick="viewQuizPaletteInColorStudio()">
+          🎨 View Palette in Color Studio
         </button>
         <button class="btn-hero-secondary" onclick="restartQuiz()">
           ↺ Retake Quiz
@@ -1421,6 +1488,27 @@
   </div>
 
   <div class="budget-studio-card">
+    <!-- Aesthetic Style Tailoring Pills -->
+    <div style="margin-bottom:1.2rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; color:var(--plum);">
+          Select Makeover Aesthetic:
+        </span>
+        <span style="font-size:0.75rem; color:var(--text-muted);" id="budgetAestheticSubtitle">
+          Items update to match your style
+        </span>
+      </div>
+      <div class="vibe-pills-row" id="budgetAestheticPillsRow" style="margin-bottom:0;">
+        <button class="vibe-pill active" onclick="filterBudgetByAesthetic('All', this)">✨ All Styles</button>
+        <button class="vibe-pill" onclick="filterBudgetByAesthetic('Clean Girl', this)">🕯️ Clean Girl</button>
+        <button class="vibe-pill" onclick="filterBudgetByAesthetic('Coquette', this)">🎀 Coquette</button>
+        <button class="vibe-pill" onclick="filterBudgetByAesthetic('Boho', this)">🌿 Earthy Boho</button>
+        <button class="vibe-pill" onclick="filterBudgetByAesthetic('Minimalist', this)">📐 Minimalist</button>
+        <button class="vibe-pill" onclick="filterBudgetByAesthetic('Dark Academia', this)">☕ Dark Academia</button>
+        <button class="vibe-pill" onclick="filterBudgetByAesthetic('Pinterest Core', this)">🎨 Pinterest Core</button>
+      </div>
+    </div>
+
     <!-- Quick-start challenges -->
     <div class="challenge-pills-wrap">
       <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted); align-self:center;">Quick Challenges:</span>
@@ -1609,10 +1697,31 @@
   </div>
 
   <div class="diy-studio-card">
+    <!-- DIY Aesthetic Filter Pills -->
+    <div style="margin-bottom:1.2rem;">
+      <div style="font-size:0.8rem; font-weight:800; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">
+        Filter DIYs by Room Style:
+      </div>
+      <div class="vibe-pills-row" id="diyAestheticPillsRow" style="margin-bottom:0;">
+        <button class="vibe-pill active" onclick="filterDIYByAesthetic('All', this)">✨ All DIYs (18)</button>
+        <button class="vibe-pill" onclick="filterDIYByAesthetic('Clean Girl', this)">🕯️ Clean Girl</button>
+        <button class="vibe-pill" onclick="filterDIYByAesthetic('Coquette', this)">🎀 Coquette</button>
+        <button class="vibe-pill" onclick="filterDIYByAesthetic('Boho', this)">🌿 Earthy Boho</button>
+        <button class="vibe-pill" onclick="filterDIYByAesthetic('Minimalist', this)">📐 Minimalist</button>
+        <button class="vibe-pill" onclick="filterDIYByAesthetic('Dark Academia', this)">☕ Dark Academia</button>
+        <button class="vibe-pill" onclick="filterDIYByAesthetic('Pinterest Core', this)">🎨 Pinterest Core</button>
+      </div>
+    </div>
+
     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; flex-wrap:wrap; gap:8px;">
-      <h3 style="font-family:'Syne',sans-serif; font-size:1.35rem; font-weight:800; color:var(--plum);" id="diyTitle">
-        Fairy Light Wall Canopy
-      </h3>
+      <div>
+        <span class="pin-tag-badge" id="diyAestheticBadge" style="background:#FAF5FF; color:#7E22CE; margin-bottom:4px; display:inline-block;">
+          Coquette DIY
+        </span>
+        <h3 style="font-family:'Syne',sans-serif; font-size:1.35rem; font-weight:800; color:var(--plum); margin:0;" id="diyTitle">
+          Fairy Light Wall Canopy
+        </h3>
+      </div>
       <div style="display:flex; gap:6px;">
         <span class="sticker-badge sticker-mint" id="diyCost">₹300</span>
         <span class="sticker-badge sticker-butter" id="diyTime">2 hrs</span>
@@ -1748,286 +1857,732 @@
      JAVASCRIPT IMPLEMENTATION
      ========================================================================== -->
 <script>
+/* ==========================================================================
+   DORMGLOW SINGLE SOURCE OF TRUTH: AESTHETIC DEFINITIONS & RULES
+   ========================================================================== */
+const AESTHETIC_DEFINITIONS = {
+  'Clean Girl': {
+    name: 'Clean Girl',
+    displayName: 'Clean Girl Sanctuary',
+    icon: '🕯️',
+    badge: 'Minimalist Luxe',
+    badgeBg: '#F0FDF4',
+    badgeCol: '#166534',
+    visualIdentity: 'Fresh, bright, uncluttered, polished, and serene with clean lines and natural daylight.',
+    colors: [
+      { name: 'Crisp White', hex: '#FFFFFF' },
+      { name: 'Oatmeal Beige', hex: '#E6DFD5' },
+      { name: 'Muted Sage', hex: '#A8C9B9' },
+      { name: 'Warm Cream', hex: '#FAF8F5' }
+    ],
+    materials: ['Crisp organic cotton', 'Linen', 'Light natural pine', 'Clear acrylic', 'Ceramic'],
+    beddingStyle: 'Crisp pure white washed cotton linen duvet, neatly tucked with neutral pillowcases.',
+    lighting: 'Soft warm indirect lamp glow (2700K), slim minimalist touch light bar.',
+    wallDecor: 'Minimalist line art, slim arched floor mirror, floating white picture ledges.',
+    plantsAndAccessories: 'Single potted baby eucalyptus, clear acrylic makeup trays, neutral stone catchalls.',
+    deskAndStorage: 'Decluttered desktop, hidden wire routing, modular white stacking drawers.',
+    palettePresetIndex: 3, // Fresh & Sage Clean Girl
+    incompatibleStyles: ['RGB gaming setups', 'Dark moody academia', 'Maximalist clutter', 'Bright neon', 'Heavy ornate drapery']
+  },
+  'Coquette': {
+    name: 'Coquette',
+    displayName: 'Coquette Dream',
+    icon: '🎀',
+    badge: 'Soft Romantic',
+    badgeBg: '#FFF0F4',
+    badgeCol: '#C95C75',
+    visualIdentity: 'Romantic, delicate, whimsical, and soft with vintage vanity touches, ribbons, and warm canopy glow.',
+    colors: [
+      { name: 'Blush Pink', hex: '#F9CAD2' },
+      { name: 'Petal Cream', hex: '#FFF0F4' },
+      { name: 'Lavender Rose', hex: '#E8D7F1' },
+      { name: 'Soft Butter Gold', hex: '#FDE68A' }
+    ],
+    materials: ['Sheer chiffon', 'Satin ribbons', 'Soft lace trim', 'Plush velvet', 'Gilded gold metal'],
+    beddingStyle: 'Ruffled blush pink duvet, scalloped pillow shams, velvet bow accent cushions.',
+    lighting: 'Warm 3000K fairy light cloud drape, soft pink tulip bedside nightlight.',
+    wallDecor: 'Vintage gilded arched mirror, delicate French floral prints tied with ribbons, postcard collage.',
+    plantsAndAccessories: 'Porcelain rosebud vase with dried blooms, glass perfume tray, satin bow wall clips.',
+    deskAndStorage: 'Ribbon-trimmed stationery boxes, vintage vanity organizer, pastel desk mat.',
+    palettePresetIndex: 2, // Pink Paradise & Coquette
+    incompatibleStyles: ['RGB gaming setups', 'Cold industrial metal', 'Aggressive neon', 'Espresso dark wood']
+  },
+  'Boho': {
+    name: 'Boho',
+    displayName: 'Pinteresty Boho Sanctuary',
+    icon: '🌿',
+    badge: 'Warm & Earthy',
+    badgeBg: '#FEF3C7',
+    badgeCol: '#92400E',
+    visualIdentity: 'Warm, natural, cozy, eclectic, and nature-inspired with woven textures, terracotta, and trailing greenery.',
+    colors: [
+      { name: 'Warm Terracotta', hex: '#E07A5F' },
+      { name: 'Dusty Sage', hex: '#A8C9B9' },
+      { name: 'Ochre Yellow', hex: '#E9C46A' },
+      { name: 'Oatmeal Cream', hex: '#F4F1DE' }
+    ],
+    materials: ['Rattan', 'Macramé cotton rope', 'Woven jute', 'Pinewood crates', 'Terracotta clay'],
+    beddingStyle: 'Botanical leaf pattern or warm terracotta washed linen duvet, fringed waffle throw blanket.',
+    lighting: 'Warm amber fairy lights woven through tapestry, woven rattan lantern pendant.',
+    wallDecor: 'Handmade macramé wall shelf, terracotta botanical leaf prints, woven seagrass hangings.',
+    plantsAndAccessories: 'Pothos and spider plants in terracotta pots, stacked fruit crates, woven laundry hamper.',
+    deskAndStorage: 'Stacked fruit crate modular cubbies, jute rope caddy, cork pinboard with botanical art.',
+    palettePresetIndex: 1, // Earthy & Cozy Boho
+    incompatibleStyles: ['RGB gaming desks', 'Futuristic neon', 'Cold chrome metal', 'Clinical sterile white']
+  },
+  'Minimalist': {
+    name: 'Minimalist',
+    displayName: 'Scandinavian Minimalist Zen',
+    icon: '📐',
+    badge: 'Functional Zen',
+    badgeBg: '#F1F5F9',
+    badgeCol: '#334155',
+    visualIdentity: 'Simple, calm, functional, and uncluttered with intentional space-saving storage and clean geometry.',
+    colors: [
+      { name: 'Warm White', hex: '#FFFFFF' },
+      { name: 'Neutral Sand', hex: '#E2E8F0' },
+      { name: 'Slate Grey', hex: '#94A3B8' },
+      { name: 'Charcoal Accent', hex: '#334155' }
+    ],
+    materials: ['Natural oak/birch', 'Powder-coated matte metal', 'Recycled canvas', 'Modular pegboard', 'Silicone'],
+    beddingStyle: 'Solid monochrome sand or warm grey linen duvet, flat seamless corners.',
+    lighting: 'Concealed magnetic under-shelf LED bar, slim matte black clamp task lamp.',
+    wallDecor: 'Single framed oak architectural print or clean bare calming wall, fold-down floating desk.',
+    plantsAndAccessories: 'Single mini succulent in geometric concrete pot, concealed cable boxes.',
+    deskAndStorage: 'Under-desk magnetic cord tray, modular drawer dividers, minimalist garment rail.',
+    palettePresetIndex: 4, // Scandinavian Minimalist
+    incompatibleStyles: ['Decorative clutter', 'Excessive knick-knacks', 'Frilly ruffles', 'Loud neon RGB']
+  },
+  'Dark Academia': {
+    name: 'Dark Academia',
+    displayName: 'Dark Academia Vintage Study',
+    icon: '☕',
+    badge: 'Moody & Scholarly',
+    badgeBg: '#FEF2F2',
+    badgeCol: '#991B1B',
+    visualIdentity: 'Moody, vintage, scholarly, and atmospheric with warm amber lighting, books, and rich antique wood.',
+    colors: [
+      { name: 'Espresso Brown', hex: '#4A3525' },
+      { name: 'Warm Amber', hex: '#D4A373' },
+      { name: 'Antique Gold', hex: '#C5A059' },
+      { name: 'Aged Parchment', hex: '#FAEDCD' }
+    ],
+    materials: ['Dark stained timber', 'Antiqued brass', 'Felt/wool blend', 'Aged book paper', 'Amber glass'],
+    beddingStyle: 'Tartan plaid wool-blend throw, deep espresso or forest green linen, reading bolster.',
+    lighting: 'Vintage banker lamp with amber glow, warm brass clip reading lamp (2200K).',
+    wallDecor: 'Repurposed vintage book page gallery, classical botanical sketches, framed antique astronomy chart.',
+    plantsAndAccessories: 'Stacks of secondhand classic novels, fountain pen stand, amber glass bottle vases.',
+    deskAndStorage: 'Dark wood desktop bookshelf, brass metal bookends, leather desk blotter.',
+    palettePresetIndex: 5, // Dark Academia Vintage
+    incompatibleStyles: ['Bright pastel pinks', 'RGB rainbow streamers', 'Bubbly cute pop-art', 'Plastic neon furniture']
+  },
+  'Pinterest Core': {
+    name: 'Pinterest Core',
+    displayName: 'Pinterest Core Dreamland',
+    icon: '🎨',
+    badge: 'Curated & Playful',
+    badgeBg: '#FAF5FF',
+    badgeCol: '#7E22CE',
+    visualIdentity: 'Expressive, creative, curated, and vibrant with polaroid twine grids, fairy lights, and pastel pops.',
+    colors: [
+      { name: 'Lilac Mist', hex: '#C3B1E1' },
+      { name: 'Blush Glow', hex: '#F9CAD2' },
+      { name: 'Butter Glow', hex: '#FDE68A' },
+      { name: 'Sky Mist', hex: '#A0C8F0' }
+    ],
+    materials: ['Jute twine & wooden craft pegs', 'Wire memo grid', 'Pastel washi tape', 'Velvet', 'Acrylic'],
+    beddingStyle: 'Reversible pastel color-block duvet with checkered and smile throw cushions.',
+    lighting: 'Warm fairy light wall grid, subtle pastel bias behind-desk glow.',
+    wallDecor: 'Polaroid & twine memory wall, white wire grid photo board, pastel wavy accent mirror.',
+    plantsAndAccessories: 'Pastel daisy flower vase, squiggly trinket trays, curated sticker art prints.',
+    deskAndStorage: 'Pastel lilac modular desk pegboard, squiggly pen holder, oversized pastel desk mat.',
+    palettePresetIndex: 0, // Pastel Dreams
+    incompatibleStyles: ['Drab corporate cubicle styling', 'Pure dark industrial grime', 'Aggressive RGB red/green gamer caves']
+  }
+};
+
 /* --------------------------------------------------------------------------
-   1. CORE 12 ROOM MAKEOVER IDEAS WITH RECREATE LOOK DATA & AESTHETIC TAGS
+   1. CORE 24 ROOM MAKEOVER IDEAS (4 PER AESTHETIC — VERIFIED IMAGES)
    -------------------------------------------------------------------------- */
 const cards = [
+  // -------------------------------------------------------------------------
+  // 1. CLEAN GIRL AESTHETIC (4 CARDS)
+  // -------------------------------------------------------------------------
   {
-    id: 1,
-    cat: 'small',
-    aesthetic: 'Clean Girl',
-    title: 'Loft Bed Storage Nook',
-    desc: 'Reclaim precious floor space by lifting your bed frame with study organizers underneath.',
-    budget: '₹1,200–₹2,500',
-    minBudget: 1200,
-    maxBudget: 2500,
-    diff: 2,
-    colors: ['#FAF8F5', '#E6DFD5', '#A8C9B9', '#FDE68A'],
-    img: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef4?auto=format&fit=crop&w=700&q=80',
-    tags: ['smallspace', 'nodrill', 'renter'],
-    tips: [
-      'Use heavy duty L-brackets from local hardware shop (₹120)',
-      'Add underbed privacy tension rod with sheer linen curtain',
-      'Mount modular white pegboard on side wall'
+    "id": 1,
+    "cat": "small",
+    "aesthetic": "Clean Girl",
+    "title": "Full Mirror Light Illusion",
+    "desc": "Floor-leaning minimalist wooden mirror placed opposite window instantly doubles natural light and expands room depth.",
+    "budget": "₹800–₹1,500",
+    "minBudget": 800,
+    "maxBudget": 1500,
+    "diff": 1,
+    "colors": ["#FFFFFF", "#FAF8F5", "#E6DFD5", "#A8C9B9"],
+    "img": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80",
+    "tags": ["smallspace", "nodrill", "renter", "nopaint"],
+    "tips": [
+      "Position directly opposite your window to bounce daylight across the ceiling",
+      "Attach clear rubber wall bumpers to frame top to prevent wall scuffs",
+      "Keep the base clutter-free with a single ceramic catchall dish"
     ],
-    recreateItems: [
-      { name: 'Underbed tension privacy drape', price: 380, icon: '🛏️', alt: 'Use existing spare bedsheet with binder clips (Save ₹380)' },
-      { name: 'White metal pegboard + 6 hooks', price: 420, icon: '📌', alt: 'Thrifted wire mesh grid from D-Mart (Save ₹220)' },
-      { name: 'Warm LED clip lamp', price: 290, icon: '💡', alt: 'USB rechargeable book lamp (Save ₹100)' }
+    "recreateItems": [
+      { "name": "Minimalist wooden framed floor mirror", "price": 850, "icon": "🪞", "alt": "Thrifted full-length mirror frame cleaned with white wax (Save ₹350)" },
+      { "name": "Non-slip rubber grip pads & corner bumpers", "price": 90, "icon": "🛡️", "alt": "Adhesive felt dots under frame base (Save ₹50)" }
     ]
   },
   {
-    id: 2,
-    cat: 'small',
-    aesthetic: 'Clean Girl',
-    title: 'Full Mirror Light Illusion',
-    desc: 'Floor-leaning full length mirror placed opposite window instantly doubles daylight.',
-    budget: '₹800–₹1,500',
-    minBudget: 800,
-    maxBudget: 1500,
-    diff: 1,
-    colors: ['#FFFFFF', '#E2E8F0', '#A8C9B9', '#FDE68A'],
-    img: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80',
-    tags: ['smallspace', 'nodrill', 'renter', 'nopaint'],
-    tips: [
-      'Thrifted floor mirror works wonders for depth',
-      'Edge with pastel washi tape for clean aesthetic look',
-      'Lean against wall with rubber grip footings'
+    "id": 2,
+    "cat": "budget",
+    "aesthetic": "Clean Girl",
+    "title": "Crisp Linen Sanctuary Bed",
+    "desc": "Layered breathable white washed cotton duvet with oatmeal pillow shams for that hotel-grade calm bed aesthetic.",
+    "budget": "₹700–₹1,400",
+    "minBudget": 700,
+    "maxBudget": 1400,
+    "diff": 1,
+    "colors": ["#FFFFFF", "#FAF8F5", "#E6DFD5", "#CBD5E1"],
+    "img": "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Wash 100% cotton sheets with white vinegar in final rinse for cloud-like softness",
+      "Hospital-corner mattress tuck keeps your single bed crisp all week",
+      "Layer a neutral waffle blanket at the foot of the bed for texture"
     ],
-    recreateItems: [
-      { name: 'Minimalist wooden framed floor mirror', price: 850, icon: '🪞', alt: 'Thrifted frame with DIY glass cut (Save ₹350)' },
-      { name: 'Pastel washi tape (pack of 3)', price: 90, icon: '🎨', alt: 'Paper masking tape with pastel markers (Save ₹50)' }
+    "recreateItems": [
+      { "name": "Washed white cotton duvet & sheet set", "price": 680, "icon": "🛏️", "alt": "Local cotton export surplus outlet single sheet (Save ₹320)" },
+      { "name": "Oatmeal linen throw pillow cover set", "price": 220, "icon": "☁️", "alt": "Repurposed beige canvas pillow covers (Save ₹120)" }
     ]
   },
   {
-    id: 3,
-    cat: 'budget',
-    aesthetic: 'Coquette',
-    title: 'Fairy Light Canopy Drape',
-    desc: 'Transform harsh tube lighting with delicate sheer canopy and warm 3000K fairy lights.',
-    budget: '₹300–₹700',
-    minBudget: 300,
-    maxBudget: 700,
-    diff: 1,
-    colors: ['#F9CAD2', '#FFF0F4', '#C3B1E1', '#FDE68A'],
-    img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80',
-    tags: ['renter', 'nodrill', 'nopaint'],
-    tips: [
-      'Stick adhesive command ceiling hooks (zero wall damage)',
-      'Layer with a sheer white dupatta for instant cloud canopy',
-      'Opt for warm white (3000K) over cold clinical blue'
+    "id": 3,
+    "cat": "study",
+    "aesthetic": "Clean Girl",
+    "title": "Scandi Minimal Study Nook",
+    "desc": "Decluttered light-wood study surface with acrylic stationery riser, slim warm task lamp, and zero loose wire clutter.",
+    "budget": "₹600–₹1,300",
+    "minBudget": 600,
+    "maxBudget": 1300,
+    "diff": 1,
+    "colors": ["#FAF8F5", "#E6DFD5", "#A8C9B9", "#334155"],
+    "img": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "smallspace"],
+    "tips": [
+      "Store only today’s 3 notebooks on surface; stow others in vertical organizers",
+      "Use clear acrylic desk organizers to maintain visual openness",
+      "Route laptop and phone chargers through a single under-desk Velcro strap"
     ],
-    recreateItems: [
-      { name: '10m Warm copper wire fairy lights', price: 220, icon: '💡', alt: 'Festive local market string lights (Save ₹70)' },
-      { name: 'Sheer white chiffon fabric (3m)', price: 250, icon: '🎀', alt: 'Use mum’s vintage chiffon dupatta (Save ₹250)' },
-      { name: 'Damage-free command hooks (pack of 6)', price: 140, icon: '🪝', alt: 'Clear suction cups on window glass (Save ₹80)' }
+    "recreateItems": [
+      { "name": "Clear acrylic 3-tier desk riser organizer", "price": 340, "icon": "📁", "alt": "Clear shoe box lids arranged as desk trays (Save ₹240)" },
+      { "name": "Minimalist warm LED 3000K touch task lamp", "price": 380, "icon": "💡", "alt": "Rechargeable clip-on book light (Save ₹180)" }
     ]
   },
   {
-    id: 4,
-    cat: 'budget',
-    aesthetic: 'Boho',
-    title: 'Stacked Crate Modular Shelf',
-    desc: 'Repurposed pine fruit crates stacked in staggered rows for books and houseplants.',
-    budget: '₹600–₹1,200',
-    minBudget: 600,
-    maxBudget: 1200,
-    diff: 2,
-    colors: ['#E07A5F', '#A8C9B9', '#E9C46A', '#F4F1DE'],
-    img: 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=700&q=80',
-    tags: ['renter', 'nodrill', 'smallspace'],
-    tips: [
-      'Sand rough edges with 120-grit sandpaper',
-      'Fasten crates together with heavy zip ties',
-      'Drop small battery tealights inside cubbies'
+    "id": 4,
+    "cat": "diy",
+    "aesthetic": "Clean Girl",
+    "title": "Foldaway Floating Desk Nook",
+    "desc": "Space-saving wall-mounted study board that folds flat against the wall with magnetic cork strip for study goals.",
+    "budget": "₹1,200–₹2,600",
+    "minBudget": 1200,
+    "maxBudget": 2600,
+    "diff": 2,
+    "colors": ["#FFFFFF", "#E2E8F0", "#FAF8F5", "#A8C9B9"],
+    "img": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=700&q=80",
+    "tags": ["smallspace", "renter"],
+    "tips": [
+      "Heavy duty folding spring brackets support up to 35kg securely",
+      "Add an under-desk magnetic strip to stick USB flash drives and scissors",
+      "Folds completely flush to reclaim 12 sq.ft. of hostel floor space"
     ],
-    recreateItems: [
-      { name: 'Pinewood wooden crates (3 units)', price: 580, icon: '📦', alt: 'Ask local fruit vendor for sturdy mango crates (Save ₹450)' },
-      { name: 'Pothos / Money plant in ceramic pot', price: 180, icon: '🌿', alt: 'Water cutting propagated in glass jar (Save ₹180)' }
+    "recreateItems": [
+      { "name": "Heavy duty fold-down wall brackets (pair)", "price": 490, "icon": "🔧", "alt": "Heavy duty L-brackets from local hardware store (Save ₹210)" },
+      { "name": "Laminated white pre-cut pine board (60x40cm)", "price": 520, "icon": "🪵", "alt": "Repurposed study table leaf or drawing board (Save ₹300)" },
+      { "name": "Magnetic cork strip with 6 pins", "price": 180, "icon": "📌", "alt": "Wine corks sliced in half with adhesive tape (Save ₹150)" }
+    ]
+  },
+
+  // -------------------------------------------------------------------------
+  // 2. COQUETTE AESTHETIC (4 CARDS)
+  // -------------------------------------------------------------------------
+  {
+    "id": 5,
+    "cat": "budget",
+    "aesthetic": "Coquette",
+    "title": "Fairy Light Canopy Drape",
+    "desc": "Delicate sheer chiffon cloud canopy draped over bed frame with warm 3000K micro fairy lights and satin ribbon ties.",
+    "budget": "₹400–₹800",
+    "minBudget": 400,
+    "maxBudget": 800,
+    "diff": 1,
+    "colors": ["#F9CAD2", "#FFF0F4", "#C3B1E1", "#FDE68A"],
+    "img": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Use clear adhesive command hooks on ceiling corners for 100% damage-free hanging",
+      "Gather chiffon folds with pink satin ribbon bows tied around bunk posts",
+      "Warm copper wire LEDs emit zero heat and give a dreamy bedroom glow"
+    ],
+    "recreateItems": [
+      { "name": "10m Warm copper fairy string lights", "price": 220, "icon": "💡", "alt": "Local festive lighting market string lights (Save ₹70)" },
+      { "name": "Sheer white chiffon fabric drape (3m)", "price": 250, "icon": "🎀", "alt": "Mum’s vintage sheer white/blush dupatta (Save ₹250)" },
+      { "name": "Clear damage-free command ceiling hooks (6 pcs)", "price": 140, "icon": "🪝", "alt": "Clear suction hooks on smooth tile/wood (Save ₹80)" }
     ]
   },
   {
-    id: 5,
-    cat: 'diy',
-    aesthetic: 'Minimalist',
-    title: 'PVC Pipe Wardrobe Rail',
-    desc: 'Freestanding industrial clothing rack made from hardware pipes and connectors.',
-    budget: '₹400–₹900',
-    minBudget: 400,
-    maxBudget: 900,
-    diff: 2,
-    colors: ['#FFFFFF', '#E2E8F0', '#94A3B8', '#334155'],
-    img: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=700&q=80',
-    tags: ['renter', 'nodrill', 'smallspace'],
-    tips: [
-      'Have pipes cut to measure at hardware store for ₹15/cut',
-      'Spray in matte ivory or pastel sage',
-      'Add lockable caster wheels for room shifting'
+    "id": 6,
+    "cat": "aesthetic",
+    "aesthetic": "Coquette",
+    "title": "Blush Ruffle & Ribbon Bedding",
+    "desc": "Romantic coquette sanctuary bed styled with ruffled petal-pink duvet, plush velvet bow pillows, and soft scalloped details.",
+    "budget": "₹700–₹1,500",
+    "minBudget": 700,
+    "maxBudget": 1500,
+    "diff": 1,
+    "colors": ["#F9CAD2", "#FFF0F4", "#FDBA9B", "#FAF5FF"],
+    "img": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Tie pastel ribbon bows around pillowcase corners for an effortless coquette touch",
+      "Pair with a soft ivory knit throw blanket at the bed base",
+      "Mist pillow with calming lavender rose water before sleep"
     ],
-    recreateItems: [
-      { name: '1-inch PVC pipes & 8 elbow joints', price: 340, icon: '🔧', alt: 'Heavy bamboo poles tied with jute rope (Save ₹120)' },
-      { name: 'Matte ivory spray paint can', price: 160, icon: '🎨', alt: 'Leave clean white unpainted (Save ₹160)' }
+    "recreateItems": [
+      { "name": "Scalloped blush pink duvet & pillowcase set", "price": 690, "icon": "🛏️", "alt": "Plain pink single bedsheet with DIY sewn ribbon bows (Save ₹350)" },
+      { "name": "Plush velvet bow accent cushion", "price": 260, "icon": "🎀", "alt": "Tie a silk scarf into a bow around existing cushion (Save ₹260)" }
     ]
   },
   {
-    id: 6,
-    cat: 'diy',
-    aesthetic: 'Pinterest Core',
-    title: 'Cardboard Upholstered Headboard',
-    desc: 'Cut geometric arch headboard from delivery boxes, wrap in velvet offcut, and pin to wall.',
-    budget: '₹200–₹500',
-    minBudget: 200,
-    maxBudget: 500,
-    diff: 3,
-    colors: ['#F9CAD2', '#C3B1E1', '#70D6BC', '#FDE68A'],
-    img: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=700&q=80',
-    tags: ['renter', 'nodrill', 'nopaint'],
-    tips: [
-      'Recycle thick corrugated Amazon boxes',
-      'Foam sheet offcut adds plush hotel feel',
-      'Fasten to wall using heavy Velcro picture strips'
+    "id": 7,
+    "cat": "study",
+    "aesthetic": "Coquette",
+    "title": "Vintage Gilded Vanity & Ribbon Nook",
+    "desc": "A delicate vanity and study corner featuring an arched gilded mirror, ribbed glass perfume trays, and ribbon-tied organizers.",
+    "budget": "₹600–₹1,400",
+    "minBudget": 600,
+    "maxBudget": 1400,
+    "diff": 1,
+    "colors": ["#FFF0F4", "#F9CAD2", "#FDE68A", "#E8D7F1"],
+    "img": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "smallspace"],
+    "tips": [
+      "Repurpose glass dessert bowls and saucers as romantic jewelry catchalls",
+      "Wrap satin blush ribbons around pen cups and stationery holders",
+      "A warm 3W mini lamp next to the mirror gives studio-quality soft lighting"
     ],
-    recreateItems: [
-      { name: 'Fluffy velvet fabric offcut (1m)', price: 240, icon: '🎀', alt: 'Old knit sweater or fleece blanket wrap (Save ₹240)' },
-      { name: 'Heavy duty Velcro command strips', price: 120, icon: '🪝', alt: 'Lean directly between bed and wall (Save ₹120)' }
+    "recreateItems": [
+      { "name": "Arched vintage gold-trimmed vanity mirror", "price": 540, "icon": "🪞", "alt": "Thrifted tabletop mirror painted with antique gold acrylic (Save ₹320)" },
+      { "name": "Fluted glass accessory tray with gold rim", "price": 190, "icon": "✨", "alt": "Vintage glass saucer from home (Save ₹190)" }
     ]
   },
   {
-    id: 7,
-    cat: 'gaming',
-    aesthetic: 'Pinterest Core',
-    title: 'Dual Monitor Pastel Battlestation',
-    desc: 'Elevated monitor arms with pastel RGB bias lighting and clean cable sleeves.',
-    budget: '₹2,000–₹5,000',
-    minBudget: 2000,
-    maxBudget: 5000,
-    diff: 2,
-    colors: ['#A0C8F0', '#C3B1E1', '#F9CAD2', '#70D6BC'],
-    img: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=700&q=80',
-    tags: ['nodrill', 'renter'],
-    tips: [
-      'Bias lighting behind monitor relieves late night eye strain',
-      'Velcro ties keep messy laptop charger cords invisible',
-      'Desk riser gives storage underneath keyboard'
+    "id": 8,
+    "cat": "small",
+    "aesthetic": "Coquette",
+    "title": "Soft Rose & Petal Dream Corner",
+    "desc": "Pastel romantic cozy corner with dried rose arrangements in ceramic bud vases, floral art postcards, and warm bedside ambiance.",
+    "budget": "₹350–₹750",
+    "minBudget": 350,
+    "maxBudget": 750,
+    "diff": 1,
+    "colors": ["#F9CAD2", "#FFF0F4", "#E8D7F1", "#FAF5FF"],
+    "img": "https://images.unsplash.com/photo-1582533561751-ef6f6ab93a2e?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "smallspace"],
+    "tips": [
+      "Dry fresh roses upside down for 5 days to create everlasting coquette decor",
+      "Tape vintage floral postcard prints using pastel pink washi tape loops",
+      "Drop warm battery tea lights inside vintage glass jars for cozy evenings"
     ],
-    recreateItems: [
-      { name: 'USB ambient bias LED strip (warm pastel)', price: 320, icon: '💡', alt: 'Behind-monitor desk night lamp (Save ₹120)' },
-      { name: 'Velcro reusable cable wrap (pack of 20)', price: 110, icon: '🔌', alt: 'Bread twist ties or binder clips (Save ₹110)' }
+    "recreateItems": [
+      { "name": "Ceramic pastel rosebud vase (set of 2)", "price": 240, "icon": "🏺", "alt": "Upcycled beverage glass bottles wrapped in lace tape (Save ₹200)" },
+      { "name": "Vintage French botanical postcard print set", "price": 120, "icon": "🌸", "alt": "Print vintage illustrations at campus print shop (Save ₹80)" }
+    ]
+  },
+
+  // -------------------------------------------------------------------------
+  // 3. BOHO AESTHETIC (4 CARDS)
+  // -------------------------------------------------------------------------
+  {
+    "id": 9,
+    "cat": "aesthetic",
+    "aesthetic": "Boho",
+    "title": "Sage Green Botanical Corner",
+    "desc": "Peel-and-stick sage corner accented with terracotta plant pots, lush trailing pothos, and warm ambient sunlight.",
+    "budget": "₹600–₹1,800",
+    "minBudget": 600,
+    "maxBudget": 1800,
+    "diff": 2,
+    "colors": ["#A8C9B9", "#E07A5F", "#F4F1DE", "#52796F"],
+    "img": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Peel-and-stick removable wallpaper peels clean without residue at move-out",
+      "Terracotta pots breathe and prevent plant root rot in dorm climates",
+      "Snake plants and pothos thrive even in low-light hostel corners"
+    ],
+    "recreateItems": [
+      { "name": "Matte sage removable wallpaper roll (2m)", "price": 460, "icon": "🌿", "alt": "Hang a botanical linen wall tapestry (Save ₹200)" },
+      { "name": "Natural terracotta desktop pots (set of 2)", "price": 220, "icon": "🏺", "alt": "Repurposed clay kulhads painted with clear sealant (Save ₹180)" },
+      { "name": "Trailing pothos / money plant in nursery pot", "price": 140, "icon": "🌱", "alt": "Water cuttings propagated from college garden (Save ₹140)" }
     ]
   },
   {
-    id: 8,
-    cat: 'gaming',
-    aesthetic: 'Pinterest Core',
-    title: 'Floating Headphone Pegboard',
-    desc: 'Pastel lilac pegboard behind desk to display headset, controller and aesthetic stationery.',
-    budget: '₹500–₹1,000',
-    minBudget: 500,
-    maxBudget: 1000,
-    diff: 1,
-    colors: ['#C3B1E1', '#FAF8FF', '#70D6BC', '#FDE68A'],
-    img: 'https://images.unsplash.com/photo-1612287233256-424a18ce01b9?auto=format&fit=crop&w=700&q=80',
-    tags: ['renter', 'nodrill'],
-    tips: [
-      'Spray pegboard in lilac or butter yellow',
-      'Use rubber coated hooks to prevent scratching',
-      'Mount using heavy-duty adhesive nail strips'
+    "id": 10,
+    "cat": "budget",
+    "aesthetic": "Boho",
+    "title": "Stacked Crate Modular Rustic Shelf",
+    "desc": "Repurposed pinewood fruit crates stacked organically to display textbooks, trailing succulents, and woven storage baskets.",
+    "budget": "₹500–₹1,200",
+    "minBudget": 500,
+    "maxBudget": 1200,
+    "diff": 2,
+    "colors": ["#E07A5F", "#A8C9B9", "#E9C46A", "#F4F1DE"],
+    "img": "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "smallspace"],
+    "tips": [
+      "Sand crate slats with 120-grit paper to avoid splinters",
+      "Fasten crates together with heavy zip ties for sturdy wobble-free shelving",
+      "Stow charging cables and laundry in a woven jute basket inside bottom cubby"
     ],
-    recreateItems: [
-      { name: 'Pre-cut wooden pegboard panel 40x40cm', price: 360, icon: '📌', alt: 'Heavy cardboard grid with wire hooks (Save ₹240)' },
-      { name: 'Dual controller hanger hooks', price: 140, icon: '🎮', alt: 'Plastic adhesive wall hooks (Save ₹90)' }
+    "recreateItems": [
+      { "name": "Pinewood storage crates (set of 3)", "price": 540, "icon": "📦", "alt": "Ask neighborhood fruit vendor for mango/apple crates (Save ₹420)" },
+      { "name": "Jute braided desktop storage basket", "price": 210, "icon": "🧺", "alt": "DIY coiled jute rope basket over plastic tub (Save ₹140)" }
     ]
   },
   {
-    id: 9,
-    cat: 'aesthetic',
-    aesthetic: 'Pinterest Core',
-    title: 'Polaroid & Twine Memory Wall',
-    desc: 'Curated photo prints clipped to jute baker twine with fairy lights and dried flowers.',
-    budget: '₹400–₹800',
-    minBudget: 400,
-    maxBudget: 800,
-    diff: 1,
-    colors: ['#F9CAD2', '#C3B1E1', '#E9C46A', '#FFF0F4'],
-    img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=700&q=80',
-    tags: ['renter', 'nodrill', 'nopaint'],
-    tips: [
-      'Print mini polaroids at local photo lab for ₹6/print',
-      'Mason jars with dried eucalyptus beside photo row',
-      'Use natural mini wooden craft pegs'
+    "id": 11,
+    "cat": "small",
+    "aesthetic": "Boho",
+    "title": "Rattan & Macramé Dream Bed Nook",
+    "desc": "Earthy bohemian sleeping sanctuary with woven cotton macramé hanging shelf, textured rust throw, and natural cane accents.",
+    "budget": "₹700–₹1,600",
+    "minBudget": 700,
+    "maxBudget": 1600,
+    "diff": 2,
+    "colors": ["#E07A5F", "#D4A373", "#F4F1DE", "#A8C9B9"],
+    "img": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "smallspace"],
+    "tips": [
+      "Hang macramé shelf from a single adhesive picture hook rated for 5kg",
+      "Layer a waffle rust throw blanket over white sheets for instant warmth",
+      "Place woven coasters beside bed to prevent water cup rings on furniture"
     ],
-    recreateItems: [
-      { name: 'Polaroid style prints (pack of 30)', price: 210, icon: '📷', alt: 'A4 color printouts cut with scissors (Save ₹120)' },
-      { name: 'Natural jute twine + 30 mini wooden clips', price: 95, icon: '🎀', alt: 'Sewing thread and paper binder clips (Save ₹60)' }
+    "recreateItems": [
+      { "name": "Handmade cotton macramé wall hanging shelf", "price": 380, "icon": "🧶", "alt": "DIY cotton rope macramé with wooden dowel (Save ₹230)" },
+      { "name": "Woven rattan bedside organizer caddy", "price": 320, "icon": "🧺", "alt": "Cardboard shoe box wrapped in jute twine (Save ₹260)" }
     ]
   },
   {
-    id: 10,
-    cat: 'aesthetic',
-    aesthetic: 'Boho',
-    title: 'Sage Green Botanical Corner',
-    desc: 'Peel-and-stick sage wallpaper corner paired with terracotta pots and warm floor lamp.',
-    budget: '₹700–₹2,000',
-    minBudget: 700,
-    maxBudget: 2000,
-    diff: 2,
-    colors: ['#A8C9B9', '#E07A5F', '#F4F1DE', '#52796F'],
-    img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=700&q=80',
-    tags: ['renter', 'nodrill', 'nopaint'],
-    tips: [
-      'Peel-and-stick wallpaper peels clean at end of semester',
-      'Terracotta pots breathe and prevent plant root rot',
-      'White fairy lights accentuate plant foliage at night'
+    "id": 12,
+    "cat": "diy",
+    "aesthetic": "Boho",
+    "title": "Earthy Terracotta & Sunlight Nook",
+    "desc": "Warm golden sunlight, terracotta linen bedding, trailing pothos cuttings, and handcrafted woven accents.",
+    "budget": "₹450–₹950",
+    "minBudget": 450,
+    "maxBudget": 950,
+    "diff": 1,
+    "colors": ["#E07A5F", "#E9C46A", "#F4F1DE", "#52796F"],
+    "img": "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Position bedding near natural window light to highlight warm terracotta tones",
+      "Use botanical prints in simple wooden clipboards as interchangeable wall art",
+      "Add a small scented cedar or sandalwood room spray for earthy ambience"
     ],
-    recreateItems: [
-      { name: 'Matte sage peel-and-stick wallpaper roll', price: 480, icon: '🌿', alt: 'Hang large botanical fabric tapestry (Save ₹180)' },
-      { name: 'Terracotta desktop pot set of 2', price: 220, icon: '🏺', alt: 'Recycled tin cans painted terracotta (Save ₹190)' }
+    "recreateItems": [
+      { "name": "Washed terracotta linen bed throw", "price": 480, "icon": "🛏️", "alt": "Dye existing white sheet with warm terracotta fabric dye (Save ₹360)" },
+      { "name": "Macramé plant hanging rope holder", "price": 190, "icon": "🌱", "alt": "Knot cotton clothesline rope into spiral plant hanger (Save ₹140)" }
+    ]
+  },
+
+  // -------------------------------------------------------------------------
+  // 4. MINIMALIST AESTHETIC (4 CARDS)
+  // -------------------------------------------------------------------------
+  {
+    "id": 13,
+    "cat": "diy",
+    "aesthetic": "Minimalist",
+    "title": "Freestanding Minimalist Wardrobe Rail",
+    "desc": "Sleek matte white freestanding clothing rack displaying capsule wardrobe with space for shoe storage trays beneath.",
+    "budget": "₹500–₹1,100",
+    "minBudget": 500,
+    "maxBudget": 1100,
+    "diff": 2,
+    "colors": ["#FFFFFF", "#E2E8F0", "#94A3B8", "#334155"],
+    "img": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "smallspace"],
+    "tips": [
+      "Assemble using 1-inch hardware pipes sprayed in matte white or light grey",
+      "Use uniform slim non-slip velvet hangers to save 50% closet width",
+      "Keeps tomorrow's outfit wrinkle-free and off the hostel study chair"
+    ],
+    "recreateItems": [
+      { "name": "1-inch PVC pipes & elbow connector kit", "price": 340, "icon": "🔧", "alt": "Heavy bamboo pole suspended by heavy cord (Save ₹200)" },
+      { "name": "Ultra-slim velvet non-slip hangers (pack of 10)", "price": 210, "icon": "👔", "alt": "Uniform wooden or wire hangers (Save ₹90)" }
     ]
   },
   {
-    id: 11,
-    cat: 'study',
-    aesthetic: 'Clean Girl',
-    title: 'Foldaway Floating Desk Nook',
-    desc: 'Murphy style foldaway wall study desk board with eye-care LED bar and cork grid.',
-    budget: '₹1,500–₹3,500',
-    minBudget: 1500,
-    maxBudget: 3500,
-    diff: 3,
-    colors: ['#FAF8F5', '#E6DFD5', '#334155', '#FDE68A'],
-    img: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=700&q=80',
-    tags: ['smallspace'],
-    tips: [
-      'Folds flat against wall when not studying',
-      'Magnetic cork strip above desk keeps reminders eye-level',
-      'USB eye-care light bar eliminates screen glare'
+    "id": 14,
+    "cat": "small",
+    "aesthetic": "Minimalist",
+    "title": "Scandinavian Zen Platform Bed Nook",
+    "desc": "Calm, functional bedroom with zero visual clutter, flat neutral stone bedding, and concealed underbed storage drawers.",
+    "budget": "₹650–₹1,400",
+    "minBudget": 650,
+    "maxBudget": 1400,
+    "diff": 1,
+    "colors": ["#FFFFFF", "#F1F5F9", "#E2E8F0", "#475569"],
+    "img": "https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=700&q=80",
+    "tags": ["smallspace", "renter", "nopaint"],
+    "tips": [
+      "A monotone bedspread eliminates visual noise in compact hostel spaces",
+      "Slide low-profile fabric storage boxes underneath bed frame",
+      "Keep bedside surfaces 100% clear except for phone and water"
     ],
-    recreateItems: [
-      { name: 'Fold-down wall study board with brackets', price: 1250, icon: '💻', alt: 'Lap desk board for bed/chair study (Save ₹750)' },
-      { name: 'Under-shelf eye-care LED bar', price: 380, icon: '💡', alt: 'Clamp-on flexible desk lamp (Save ₹120)' }
+    "recreateItems": [
+      { "name": "Monochrome stone-washed linen bedspread", "price": 590, "icon": "🛏️", "alt": "Pure grey cotton sheet tightly tucked (Save ₹280)" },
+      { "name": "Underbed fabric zippered storage box", "price": 280, "icon": "📦", "alt": "Recycled flat carton wrapped in craft paper (Save ₹240)" }
     ]
   },
   {
-    id: 12,
-    cat: 'study',
-    aesthetic: 'Dark Academia',
-    title: 'Zen Reading Corner & Cushion Nook',
-    desc: 'Floor cushion reading zone by window with book stacks, plaid throw and clip lamp.',
-    budget: '₹600–₹1,400',
-    minBudget: 600,
-    maxBudget: 1400,
-    diff: 1,
-    colors: ['#4A3525', '#D4A373', '#C5A059', '#FAEDCD'],
-    img: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=700&q=80',
-    tags: ['renter', 'nodrill', 'nopaint', 'smallspace'],
-    tips: [
-      'Dense floor cushion + wall bolster = supreme back support',
-      'Clip lamp mounts to window grill or bunk bed pole',
-      'Stack favorite textbooks into an organic side table'
+    "id": 15,
+    "cat": "budget",
+    "aesthetic": "Minimalist",
+    "title": "Geometric Wall Frame Bed Sanctuary",
+    "desc": "Minimalist bedroom wall with a single clean thin oak frame, warm white bedding, and concealed cord tracks.",
+    "budget": "₹450–₹900",
+    "minBudget": 450,
+    "maxBudget": 900,
+    "diff": 1,
+    "colors": ["#FFFFFF", "#FAF8F5", "#D4A373", "#334155"],
+    "img": "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "One purposeful piece of art creates more zen calm than 10 busy posters",
+      "Hang frame with Velcro damage-free picture strips (leaves paint intact)",
+      "Keep side wall bare to create feeling of openness"
     ],
-    recreateItems: [
-      { name: 'Tufted floor cushion 60x60cm', price: 440, icon: '🛋️', alt: 'Folded winter blanket with pillow stack (Save ₹440)' },
-      { name: 'Vintage amber flexible clip lamp', price: 290, icon: '💡', alt: 'Bedside rechargeable torch light (Save ₹190)' }
+    "recreateItems": [
+      { "name": "Thin oak minimal poster frame A3", "price": 290, "icon": "🖼️", "alt": "Magnetic poster hanger strips (Save ₹140)" },
+      { "name": "Damage-free heavy picture hanging strips (4 pairs)", "price": 140, "icon": "🪝", "alt": "Blue painter tape border frame (Save ₹100)" }
+    ]
+  },
+  {
+    "id": 16,
+    "cat": "study",
+    "aesthetic": "Minimalist",
+    "title": "Decluttered Study & Space-Saving Desk",
+    "desc": "High-focus minimal workstation with hidden under-desk cable management tray and slim matte black eye-care task lamp.",
+    "budget": "₹600–₹1,350",
+    "minBudget": 600,
+    "maxBudget": 1350,
+    "diff": 1,
+    "colors": ["#FFFFFF", "#E2E8F0", "#334155", "#0F172A"],
+    "img": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=700&q=80",
+    "tags": ["smallspace", "renter"],
+    "tips": [
+      "Fasten power extension cord under desk using heavy adhesive strips",
+      "A single matte lamp with 4000K daylight LED enhances study stamina",
+      "Wipe desk clean at the end of each evening study session"
+    ],
+    "recreateItems": [
+      { "name": "Under-desk wire management basket", "price": 280, "icon": "🔌", "alt": "Binder clips clamped to desk edge for wire routing (Save ₹240)" },
+      { "name": "Matte black clamp-on flexible desk lamp", "price": 420, "icon": "💡", "alt": "USB rechargeable flexible study light (Save ₹220)" }
+    ]
+  },
+
+  // -------------------------------------------------------------------------
+  // 5. DARK ACADEMIA AESTHETIC (4 CARDS)
+  // -------------------------------------------------------------------------
+  {
+    "id": 17,
+    "cat": "study",
+    "aesthetic": "Dark Academia",
+    "title": "Zen Reading Corner & Amber Cushion Nook",
+    "desc": "Floor cushion reading sanctuary by window with vintage book stacks, tartan wool throw, and flexible warm amber clip lamp.",
+    "budget": "₹600–₹1,400",
+    "minBudget": 600,
+    "maxBudget": 1400,
+    "diff": 1,
+    "colors": ["#4A3525", "#D4A373", "#C5A059", "#FAEDCD"],
+    "img": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint", "smallspace"],
+    "tips": [
+      "Dense floor cushion + wall bolster = supreme posture support for late night reading",
+      "Flexible amber clip lamp mounts to bunk bed pole without tools",
+      "Stack favorite heavy hardcovers into an organic bedside table"
+    ],
+    "recreateItems": [
+      { "name": "Tufted espresso floor cushion 60x60cm", "price": 440, "icon": "🛋️", "alt": "Folded winter quilt layered with pillows (Save ₹440)" },
+      { "name": "Vintage amber flexible clip lamp (2200K)", "price": 290, "icon": "💡", "alt": "Bedside rechargeable warm torch (Save ₹180)" }
+    ]
+  },
+  {
+    "id": 18,
+    "cat": "budget",
+    "aesthetic": "Dark Academia",
+    "title": "Vintage Book Stack & Amber Study",
+    "desc": "Scholarly desk atmosphere with open classical book pages, brass banker style LED lighting, and warm parchment tones.",
+    "budget": "₹450–₹1,100",
+    "minBudget": 450,
+    "maxBudget": 1100,
+    "diff": 1,
+    "colors": ["#4A3525", "#C5A059", "#FAEDCD", "#2D4A3E"],
+    "img": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Secondhand bookstore paperbacks make the best aesthetic book walls",
+      "Warm 2200K amber lighting protects eyes and feels like an ancient library",
+      "Keep a leatherette notebook open for fountain pen notes"
+    ],
+    "recreateItems": [
+      { "name": "Antique book focal wall pages pack", "price": 95, "icon": "📖", "alt": "Recycled discarded damaged library novel pages (Save ₹95)" },
+      { "name": "Antique brass finish warm LED banker lamp", "price": 580, "icon": "💡", "alt": "Amber bulb inside desk clamp shade (Save ₹350)" }
+    ]
+  },
+  {
+    "id": 19,
+    "cat": "small",
+    "aesthetic": "Dark Academia",
+    "title": "Scholarly Library Wall & Plaid Throw",
+    "desc": "Rich dark espresso wooden desktop shelving with classical novels, brass bookends, and a deep forest plaid wool lap blanket.",
+    "budget": "₹700–₹1,500",
+    "minBudget": 700,
+    "maxBudget": 1500,
+    "diff": 1,
+    "colors": ["#4A3525", "#2D4A3E", "#D4A373", "#FAEDCD"],
+    "img": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "smallspace"],
+    "tips": [
+      "Stain plain wooden crate in dark walnut for instant antique look",
+      "Tartan plaid throw adds scholarly texture to plain hostel mattress",
+      "Display vintage postcards and classical quotes on a small cork strip"
+    ],
+    "recreateItems": [
+      { "name": "Dark walnut tabletop desktop bookrack", "price": 380, "icon": "📚", "alt": "Sturdy cardboard box trimmed and painted dark brown (Save ₹300)" },
+      { "name": "Tartan forest plaid wool-blend lap blanket", "price": 450, "icon": "🧣", "alt": "Vintage woolen winter muffler draped on chair (Save ₹350)" }
+    ]
+  },
+  {
+    "id": 20,
+    "cat": "diy",
+    "aesthetic": "Dark Academia",
+    "title": "Antique Botanical & Classical Art Study",
+    "desc": "Moody desk sanctuary styled with classical botanical sketches, vintage inkpot, and dark timber organizers.",
+    "budget": "₹350–₹850",
+    "minBudget": 350,
+    "maxBudget": 850,
+    "diff": 1,
+    "colors": ["#4A3525", "#C5A059", "#D4A373", "#334155"],
+    "img": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Print antique public-domain anatomical and botanical plates on sepia paper",
+      "Tape pages with blue painter tape loops to leave hostel paint undamaged",
+      "Upcycle dark amber glass medicine bottles as desktop flower or quill holders"
+    ],
+    "recreateItems": [
+      { "name": "Vintage botanical & classical art print set (12 prints)", "price": 180, "icon": "📜", "alt": "Print public domain museum scans at campus lab (Save ₹120)" },
+      { "name": "Amber glass inkpot & brass pen rest", "price": 170, "icon": "✒️", "alt": "Cleaned amber medicine bottle with wooden chopstick rest (Save ₹150)" }
+    ]
+  },
+
+  // -------------------------------------------------------------------------
+  // 6. PINTEREST CORE AESTHETIC (4 CARDS)
+  // -------------------------------------------------------------------------
+  {
+    "id": 21,
+    "cat": "aesthetic",
+    "aesthetic": "Pinterest Core",
+    "title": "Polaroid & Twine Memory Wall",
+    "desc": "Curated mini photo prints clipped to natural baker twine with warm micro fairy lights, dried flowers, and colorful sticker accents.",
+    "budget": "₹400–₹850",
+    "minBudget": 400,
+    "maxBudget": 850,
+    "diff": 1,
+    "colors": ["#F9CAD2", "#C3B1E1", "#E9C46A", "#FFF0F4"],
+    "img": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Print mini polaroids at local photo lab for ₹6/print or print 9 per A4 page",
+      "Adhesive clear command hooks hold twine taut without wall nails",
+      "Weave micro copper fairy lights through clips for evening twinkle"
+    ],
+    "recreateItems": [
+      { "name": "Polaroid style prints pack of 30", "price": 210, "icon": "📷", "alt": "Color printouts on thick glossy sheet cut with scissors (Save ₹120)" },
+      { "name": "Natural jute twine + 30 mini wooden clips", "price": 95, "icon": "🎀", "alt": "Cotton sewing thread with small paper binder clips (Save ₹60)" },
+      { "name": "Warm 5m micro copper wire string lights", "price": 140, "icon": "💡", "alt": "Use existing fairy lights (Save ₹140)" }
+    ]
+  },
+  {
+    "id": 22,
+    "cat": "gaming",
+    "aesthetic": "Pinterest Core",
+    "title": "Pastel Battlestation & Bias Glow",
+    "desc": "Aesthetic pastel study and gaming setup with soft ambient bias LED strip behind monitor, lilac desk mat, and neat cable sleeve.",
+    "budget": "₹800–₹2,200",
+    "minBudget": 800,
+    "maxBudget": 2200,
+    "diff": 2,
+    "colors": ["#A0C8F0", "#C3B1E1", "#F9CAD2", "#70D6BC"],
+    "img": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=700&q=80",
+    "tags": ["nodrill", "renter"],
+    "tips": [
+      "Soft bias lighting behind monitor relieves late night dorm eye fatigue",
+      "Oversized pastel desk mat protects hostel desk wood and dampens keyboard clatter",
+      "Velcro ties keep messy charger cords completely hidden behind table legs"
+    ],
+    "recreateItems": [
+      { "name": "USB ambient pastel bias LED strip (1m)", "price": 320, "icon": "💡", "alt": "Place warm bedside lamp directly behind laptop (Save ₹200)" },
+      { "name": "Pastel lilac oversized faux-leather desk mat (80x40cm)", "price": 380, "icon": "⌨️", "alt": "Pastel chart paper laminated with clear film (Save ₹300)" },
+      { "name": "Reusable Velcro cable organizer wraps (20 pcs)", "price": 110, "icon": "🔌", "alt": "Twist ties from bread packets (Save ₹110)" }
+    ]
+  },
+  {
+    "id": 23,
+    "cat": "budget",
+    "aesthetic": "Pinterest Core",
+    "title": "Fairy Light Grid & Youthful Collage Wall",
+    "desc": "White wire memo grid panel styled with colorful art prints, glowing fairy lights, cute stickers, and pastel post-its.",
+    "budget": "₹450–₹950",
+    "minBudget": 450,
+    "maxBudget": 950,
+    "diff": 1,
+    "colors": ["#C3B1E1", "#FDE68A", "#70D6BC", "#FFF0F4"],
+    "img": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80",
+    "tags": ["renter", "nodrill", "nopaint"],
+    "tips": [
+      "Mount wire grid using two adhesive clear utility hooks",
+      "Clip daily reminders, photos, and motivational quotes with colored binder clips",
+      "Add mini dried flower sprigs at grid intersections"
+    ],
+    "recreateItems": [
+      { "name": "White wire grid photo memo panel 45x65cm", "price": 380, "icon": "📌", "alt": "Wire barbecue grill rack from D-Mart painted white (Save ₹220)" },
+      { "name": "Pastel decorative washi tape pack of 4", "price": 110, "icon": "🎨", "alt": "Colored masking tape from stationery shop (Save ₹60)" }
+    ]
+  },
+  {
+    "id": 24,
+    "cat": "small",
+    "aesthetic": "Pinterest Core",
+    "title": "Pastel Dreamland Bed & Squiggle Decor",
+    "desc": "Colorful youthful dorm bed styled with reversible lilac & butter yellow duvet, checkered cushion, and whimsical wavy wall accents.",
+    "budget": "₹750–₹1,600",
+    "minBudget": 750,
+    "maxBudget": 1600,
+    "diff": 1,
+    "colors": ["#C3B1E1", "#FDE68A", "#F9CAD2", "#A0C8F0"],
+    "img": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80",
+    "tags": ["smallspace", "renter", "nopaint"],
+    "tips": [
+      "Reversible two-tone duvet lets you change your room vibe whenever you flip it",
+      "A pastel wavy acrylic mirror bounces light and adds a trendy sculptural pop",
+      "Mix checkered and smiley face throw cushions for curated Gen-Z aesthetic"
+    ],
+    "recreateItems": [
+      { "name": "Reversible lilac & butter yellow duvet set", "price": 680, "icon": "🛏️", "alt": "Layer two contrasting pastel single bedsheets (Save ₹300)" },
+      { "name": "Squiggly wavy pastel accent mirror", "price": 390, "icon": "🪞", "alt": "DIY clay squiggle border around mini mirror (Save ₹280)" }
     ]
   }
 ];
@@ -2038,7 +2593,8 @@ const cards = [
 const curatedPalettes = [
   {
     name: 'Pastel Dreams',
-    mood: 'Soft, dreamy, youthful & calming',
+    aesthetic: 'Pinterest Core',
+    mood: 'Soft, dreamy, youthful & expressive',
     colors: [
       { name: 'Lilac Cloud', hex: '#C3B1E1' },
       { name: 'Blush Pink', hex: '#F9CAD2' },
@@ -2047,7 +2603,8 @@ const curatedPalettes = [
     ]
   },
   {
-    name: 'Earthy & Cozy',
+    name: 'Earthy & Cozy Boho',
+    aesthetic: 'Boho',
     mood: 'Warm terracotta, leafy sage & grounded vibes',
     colors: [
       { name: 'Warm Terracotta', hex: '#E07A5F' },
@@ -2057,37 +2614,41 @@ const curatedPalettes = [
     ]
   },
   {
-    name: 'Pink Paradise',
-    mood: 'Romantic coquette, ballet slipper & peach tones',
+    name: 'Pink Paradise & Coquette',
+    aesthetic: 'Coquette',
+    mood: 'Romantic coquette, ballet slipper & delicate ribbons',
     colors: [
       { name: 'Blush Rose', hex: '#F9CAD2' },
-      { name: 'Peach Sorbet', hex: '#FDBA9B' },
       { name: 'Petal Cream', hex: '#FFF0F4' },
-      { name: 'Lavender Mist', hex: '#D8B4E2' }
+      { name: 'Lavender Rose', hex: '#E8D7F1' },
+      { name: 'Soft Butter Gold', hex: '#FDE68A' }
     ]
   },
   {
-    name: 'Fresh & Sage',
-    mood: 'Invigorating greenery, crisp linen & botanical freshness',
+    name: 'Fresh & Sage Clean Girl',
+    aesthetic: 'Clean Girl',
+    mood: 'Crisp linen, minimalist calm & organized clarity',
     colors: [
-      { name: 'Sage Leaf', hex: '#A8C9B9' },
-      { name: 'Mint Pop', hex: '#70D6BC' },
-      { name: 'Forest Shadow', hex: '#52796F' },
-      { name: 'Crisp Linen', hex: '#F8FAF9' }
+      { name: 'Crisp White', hex: '#FFFFFF' },
+      { name: 'Oatmeal Beige', hex: '#E6DFD5' },
+      { name: 'Muted Sage', hex: '#A8C9B9' },
+      { name: 'Warm Cream', hex: '#FAF8F5' }
     ]
   },
   {
-    name: 'Warm Neutrals',
-    mood: 'Clean girl calm, sand, biscuit & caramel comfort',
+    name: 'Scandinavian Minimalist',
+    aesthetic: 'Minimalist',
+    mood: 'Functional zen, uncluttered lines & neutral calm',
     colors: [
-      { name: 'Biscuit Sand', hex: '#E6CCB2' },
-      { name: 'Warm Cream', hex: '#FAF7F2' },
-      { name: 'Toasted Caramel', hex: '#B08968' },
-      { name: 'Soft Charcoal', hex: '#334155' }
+      { name: 'Warm White', hex: '#FFFFFF' },
+      { name: 'Neutral Sand', hex: '#E2E8F0' },
+      { name: 'Slate Grey', hex: '#94A3B8' },
+      { name: 'Charcoal', hex: '#334155' }
     ]
   },
   {
-    name: 'Dark Academia',
+    name: 'Dark Academia Vintage',
+    aesthetic: 'Dark Academia',
     mood: 'Moody vintage, antique books, espresso & brass glow',
     colors: [
       { name: 'Espresso Bean', hex: '#4A3525' },
@@ -2101,79 +2662,497 @@ const curatedPalettes = [
 let activePalette = { ...curatedPalettes[0] };
 
 /* --------------------------------------------------------------------------
-   3. DIY HACKS DATA (PRESERVED ALL 20 HACKS WITH PRACTICAL STEPS)
+   3. DIY HACKS DATA (18 CURATED HACKS — 3 PER AESTHETIC)
    -------------------------------------------------------------------------- */
 const diys = [
+  // Clean Girl
   {
-    title: 'Fairy Light Wall Canopy',
-    cost: '₹300',
-    time: '2 hrs',
-    diff: 'Beginner',
-    materials: 'LED fairy lights (5m), adhesive command hooks, sheer fabric or dupatta, binder clips.',
-    steps: [
-      'Clean wall thoroughly with dry cloth to ensure adhesive sticks.',
-      'Affix two command hooks near ceiling corners and wait 30 minutes.',
-      'Drape sheer fabric across hooks and weave fairy lights through folds.'
+    "aesthetic": "Clean Girl",
+    "title": "Minimalist Acrylic Desk Organizer",
+    "cost": "₹150",
+    "time": "1 hr",
+    "diff": "Beginner",
+    "materials": "Clear acrylic pencil holder, neutral washi label tape, fine-line black marker, rubber base pads.",
+    "steps": [
+      "Wipe acrylic organizer with microfiber cloth and rubbing alcohol.",
+      "Label slots neatly using matte neutral tape (Pens, Highlighters, Tech).",
+      "Attach rubber bumper dots beneath base to prevent desk surface scratches."
     ],
-    safety: '⚠️ Note: Use low-heat copper wire LEDs. Keep bulbs off flammable paper.'
+    "safety": "⚠️ Safety: Use non-permanent washi tape so labels peel cleanly without glue residue."
   },
   {
-    title: 'Macramé Plant Hanging Shelf',
-    cost: '₹250',
-    time: '3 hrs',
-    diff: 'Intermediate',
-    materials: 'Cotton rope (10m), 2 wooden dowels, plant pot.',
-    steps: [
-      'Cut cotton rope into 8 strands of 2.5m each.',
-      'Knot strands with alternating square knots to form diamond pattern.',
-      'Balance wooden base plank and insert plant pot.'
+    "aesthetic": "Clean Girl",
+    "title": "Aesthetic Framed Line Art Poster",
+    "cost": "₹120",
+    "time": "45 mins",
+    "diff": "Beginner",
+    "materials": "Printed minimalist line art on matte cardstock (A4), slim wooden frame, 2 pairs Velcro picture strips.",
+    "steps": [
+      "Download copyright-free line art or sketch a continuous face/flower outline.",
+      "Fit into a lightweight natural pine or white photo frame.",
+      "Press Velcro picture strips firmly against frame and wall for 30 seconds."
     ],
-    safety: '⚠️ Tip: Test weight before placing heavy ceramic pots.'
+    "safety": "⚠️ Renter note: Pull Velcro tab straight down against wall when removing to protect hostel paint."
   },
   {
-    title: 'PVC Pipe Desk Stationery Pot',
-    cost: '₹150',
-    time: '1 hr',
-    diff: 'Beginner',
-    materials: 'PVC pipe offcuts, 4 connectors, sandpaper, pastel spray paint.',
-    steps: [
-      'Cut angled tops on pipes for easy pen access.',
-      'Sand rough edges smooth with 120-grit sandpaper.',
-      'Spray in pastel lavender or sage and glue cluster together.'
+    "aesthetic": "Clean Girl",
+    "title": "Foldable Fabric Underbed Storage Box",
+    "cost": "₹180",
+    "time": "1.5 hrs",
+    "diff": "Beginner",
+    "materials": "Clean corrugated cardboard delivery box, neutral cream linen fabric offcut, fabric glue, scissors.",
+    "steps": [
+      "Trim delivery box to 15cm height so it slides effortlessly under hostel bed.",
+      "Wrap outer surface and rim in neutral cream or oatmeal linen fabric, securing with fabric glue.",
+      "Add a folded ribbon tab on the front for easy pull-out access."
     ],
-    safety: '⚠️ Safety: Sand in ventilated room and wipe plastic dust.'
+    "safety": "⚠️ Tip: Ensure cardboard is clean and dry before wrapping to maintain hygiene."
+  },
+
+  // Coquette
+  {
+    "aesthetic": "Coquette",
+    "title": "Fairy Light Cloud Bed Canopy",
+    "cost": "₹300",
+    "time": "2 hrs",
+    "diff": "Beginner",
+    "materials": "5m warm copper wire LEDs, sheer white chiffon fabric or dupatta, 4 adhesive clear ceiling command hooks, pink satin ribbon.",
+    "steps": [
+      "Affix clear adhesive hooks to ceiling corners above bed and allow 30 minutes to bond.",
+      "Drape sheer chiffon across hooks, allowing it to swoop in soft romantic clouds.",
+      "Weave micro fairy lights through fabric folds and tie pink satin bows at each hook point."
+    ],
+    "safety": "⚠️ Safety: Use low-voltage LED string lights that remain cool to the touch. Never use incandescent bulbs near fabric."
   },
   {
-    title: 'Book Page Vintage Focal Wall',
-    cost: '₹50',
-    time: '2 hrs',
-    diff: 'Beginner',
-    materials: 'Old damaged novel pages, painter tape loops, ruler.',
-    steps: [
-      'Carefully tear aged yellowed pages from recycled book.',
-      'Apply painter tape loops to corners for zero-damage mounting.',
-      'Tile organically behind your desk in a flowing grid.'
+    "aesthetic": "Coquette",
+    "title": "Vintage Ribbon Bow Photo Frame",
+    "cost": "₹140",
+    "time": "1 hr",
+    "diff": "Beginner",
+    "materials": "Thrifted tabletop photo frame, pastel pink satin ribbon (1m), hot glue or fabric adhesive, floral postcard.",
+    "steps": [
+      "Clean frame glass and insert your favorite vintage floral art or friend photo.",
+      "Tie a neat double bow with pastel pink satin ribbon.",
+      "Dab glue on top center frame arch and press bow firmly until dry."
     ],
-    safety: '⚠️ Renter note: Blue painter tape never peels hostel paint.'
+    "safety": "⚠️ Caution: Be mindful of hot glue temperature on fingertips."
   },
   {
-    title: 'Rope Basket Organizer',
-    cost: '₹180',
-    time: '2 hrs',
-    diff: 'Beginner',
-    materials: 'Thick cotton jute rope (12m), glue gun, plastic bowl mould.',
-    steps: [
-      'Invert small bowl as internal guide mould.',
-      'Coil rope tightly from base upward, gluing edges continuously.',
-      'Add two loop handles at rim for easy carrying.'
+    "aesthetic": "Coquette",
+    "title": "Scalloped Perfume & Jewelry Vanity Tray",
+    "cost": "₹160",
+    "time": "1.5 hrs",
+    "diff": "Intermediate",
+    "materials": "Air-dry white clay (250g), pastel pink acrylic paint, gloss varnish, rolling pin, butter knife.",
+    "steps": [
+      "Roll air-dry clay flat into a 15cm oval about 5mm thick.",
+      "Gently curve edges upward and use fingertips to create wavy scalloped ridges.",
+      "Allow to dry 24 hours, paint in soft blush pink, and finish with a clear gloss coat."
     ],
-    safety: '⚠️ Caution: Be mindful of hot glue temperature on fingertips.'
+    "safety": "⚠️ Note: Air-dry clay is decorative only; wipe clean with dry cloth, do not submerge in water."
+  },
+
+  // Boho
+  {
+    "aesthetic": "Boho",
+    "title": "Macramé Plant Hanging Shelf",
+    "cost": "₹250",
+    "time": "3 hrs",
+    "diff": "Intermediate",
+    "materials": "Natural cotton rope (10m), smooth wooden dowel or branch, small potted pothos/succulent.",
+    "steps": [
+      "Cut cotton rope into 8 strands of 2.5m each and fold over dowel with lark’s head knots.",
+      "Knot alternating square knots to form an open diamond netting basket.",
+      "Insert plant pot firmly in base cradle and test balance before hanging."
+    ],
+    "safety": "⚠️ Renter note: Hang only lightweight plastic nursery pots or propagated cuttings to avoid excess weight."
+  },
+  {
+    "aesthetic": "Boho",
+    "title": "Botanical Leaf Wall Tapestry & Postcards",
+    "cost": "₹150",
+    "time": "1 hr",
+    "diff": "Beginner",
+    "materials": "Raw cotton canvas or unbleached muslin cloth, green fabric paint, sponge brush, wooden hanger rod.",
+    "steps": [
+      "Collect fallen leaves from campus trees and press flat inside heavy book.",
+      "Coat leaf vein side with sage or forest fabric paint and stamp onto canvas cloth.",
+      "Tie jute twine to top wooden dowel and hang with damage-free hook."
+    ],
+    "safety": "⚠️ Tip: Place scrap cardboard under fabric when stamping to avoid table stains."
+  },
+  {
+    "aesthetic": "Boho",
+    "title": "Jute Rope Coiled Storage Basket",
+    "cost": "₹180",
+    "time": "2 hrs",
+    "diff": "Beginner",
+    "materials": "Thick jute rope (12m), glue gun, plastic food container (mould), craft scissors.",
+    "steps": [
+      "Invert plastic bowl or container to act as your internal shape guide.",
+      "Coil jute rope tightly starting from base circle, applying hot glue between rows.",
+      "Form two loop handles at top rim and slip mould out once dry."
+    ],
+    "safety": "⚠️ Tip: Apply glue on outer side of rope so mould releases easily."
+  },
+
+  // Minimalist
+  {
+    "aesthetic": "Minimalist",
+    "title": "Under-Desk Hidden Cable Management Tray",
+    "cost": "₹110",
+    "time": "45 mins",
+    "diff": "Beginner",
+    "materials": "Stiff wire mesh basket or cardboard cable box, heavy duty adhesive cable clips, reusable Velcro ties.",
+    "steps": [
+      "Group power adapters, laptop charger block, and extension strip inside tray.",
+      "Fasten tray under desk tabletop using heavy-duty adhesive mounting strips.",
+      "Bundle excess wire lengths with reusable Velcro ties."
+    ],
+    "safety": "⚠️ Safety: Leave 2 inches of ventilation around high-wattage laptop charger bricks to prevent heat buildup."
+  },
+  {
+    "aesthetic": "Minimalist",
+    "title": "Modular Pegboard Study Organizer",
+    "cost": "₹280",
+    "time": "1.5 hrs",
+    "diff": "Beginner",
+    "materials": "Pre-drilled wooden or MDF pegboard panel (30x40cm), white spray paint, 6 wooden dowel pegs.",
+    "steps": [
+      "Spray pegboard in smooth matte white or light ash grey.",
+      "Insert dowel pegs at customized heights to hold headphones, watch, and calculator.",
+      "Rest on desk backboard or mount using two heavy adhesive nail strips."
+    ],
+    "safety": "⚠️ Renter note: Adhesive nail strips hold up to 3kg and peel cleanly without drilling."
+  },
+  {
+    "aesthetic": "Minimalist",
+    "title": "Space-Saving Freestanding Garment Rail",
+    "cost": "₹340",
+    "time": "2 hrs",
+    "diff": "Intermediate",
+    "materials": "1-inch PVC pipes cut to size (2x1m, 2x40cm, 4 elbow joints, 2 T-joints), matte white spray paint.",
+    "steps": [
+      "Dry-assemble base rectangular footings and vertical uprights with elbows.",
+      "Spray all parts evenly in matte white or graphite grey in well-ventilated area.",
+      "Slide rubber feet under base corners to protect hostel floor tiles."
+    ],
+    "safety": "⚠️ Safety: Spray paint outdoors or near open window with mask."
+  },
+
+  // Dark Academia
+  {
+    "aesthetic": "Dark Academia",
+    "title": "Vintage Book Page Literary Focal Wall",
+    "cost": "₹60",
+    "time": "2 hrs",
+    "diff": "Beginner",
+    "materials": "Damaged vintage paperback book pages, blue painter tape, ruler, amber tea-staining mix (optional).",
+    "steps": [
+      "Carefully tear aged yellowed pages featuring poetry or classical prose from recycled book.",
+      "Optionally dip paper edges in black tea for authentic antique deckled look.",
+      "Roll blue painter tape into loops and mount pages in an organic staggered grid behind study desk."
+    ],
+    "safety": "⚠️ Renter note: Blue painter tape never damages or peels hostel wall paint."
+  },
+  {
+    "aesthetic": "Dark Academia",
+    "title": "Antique Glass Inkpot & Amber Bottle Vases",
+    "cost": "₹80",
+    "time": "45 mins",
+    "diff": "Beginner",
+    "materials": "Empty brown glass medicine bottles, twine, brass/gold acrylic paint, dried grass or quill.",
+    "steps": [
+      "Soak glass bottles in warm water to cleanly remove pharmacy labels.",
+      "Dry thoroughly and lightly dry-brush bottle rims with antique brass acrylic paint.",
+      "Insert dried botanicals, wheat stems, or vintage wooden pens."
+    ],
+    "safety": "⚠️ Safety: Wash recycled bottles thoroughly with soap before crafting."
+  },
+  {
+    "aesthetic": "Dark Academia",
+    "title": "Repurposed Walnut Crate Bookrack",
+    "cost": "₹220",
+    "time": "2 hrs",
+    "diff": "Intermediate",
+    "materials": "Pinewood fruit crate, walnut wood stain or dark brown diluted acrylic, rag, 120-grit sandpaper.",
+    "steps": [
+      "Sand wood slats smooth along grain to eliminate splinters.",
+      "Wipe walnut stain across wood with a cotton rag for rich deep espresso color.",
+      "Stack vertically on desk to house hardcovers and study notebooks."
+    ],
+    "safety": "⚠️ Tip: Wear disposable gloves when applying wood stain."
+  },
+
+  // Pinterest Core
+  {
+    "aesthetic": "Pinterest Core",
+    "title": "Polaroid & Baker Twine Memory Wall",
+    "cost": "₹160",
+    "time": "1.5 hrs",
+    "diff": "Beginner",
+    "materials": "30 mini photo prints, 4m jute/cotton baker twine, mini wooden craft clips, 2 clear command hooks.",
+    "steps": [
+      "Tie twin strands of twine between two clear adhesive command hooks on wall.",
+      "Clip photos in chronological or color-gradient order using mini wooden craft pegs.",
+      "Weave micro copper fairy lights through clips for evening ambiance."
+    ],
+    "safety": "⚠️ Renter note: Clear command hooks hold firmly and release with pull-tab without mark."
+  },
+  {
+    "aesthetic": "Pinterest Core",
+    "title": "Cardboard Arch Upholstered Headboard",
+    "cost": "₹240",
+    "time": "2.5 hrs",
+    "diff": "Intermediate",
+    "materials": "Heavy delivery box cardboard, foam sheet offcut, pastel velvet fabric (1m), heavy duty Velcro tape.",
+    "steps": [
+      "Draw and cut a trendy geometric arch shape from heavy corrugated cardboard.",
+      "Layer 1-inch foam sheet over cardboard and wrap tightly in pastel velvet fabric.",
+      "Staple or glue fabric tightly on backside and mount between mattress and wall with Velcro."
+    ],
+    "safety": "⚠️ Renter note: Traps between bed frame and wall; zero permanent drilling needed."
+  },
+  {
+    "aesthetic": "Pinterest Core",
+    "title": "White Wire Grid Memo & Affirmation Board",
+    "cost": "₹220",
+    "time": "1 hr",
+    "diff": "Beginner",
+    "materials": "Wire mesh grid panel (40x60cm), white spray paint, pastel binder clips, aesthetic postcards.",
+    "steps": [
+      "Spray metal wire panel in clean gloss white or soft butter yellow.",
+      "Hang using two adhesive utility wall hooks above your desk.",
+      "Clip class schedule, cute stickers, and polaroids for an inspirational study backdrop."
+    ],
+    "safety": "⚠️ Tip: Distribute weight evenly across grid to keep hooks stable."
   }
 ];
+let activeDIYFilter = 'All';
 let currentDIYIdx = 0;
 
 /* --------------------------------------------------------------------------
-   4. LOCALSTORAGE STATE & PINTEREST BOARDS (FEATURE 3)
+   4. AESTHETIC-AWARE BUDGET STUDIO DATA
+   -------------------------------------------------------------------------- */
+const categoryPlans = {
+  "All": [
+    {
+      "cat": "Bedding & Linens", "icon": "🛏️", "allocPct": 35,
+      "items": [
+        { "name": "Soft Linen / Cotton Duvet & Sheet Set", "cost": 420, "active": true },
+        { "name": "Fluffy Accent Throw Pillow", "cost": 180, "active": true }
+      ]
+    },
+    {
+      "cat": "Warm Ambient Lighting", "icon": "💡", "allocPct": 20,
+      "items": [
+        { "name": "Warm 3000K Fairy Lights (10m)", "cost": 190, "active": true },
+        { "name": "Clip-on Bedside Reading Lamp", "cost": 240, "active": false }
+      ]
+    },
+    {
+      "cat": "Wall Decor & Hangings", "icon": "🖼️", "allocPct": 20,
+      "items": [
+        { "name": "Aesthetic Polaroid Twine Memory Kit", "cost": 140, "active": true },
+        { "name": "Damage-Free Poster Hanging Strips (Set of 6)", "cost": 120, "active": false }
+      ]
+    },
+    {
+      "cat": "Modular Storage & Plants", "icon": "📦", "allocPct": 25,
+      "items": [
+        { "name": "Foldable Fabric Storage Cubes (Set of 2)", "cost": 220, "active": true },
+        { "name": "Indoor Desk Succulent / Pothos Cutting", "cost": 120, "active": false }
+      ]
+    }
+  ],
+  "Clean Girl": [
+    {
+      "cat": "Bedding & Linens", "icon": "🛏️", "allocPct": 35,
+      "items": [
+        { "name": "Crisp White Washed Cotton Duvet Set", "cost": 450, "active": true },
+        { "name": "Neutral Oatmeal Linen Pillowcases (Pair)", "cost": 190, "active": true }
+      ]
+    },
+    {
+      "cat": "Warm Ambient Lighting", "icon": "💡", "allocPct": 20,
+      "items": [
+        { "name": "Slim Minimalist Warm LED Touch Light Bar", "cost": 280, "active": true },
+        { "name": "Warm 2700K Indirect Bedside Reading Lamp", "cost": 220, "active": false }
+      ]
+    },
+    {
+      "cat": "Wall Decor & Hangings", "icon": "🖼️", "allocPct": 20,
+      "items": [
+        { "name": "Minimalist Continuous Line-Art Print in Pine Frame", "cost": 180, "active": true },
+        { "name": "Peel-and-Stick Neutral Cork Strip with Pins", "cost": 120, "active": false }
+      ]
+    },
+    {
+      "cat": "Modular Storage & Plants", "icon": "📦", "allocPct": 25,
+      "items": [
+        { "name": "Clear Acrylic 3-Compartment Desk Organizer", "cost": 210, "active": true },
+        { "name": "Single Desktop Eucalyptus Stem in White Ceramic Pot", "cost": 140, "active": false }
+      ]
+    }
+  ],
+  "Coquette": [
+    {
+      "cat": "Bedding & Linens", "icon": "🛏️", "allocPct": 35,
+      "items": [
+        { "name": "Scalloped Blush Ruffle Duvet & Pillowcase Set", "cost": 480, "active": true },
+        { "name": "Plush Velvet Bow Accent Cushion", "cost": 190, "active": true }
+      ]
+    },
+    {
+      "cat": "Warm Ambient Lighting", "icon": "💡", "allocPct": 20,
+      "items": [
+        { "name": "Warm Copper Wire Fairy Light Bed Canopy Set (10m)", "cost": 210, "active": true },
+        { "name": "Soft Pink Tulip Bedside Nightlight", "cost": 250, "active": false }
+      ]
+    },
+    {
+      "cat": "Wall Decor & Hangings", "icon": "🖼️", "allocPct": 20,
+      "items": [
+        { "name": "French Floral Postcard Print Set + Satin Bow Pins", "cost": 140, "active": true },
+        { "name": "Mini Arched Gold-Trimmed Vanity Mirror", "cost": 280, "active": false }
+      ]
+    },
+    {
+      "cat": "Modular Storage & Plants", "icon": "📦", "allocPct": 25,
+      "items": [
+        { "name": "Pastel Pink Ribbon-Tie Fabric Storage Caddy", "cost": 190, "active": true },
+        { "name": "Ribbed Glass Perfume & Trinket Tray", "cost": 150, "active": false }
+      ]
+    }
+  ],
+  "Boho": [
+    {
+      "cat": "Bedding & Linens", "icon": "🛏️", "allocPct": 35,
+      "items": [
+        { "name": "Terracotta Botanical Leaf Washed Duvet Set", "cost": 460, "active": true },
+        { "name": "Woven Macramé Fringe Accent Throw Cushion", "cost": 190, "active": true }
+      ]
+    },
+    {
+      "cat": "Warm Ambient Lighting", "icon": "💡", "allocPct": 20,
+      "items": [
+        { "name": "Warm Amber Fairy String Lights for Wall Tapestry", "cost": 160, "active": true },
+        { "name": "Woven Rattan Table Lantern Nightlight", "cost": 280, "active": false }
+      ]
+    },
+    {
+      "cat": "Wall Decor & Hangings", "icon": "🖼️", "allocPct": 20,
+      "items": [
+        { "name": "Handmade Cotton Macramé Wall Tapestry Shelf", "cost": 220, "active": true },
+        { "name": "Earthy Botanical Leaf Art Prints (Pack of 3)", "cost": 130, "active": false }
+      ]
+    },
+    {
+      "cat": "Modular Storage & Plants", "icon": "📦", "allocPct": 25,
+      "items": [
+        { "name": "Braided Natural Jute Storage Basket with Handles", "cost": 210, "active": true },
+        { "name": "Pothos / Money Plant in Natural Terracotta Pot", "cost": 150, "active": false }
+      ]
+    }
+  ],
+  "Minimalist": [
+    {
+      "cat": "Bedding & Linens", "icon": "🛏️", "allocPct": 35,
+      "items": [
+        { "name": "Monochrome Sand / Light Grey Washed Linen Duvet", "cost": 440, "active": true },
+        { "name": "Flat Tailored Cotton Pillow Sham (Set of 2)", "cost": 160, "active": true }
+      ]
+    },
+    {
+      "cat": "Warm Ambient Lighting", "icon": "💡", "allocPct": 20,
+      "items": [
+        { "name": "Concealed Magnetic Under-Shelf Warm LED Bar", "cost": 240, "active": true },
+        { "name": "Minimalist Matte Black Clamp Task Lamp", "cost": 260, "active": false }
+      ]
+    },
+    {
+      "cat": "Wall Decor & Hangings", "icon": "🖼️", "allocPct": 20,
+      "items": [
+        { "name": "Thin Oak Geometric Architectural Wall Print", "cost": 170, "active": true },
+        { "name": "Self-Adhesive Concealed Cord Channel Cover", "cost": 110, "active": false }
+      ]
+    },
+    {
+      "cat": "Modular Storage & Plants", "icon": "📦", "allocPct": 25,
+      "items": [
+        { "name": "Foldable Heather Grey Felt Storage Cubes (Pair)", "cost": 220, "active": true },
+        { "name": "Under-Desk Heavy Wire Cable Management Basket", "cost": 180, "active": false }
+      ]
+    }
+  ],
+  "Dark Academia": [
+    {
+      "cat": "Bedding & Linens", "icon": "🛏️", "allocPct": 35,
+      "items": [
+        { "name": "Tartan Plaid Wool-Blend Warm Lap Blanket", "cost": 420, "active": true },
+        { "name": "Deep Forest Green / Espresso Velvet Cushion", "cost": 180, "active": true }
+      ]
+    },
+    {
+      "cat": "Warm Ambient Lighting", "icon": "💡", "allocPct": 20,
+      "items": [
+        { "name": "Vintage Amber Bedside Clip Lamp (2200K)", "cost": 260, "active": true },
+        { "name": "Antique Brass Banker Desk LED Lamp", "cost": 360, "active": false }
+      ]
+    },
+    {
+      "cat": "Wall Decor & Hangings", "icon": "🖼️", "allocPct": 20,
+      "items": [
+        { "name": "Aged Vintage Book Page Gallery Wall Pack", "cost": 95, "active": true },
+        { "name": "Classical Botanical & Celestial Sketches (Pack of 6)", "cost": 140, "active": false }
+      ]
+    },
+    {
+      "cat": "Modular Storage & Plants", "icon": "📦", "allocPct": 25,
+      "items": [
+        { "name": "Dark Walnut Desktop Bookrack for Hardcovers", "cost": 260, "active": true },
+        { "name": "Antique Brass Stationery Cup & Amber Glass Vase", "cost": 140, "active": false }
+      ]
+    }
+  ],
+  "Pinterest Core": [
+    {
+      "cat": "Bedding & Linens", "icon": "🛏️", "allocPct": 35,
+      "items": [
+        { "name": "Reversible Pastel Lilac & Butter Yellow Duvet Set", "cost": 470, "active": true },
+        { "name": "Retro Checkered / Smiley Accent Throw Pillow", "cost": 180, "active": true }
+      ]
+    },
+    {
+      "cat": "Warm Ambient Lighting", "icon": "💡", "allocPct": 20,
+      "items": [
+        { "name": "Copper Wire Fairy Lights with Mini Photo Clips", "cost": 210, "active": true },
+        { "name": "USB Behind-Desk Ambient Pastel LED Strip", "cost": 260, "active": false }
+      ]
+    },
+    {
+      "cat": "Wall Decor & Hangings", "icon": "🖼️", "allocPct": 20,
+      "items": [
+        { "name": "White Wire Grid Memo Board + Pastel Binder Clips", "cost": 220, "active": true },
+        { "name": "30-Print Polaroid Baker Twine Memory Kit", "cost": 160, "active": false }
+      ]
+    },
+    {
+      "cat": "Modular Storage & Plants", "icon": "📦", "allocPct": 25,
+      "items": [
+        { "name": "Pastel Lilac Modular Desktop Pegboard with Hooks", "cost": 260, "active": true },
+        { "name": "Wavy Pastel Pen Organizer & Daisy Flower Vase", "cost": 150, "active": false }
+      ]
+    }
+  ]
+};
+let activeStudioAesthetic = 'All';
+let studioCategories = JSON.parse(JSON.stringify(categoryPlans['All']));
+let currentStudioBudget = 1000;
+
+/* --------------------------------------------------------------------------
+   5. LOCALSTORAGE STATE & PINTEREST BOARDS (FEATURE 3)
    -------------------------------------------------------------------------- */
 let saved = [];
 try {
@@ -2181,11 +3160,10 @@ try {
   if (!Array.isArray(saved)) saved = [];
 } catch (e) { saved = []; }
 
-// Pinterest Multi-Board System
 let boards = {
   'My Dream Dorm': [...saved],
-  'Under ₹1,000': [3, 9],
-  'Desk Inspo': [1, 11]
+  'Under ₹1,000': [1, 5, 21],
+  'Desk Inspo': [3, 7, 16]
 };
 try {
   const loadedBoards = JSON.parse(localStorage.getItem('dg_boards') || 'null');
@@ -2196,17 +3174,15 @@ try {
 
 let currentActiveBoard = 'My Dream Dorm';
 
-// Shopping checklist items
 let shoppingList = [];
 try {
   shoppingList = JSON.parse(localStorage.getItem('dg_shopping_list') || '[]');
 } catch (e) { shoppingList = []; }
 
-// Makeover tasks
 let makeoverTasks = [
   { id: 1, text: '🗄️ Organize and declutter desk surface', done: false },
   { id: 2, text: '💡 Hang warm LED fairy lights (3000K)', done: false },
-  { id: 3, text: '🛏️ Upgrade to cozy pastel bedding & cushion', done: false },
+  { id: 3, text: '🛏️ Upgrade to cozy aesthetic bedding & cushion', done: false },
   { id: 4, text: '🖼️ Hang renter-friendly polaroid wall with twine', done: false },
   { id: 5, text: '📦 Stack crate organizers for shoe/book storage', done: false },
   { id: 6, text: '🌿 Add desktop succulent or trailing pothos plant', done: false },
@@ -2218,7 +3194,56 @@ try {
 } catch (e) {}
 
 /* --------------------------------------------------------------------------
-   5. FEATURE 3 & DISCOVERY: RENDER PINTEREST MASONRY GALLERY
+   6. RELEVANCE SCORING & FILTERING ENGINE
+   -------------------------------------------------------------------------- */
+function scoreCardRelevance(card, prefs) {
+  // prefs: { aesthetic, secondaryAesthetic, palette, challenge, budgetTier, zone }
+  let score = 0;
+  const primary = prefs.aesthetic;
+  const secondary = prefs.secondaryAesthetic;
+
+  // 1. Incompatible style check: strict rejection of cards from incompatible aesthetics
+  if (primary && card.aesthetic !== primary && card.aesthetic !== secondary) {
+    return -999;
+  }
+
+  // 2. Primary / Secondary match
+  if (card.aesthetic === primary) {
+    score += 60;
+  } else if (card.aesthetic === secondary) {
+    score += 40;
+  }
+
+  // 3. Priority zone match
+  if (prefs.zone === 'bed' && (card.cat === 'small' || card.cat === 'budget' || card.title.toLowerCase().includes('bed') || card.title.toLowerCase().includes('canopy'))) {
+    score += 20;
+  } else if (prefs.zone === 'desk' && (card.cat === 'study' || card.cat === 'gaming' || card.title.toLowerCase().includes('desk') || card.title.toLowerCase().includes('station'))) {
+    score += 20;
+  } else if (prefs.zone === 'corner' && (card.cat === 'aesthetic' || card.title.toLowerCase().includes('corner') || card.title.toLowerCase().includes('reading'))) {
+    score += 20;
+  }
+
+  // 4. Budget tier match
+  if (prefs.budget === 'shoestring') {
+    if (card.minBudget <= 500) score += 20;
+    else if (card.minBudget <= 800) score += 10;
+  } else if (prefs.budget === 'moderate') {
+    if (card.minBudget >= 400 && card.minBudget <= 1500) score += 15;
+  } else if (prefs.budget === 'full') {
+    if (card.maxBudget >= 1200) score += 15;
+  }
+
+  // 5. Room challenge match
+  if (prefs.challenge === 'space' && card.tags.includes('smallspace')) score += 15;
+  if (prefs.challenge === 'lighting' && (card.title.toLowerCase().includes('light') || card.title.toLowerCase().includes('mirror') || card.title.toLowerCase().includes('canopy'))) score += 15;
+  if (prefs.challenge === 'walls' && (card.title.toLowerCase().includes('wall') || card.title.toLowerCase().includes('grid') || card.title.toLowerCase().includes('frame'))) score += 15;
+  if (prefs.challenge === 'desk' && (card.cat === 'study' || card.title.toLowerCase().includes('desk'))) score += 15;
+
+  return score;
+}
+
+/* --------------------------------------------------------------------------
+   7. GALLERY RENDERING & FILTERING
    -------------------------------------------------------------------------- */
 let currentFilterVibe = 'all';
 let currentFilterTag = null;
@@ -2246,11 +3271,12 @@ function renderMasonryGrid() {
 
   // Search Filter
   if (searchVal) {
-    list = list.filter(c => 
+    list = list.filter(c =>
       c.title.toLowerCase().includes(searchVal) ||
       c.desc.toLowerCase().includes(searchVal) ||
       c.aesthetic.toLowerCase().includes(searchVal) ||
-      c.tips.some(t => t.toLowerCase().includes(searchVal))
+      c.tips.some(t => t.toLowerCase().includes(searchVal)) ||
+      (c.tags && c.tags.some(t => t.toLowerCase().includes(searchVal)))
     );
   }
 
@@ -2278,14 +3304,15 @@ function renderMasonryGrid() {
   container.innerHTML = list.map(card => {
     const isSaved = saved.includes(card.id);
     const dots = [1, 2, 3].map(i => `<div class="p-dot ${i <= card.diff ? 'filled' : ''}"></div>`).join('');
-    const tagBg = card.aesthetic === 'Coquette' ? '#FFF0F4' : card.aesthetic === 'Boho' ? '#FEF3C7' : card.aesthetic === 'Clean Girl' ? '#F0FDF4' : '#FAF5FF';
-    const tagCol = card.aesthetic === 'Coquette' ? '#C95C75' : card.aesthetic === 'Boho' ? '#92400E' : card.aesthetic === 'Clean Girl' ? '#166534' : '#7E22CE';
+    const def = AESTHETIC_DEFINITIONS[card.aesthetic] || {};
+    const tagBg = def.badgeBg || '#FAF5FF';
+    const tagCol = def.badgeCol || '#7E22CE';
 
     return `
       <div class="pin-card" id="pin-${card.id}">
         <div class="pin-visual-wrap">
           <img src="${card.img}" alt="${card.title}" class="pin-img" loading="lazy"
-               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\' fill=\'%23F3ECE1\'></svg>';">
+               onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\' fill=\'%23F3ECE1\'><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' fill=\'%23888\'>${encodeURIComponent(card.title)}</text></svg>';">
 
           <div class="pin-hover-overlay">
             <div class="pin-top-actions">
@@ -2332,8 +3359,9 @@ function resetAllFilters() {
   document.getElementById('searchInput').value = '';
   currentFilterVibe = 'all';
   currentFilterTag = null;
-  document.querySelectorAll('.vibe-pill').forEach(p => p.classList.remove('active'));
-  document.querySelector('.vibe-pill[data-vibe="all"]').classList.add('active');
+  document.querySelectorAll('#vibePills .vibe-pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('#vibePills .vibe-pill[data-vibe="all"]').classList.add('active');
+  document.querySelectorAll('[data-tag]').forEach(b => b.classList.remove('active'));
   renderMasonryGrid();
 }
 
@@ -2351,7 +3379,7 @@ function toggleTagFilter(tag, btn) {
 
 function filterVibeDirect(vibe) {
   currentFilterVibe = vibe;
-  document.querySelectorAll('.vibe-pill').forEach(p => {
+  document.querySelectorAll('#vibePills .vibe-pill').forEach(p => {
     p.classList.toggle('active', p.dataset.vibe === vibe);
   });
   renderMasonryGrid();
@@ -2359,7 +3387,7 @@ function filterVibeDirect(vibe) {
 }
 
 /* --------------------------------------------------------------------------
-   6. FEATURE 3: PINTEREST MULTI-BOARD SYSTEM & SAVE POPUP
+   8. PINTEREST MULTI-BOARD SYSTEM & MODAL
    -------------------------------------------------------------------------- */
 let pendingSaveCardId = null;
 
@@ -2390,7 +3418,7 @@ function openSaveModal(cardId, event) {
 }
 
 function closeSaveModal(e) {
-  if (e && e.target !== document.getElementById('saveModalOverlay') && !e.target.classList.contains('btn-hero-secondary')) return;
+  if (e && e.target !== document.getElementById('saveModalOverlay') && !e.target.classList.contains('btn-hero-secondary') && !e.target.classList.contains('modal-close-cross')) return;
   document.getElementById('saveModalOverlay').classList.remove('open');
 }
 
@@ -2525,7 +3553,6 @@ function removePinFromActiveBoard(cardId) {
   if (!boards[currentActiveBoard]) return;
   boards[currentActiveBoard] = boards[currentActiveBoard].filter(id => id !== cardId);
 
-  // If no other board contains this pin, remove from saved
   const stillInAny = Object.values(boards).some(arr => arr.includes(cardId));
   if (!stillInAny) saved = saved.filter(id => id !== cardId);
 
@@ -2544,7 +3571,7 @@ function updateBoardCounters() {
 }
 
 /* --------------------------------------------------------------------------
-   7. FEATURE 4: COLOR STUDIO INTERACTIVE ENGINE
+   9. FEATURE 4: COLOR STUDIO INTERACTIVE ENGINE
    -------------------------------------------------------------------------- */
 function renderColorStudio() {
   const grid = document.getElementById('presetPalettesGrid');
@@ -2553,7 +3580,10 @@ function renderColorStudio() {
       <div class="preset-swatch-row">
         ${p.colors.map(c => `<div class="preset-swatch-block" style="background:${c.hex};"></div>`).join('')}
       </div>
-      <div class="palette-preset-name">${p.name}</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+        <span class="palette-preset-name">${p.name}</span>
+        <span class="pin-tag-badge" style="background:#FAF5FF; color:#7E22CE; font-size:0.68rem; padding:2px 6px;">${p.aesthetic}</span>
+      </div>
       <div class="palette-preset-mood">${p.mood}</div>
     </div>
   `).join('');
@@ -2568,10 +3598,10 @@ function selectPalettePreset(idx) {
 
 function updateActivePaletteStage() {
   document.getElementById('activePaletteName').textContent = activePalette.name;
-  document.getElementById('activePaletteMood').textContent = activePalette.mood;
+  document.getElementById('activePaletteMood').textContent = `${activePalette.mood} • Matches ${activePalette.aesthetic}`;
 
   const row = document.getElementById('activeSwatchesRow');
-  row.innerHTML = activePalette.colors.map((c, i) => `
+  row.innerHTML = activePalette.colors.map((c) => `
     <div class="swatch-large-card">
       <div class="swatch-color-pill" style="background:${c.hex};" onclick="copyHexCode('${c.hex}')" title="Click to copy hex code"></div>
       <div class="swatch-name">${c.name}</div>
@@ -2579,7 +3609,6 @@ function updateActivePaletteStage() {
     </div>
   `).join('');
 
-  // Update Mini-Room Visualizer SVG Elements live
   const colors = activePalette.colors;
   if (colors[0]) document.getElementById('svgWall').setAttribute('fill', colors[0].hex);
   if (colors[1]) document.getElementById('svgBedspread').setAttribute('fill', colors[1].hex);
@@ -2596,10 +3625,9 @@ function copyHexCode(hex) {
 }
 
 function filterGalleryByCurrentPalette() {
-  // Find card with matching vibe or colors
-  filterVibeDirect('all');
-  document.getElementById('designs').scrollIntoView({ behavior: 'smooth' });
-  showToast(`Showing makeovers matching ${activePalette.name}! 🎨`);
+  const targetAesthetic = activePalette.aesthetic || 'Clean Girl';
+  filterVibeDirect(targetAesthetic);
+  showToast(`Showing makeovers matching "${activePalette.name}" (${targetAesthetic})! 🎨`);
 }
 
 function savePaletteToBoard() {
@@ -2607,42 +3635,8 @@ function savePaletteToBoard() {
 }
 
 /* --------------------------------------------------------------------------
-   8. FEATURE 1: VISUAL ROOM MAKEOVER BUDGET PLANNER STUDIO
+   10. FEATURE 1: AESTHETIC-AWARE BUDGET STUDIO
    -------------------------------------------------------------------------- */
-const categoryPlanDefaults = [
-  {
-    cat: 'Bedding & Linens', icon: '🛏️', allocPct: 35,
-    items: [
-      { name: 'Soft Linen/Cotton Duvet & Sheet Set', cost: 420, active: true },
-      { name: 'Fluffy Accent Throw Pillow', cost: 180, active: true }
-    ]
-  },
-  {
-    cat: 'Warm Ambient Lighting', icon: '💡', allocPct: 20,
-    items: [
-      { name: 'Warm 3000K Fairy Lights (10m)', cost: 190, active: true },
-      { name: 'Clip-on Bedside Reading Lamp', cost: 240, active: false }
-    ]
-  },
-  {
-    cat: 'Wall Decor & Hangings', icon: '🖼️', allocPct: 20,
-    items: [
-      { name: 'Aesthetic Polaroid Twine Memory Wall', cost: 140, active: true },
-      { name: 'Peel-and-Stick Mini Botanical Decals', cost: 160, active: false }
-    ]
-  },
-  {
-    cat: 'Modular Storage & Plants', icon: '📦', allocPct: 25,
-    items: [
-      { name: 'Foldable Fabric Storage Cubes (Set of 2)', cost: 220, active: true },
-      { name: 'Indoor Pothos / Money Plant', cost: 120, active: false }
-    ]
-  }
-];
-
-let studioCategories = JSON.parse(JSON.stringify(categoryPlanDefaults));
-let currentStudioBudget = 1000;
-
 function renderBudgetStudio() {
   const container = document.getElementById('categoriesBuilderGrid');
   let totalSpent = 0;
@@ -2692,6 +3686,23 @@ function renderBudgetStudio() {
   }).join('');
 }
 
+function filterBudgetByAesthetic(aestheticName, btn) {
+  activeStudioAesthetic = aestheticName;
+  const planTemplate = categoryPlans[aestheticName] || categoryPlans['All'];
+  studioCategories = JSON.parse(JSON.stringify(planTemplate));
+
+  document.querySelectorAll('#budgetAestheticPillsRow .vibe-pill').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const sub = document.getElementById('budgetAestheticSubtitle');
+  if (sub) {
+    sub.textContent = aestheticName === 'All' ? 'Showing balanced multi-aesthetic essentials' : `Showing essentials tailored for ${aestheticName}`;
+  }
+
+  renderBudgetStudio();
+  showToast(`Applied ${aestheticName} essentials! 💸`);
+}
+
 function toggleStudioItem(cIdx, iIdx) {
   studioCategories[cIdx].items[iIdx].active = !studioCategories[cIdx].items[iIdx].active;
   renderBudgetStudio();
@@ -2711,16 +3722,18 @@ function applyBudgetChallenge(amount, btn) {
   document.querySelectorAll('.challenge-pill-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
-  // Turn on/off items smartly to fit challenge
   if (amount <= 500) {
-    studioCategories[0].items[0].active = true;
-    studioCategories[0].items[1].active = false;
-    studioCategories[1].items[0].active = false;
-    studioCategories[2].items[0].active = true;
+    studioCategories.forEach((c, idx) => {
+      c.items.forEach((i, iIdx) => {
+        i.active = (idx === 0 && iIdx === 0) || (idx === 1 && iIdx === 0);
+      });
+    });
   } else if (amount <= 1000) {
-    studioCategories[0].items[0].active = true;
-    studioCategories[1].items[0].active = true;
-    studioCategories[2].items[0].active = true;
+    studioCategories.forEach((c, idx) => {
+      c.items.forEach((i, iIdx) => {
+        i.active = (iIdx === 0);
+      });
+    });
   } else {
     studioCategories.forEach(c => c.items.forEach(i => i.active = true));
   }
@@ -2748,7 +3761,7 @@ function addBudgetSelectedToShoppingList() {
 }
 
 /* --------------------------------------------------------------------------
-   9. FEATURE 5: MY ROOM MAKEOVER JOURNEY (PHOTO UPLOAD, BEFORE/AFTER & CHECKLIST)
+   11. FEATURE 5: MY ROOM MAKEOVER JOURNEY (BEFORE/AFTER & CHECKLIST)
    -------------------------------------------------------------------------- */
 function handleRoomPhotoUpload(event) {
   const file = event.target.files && event.target.files[0];
@@ -2761,11 +3774,9 @@ function handleRoomPhotoUpload(event) {
     document.getElementById('dropzoneEmpty').style.display = 'none';
     document.getElementById('dropzoneFilled').style.display = 'block';
 
-    // Set into Before image on slider too
     document.getElementById('baBeforeImg').src = dataUrl;
 
     try {
-      // Store compressed / downscaled photo in sessionStorage to avoid quota errors
       sessionStorage.setItem('dg_user_room_photo', dataUrl);
     } catch(err) {}
 
@@ -2884,7 +3895,7 @@ function initBeforeAfterSlider() {
 }
 
 /* --------------------------------------------------------------------------
-   10. FEATURE 6: SHOP THE LOOK / RECREATE THIS LOOK MODAL
+   12. FEATURE 6: SHOP THE LOOK / RECREATE THIS LOOK MODAL
    -------------------------------------------------------------------------- */
 function openRecreateModal(cardId) {
   const card = cards.find(c => c.id === cardId);
@@ -2892,12 +3903,13 @@ function openRecreateModal(cardId) {
 
   const content = document.getElementById('recreateModalContent');
   const items = card.recreateItems || [];
+  const def = AESTHETIC_DEFINITIONS[card.aesthetic] || {};
 
   content.innerHTML = `
     <div class="recreate-modal-grid">
       <div>
         <img src="${card.img}" alt="${card.title}" style="width:100%; height:280px; object-fit:cover; border-radius:14px; margin-bottom:12px;">
-        <span class="pin-tag-badge" style="background:#FAF5FF; color:#7E22CE; font-size:0.75rem;">
+        <span class="pin-tag-badge" style="background:${def.badgeBg || '#FAF5FF'}; color:${def.badgeCol || '#7E22CE'}; font-size:0.75rem;">
           ${card.aesthetic} Look
         </span>
         <h3 style="font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800; color:var(--plum); margin:6px 0;">
@@ -2973,16 +3985,36 @@ function addRecreateLookToShoppingList(cardId) {
 }
 
 /* --------------------------------------------------------------------------
-   11. FEATURE 2: FIND YOUR DORM AESTHETIC QUIZ ENGINE
+   13. FEATURE 2: FIND YOUR DORM AESTHETIC QUIZ ENGINE
    -------------------------------------------------------------------------- */
 let quizStep = 1;
-const quizAnswers = { aesthetic: null, palette: null, challenge: null, budget: null, zone: null };
+const quizAnswers = {
+  aesthetic: null,
+  secondaryAesthetic: null,
+  palette: null,
+  challenge: null,
+  budget: null,
+  zone: null
+};
 
 function selectQuizAesthetic(aestheticName, el) {
   quizAnswers.aesthetic = aestheticName;
   document.querySelectorAll('.aesthetic-choice-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
   document.getElementById('quizNextBtn').disabled = false;
+}
+
+function selectQuizSecondaryAesthetic(secName, btn) {
+  quizAnswers.secondaryAesthetic = secName;
+  document.querySelectorAll('#blendPillsRow .vibe-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const label = document.getElementById('blendExplanationLabel');
+  if (!secName) {
+    label.textContent = '(Focusing 100% on your pure primary style)';
+  } else {
+    label.textContent = `(Blending ${quizAnswers.aesthetic || 'Primary'} + ${secName})`;
+  }
 }
 
 function selectQuizOption(key, val, el) {
@@ -3027,67 +4059,233 @@ function calculateQuizResults() {
   const wrap = document.getElementById('quizResultsWrap');
   wrap.style.display = 'block';
 
-  const chosenAesthetic = quizAnswers.aesthetic || 'Coquette';
-  document.getElementById('resultAestheticTitle').textContent = `${chosenAesthetic} Sanctuary`;
+  const primary = quizAnswers.aesthetic || 'Coquette';
+  const secondary = quizAnswers.secondaryAesthetic;
+  const primaryDef = AESTHETIC_DEFINITIONS[primary] || AESTHETIC_DEFINITIONS['Coquette'];
+
+  // Result Title
+  let displayTitle = primaryDef.displayName;
+  if (secondary && secondary !== primary) {
+    const secDef = AESTHETIC_DEFINITIONS[secondary];
+    displayTitle = `${primary} + ${secondary} (${primaryDef.badge} & ${secDef.badge})`;
+  }
+  document.getElementById('resultAestheticTitle').textContent = displayTitle;
+
+  // Tags row showing answer summary
+  const tagsRow = document.getElementById('resultAestheticTagsRow');
+  const challengeLabels = { space: '📦 Floor Space Focus', lighting: '💡 Lighting Fix', walls: '🖼️ Wall Refresh', desk: '💻 Desk Clutter Solved' };
+  const budgetLabels = { shoestring: '🪙 Pocket Money (<₹800)', moderate: '💸 Balanced (₹800-₹2K)', full: '👑 Full Glow-Up (₹2K+)' };
+  const zoneLabels = { bed: '🛏️ Bed Sanctuary', desk: '💻 Study Desk', corner: '🛋️ Reading Nook' };
+
+  tagsRow.innerHTML = `
+    <span class="sticker-badge sticker-pink">${primaryDef.icon} ${primary} Base</span>
+    ${secondary ? `<span class="sticker-badge sticker-lavender">✦ + ${secondary} Accent</span>` : ''}
+    <span class="sticker-badge sticker-mint">${challengeLabels[quizAnswers.challenge] || '🌟 Glow-Up Target'}</span>
+    <span class="sticker-badge sticker-butter">${budgetLabels[quizAnswers.budget] || '₹ Moderate'}</span>
+    <span class="sticker-badge sticker-sky">${zoneLabels[quizAnswers.zone] || 'Sanctuary'}</span>
+  `;
+
+  // Rationale paragraph
+  let rationale = `Because you chose <strong>${primary}</strong> with a focus on ${quizAnswers.challenge ? challengeLabels[quizAnswers.challenge].toLowerCase() : 'your space'} and priority on your <strong>${zoneLabels[quizAnswers.zone] || 'room'}</strong>, our engine strictly curated ${primaryDef.visualIdentity}`;
+  if (secondary) {
+    rationale += ` Layered with accents of <strong>${secondary}</strong>, this combination blends warm textures with personalized aesthetics while strictly excluding incompatible industrial or gaming decor.`;
+  }
+  document.getElementById('resultAestheticDesc').innerHTML = rationale;
 
   // Matched Palette Swatches
-  const matchedPalette = curatedPalettes.find(p => p.name.includes(chosenAesthetic)) || curatedPalettes[0];
+  let matchedPalette = curatedPalettes.find(p => p.aesthetic === primary) || curatedPalettes[0];
   const strip = document.getElementById('resultPaletteStrip');
   strip.innerHTML = matchedPalette.colors.map(c => `
-    <div class="quiz-swatch-box">
+    <div class="quiz-swatch-box" onclick="copyHexCode('${c.hex}')" title="Click to copy ${c.hex}">
       <div class="quiz-swatch-dot" style="background:${c.hex};"></div>
-      <span>${c.name}</span>
+      <span style="font-weight:700;">${c.name}</span>
+      <span style="font-size:0.7rem; color:var(--text-muted);">${c.hex} 📋</span>
     </div>
   `).join('');
 
-  // Top 3 matching cards
-  const matchedCards = cards.filter(c => c.aesthetic === chosenAesthetic);
-  const displayCards = matchedCards.length >= 3 ? matchedCards.slice(0, 3) : cards.slice(0, 3);
+  // Scored matching cards (strictly excluding incompatible styles!)
+  const scored = cards
+    .map(c => ({ card: c, score: scoreCardRelevance(c, quizAnswers) }))
+    .filter(item => item.score > 0)
+    .sort((a,b) => b.score - a.score);
+
+  const displayCards = scored.slice(0, 4).map(item => item.card);
+  document.getElementById('resultMatchCountLabel').textContent = `${displayCards.length} verified makeovers strictly matching ${primary}${secondary ? ' + ' + secondary : ''}`;
 
   const grid = document.getElementById('quizRecomGrid');
   grid.innerHTML = displayCards.map(c => `
     <div style="background:white; border:1px solid var(--border); border-radius:14px; padding:12px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow-sm);">
-      <img src="${c.img}" alt="${c.title}" style="width:100%; height:140px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
-      <div style="font-family:'Syne',sans-serif; font-size:1.02rem; font-weight:700; color:var(--plum);">${c.title}</div>
-      <div style="font-size:0.8rem; color:var(--text-muted); margin:4px 0 8px;">${c.desc}</div>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <img src="${c.img}" alt="${c.title}" style="width:100%; height:140px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
+        <span class="pin-tag-badge" style="background:#FAF5FF; color:#7E22CE; font-size:0.7rem; padding:2px 8px; margin-bottom:4px; display:inline-block;">${c.aesthetic}</span>
+        <div style="font-family:'Syne',sans-serif; font-size:1.02rem; font-weight:700; color:var(--plum);">${c.title}</div>
+        <div style="font-size:0.8rem; color:var(--text-muted); margin:4px 0 8px; line-height:1.4;">${c.desc}</div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:8px; border-top:1px dashed var(--border);">
         <span style="font-weight:800; color:#059669; font-size:0.85rem;">${c.budget}</span>
-        <button class="btn-hero-primary" style="padding:6px 14px; font-size:0.75rem;" onclick="openSaveModal(${c.id})">
-          📌 Save
-        </button>
+        <div style="display:flex; gap:6px;">
+          <button class="nav-pill-btn btn-hero-secondary" style="padding:5px 10px; font-size:0.75rem;" onclick="openRecreateModal(${c.id})">
+            🛍️ Look
+          </button>
+          <button class="nav-pill-btn btn-hero-primary" style="padding:5px 12px; font-size:0.75rem;" onclick="openSaveModal(${c.id})">
+            📌 Save
+          </button>
+        </div>
       </div>
     </div>
   `).join('');
+
+  // Tailored DIY Card
+  const matchingDIY = diys.find(d => d.aesthetic === primary) || diys[0];
+  document.getElementById('resultDIYTitle').textContent = matchingDIY.title;
+  document.getElementById('resultDIYCost').textContent = matchingDIY.cost;
+  document.getElementById('resultDIYMaterials').textContent = `Materials: ${matchingDIY.materials}`;
+  document.getElementById('resultDIYSteps').innerHTML = matchingDIY.steps.map((s, idx) => `<div><strong>${idx+1}.</strong> ${s}</div>`).join('');
+
+  // Tailored Budget Starter Kit
+  const budgetPlan = categoryPlans[primary] || categoryPlans['All'];
+  let starterTotal = 0;
+  let starterItems = [];
+  budgetPlan.forEach(c => {
+    if (c.items[0]) {
+      starterItems.push(c.items[0]);
+      starterTotal += c.items[0].cost;
+    }
+  });
+
+  document.getElementById('resultBudgetStarterTitle').textContent = `${primary} Essentials Package`;
+  document.getElementById('resultBudgetStarterEst').textContent = `₹${starterTotal.toLocaleString('en-IN')}`;
+  document.getElementById('resultBudgetStarterList').innerHTML = starterItems.map(i => `
+    <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+      <span>• ${i.name}</span>
+      <span style="font-weight:700; color:#059669;">₹${i.cost}</span>
+    </div>
+  `).join('');
+
+  wrap.scrollIntoView({ behavior: 'smooth' });
+}
+
+function applyQuizResultToBudget() {
+  const chosen = quizAnswers.aesthetic || 'Coquette';
+  filterBudgetByAesthetic(chosen);
+  document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' });
+  showToast(`Loaded ${chosen} makeover essentials into Budget Studio! 💸`);
+}
+
+function viewQuizPaletteInColorStudio() {
+  const chosen = quizAnswers.aesthetic || 'Coquette';
+  const def = AESTHETIC_DEFINITIONS[chosen];
+  if (def && typeof def.palettePresetIndex === 'number') {
+    selectPalettePreset(def.palettePresetIndex);
+  }
+  document.getElementById('color-studio').scrollIntoView({ behavior: 'smooth' });
+  showToast(`Showing ${chosen} color palette in Color Studio! 🎨`);
 }
 
 function restartQuiz() {
   quizStep = 1;
   quizAnswers.aesthetic = null;
+  quizAnswers.secondaryAesthetic = null;
   quizAnswers.palette = null;
   quizAnswers.challenge = null;
   quizAnswers.budget = null;
   quizAnswers.zone = null;
 
   document.querySelectorAll('.aesthetic-choice-card, .quiz-option-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('#blendPillsRow .vibe-pill').forEach(b => b.classList.remove('active'));
+  document.querySelector('#blendPillsRow .vibe-pill').classList.add('active');
+  document.getElementById('blendExplanationLabel').textContent = '(Focusing 100% on your pure primary style)';
+
   document.getElementById('quizResultsWrap').style.display = 'none';
   document.getElementById('quizQuestionsArea').style.display = 'block';
   updateQuizStepUI();
+  document.getElementById('aesthetic-quiz').scrollIntoView({ behavior: 'smooth' });
 }
 
 function saveQuizResultToBoard() {
-  showToast(`Saved ${quizAnswers.aesthetic || 'aesthetic'} collection to My Dream Dorm! 📌`);
+  const primary = quizAnswers.aesthetic || 'Coquette';
+  const matchingCards = cards.filter(c => c.aesthetic === primary);
+  matchingCards.forEach(c => {
+    if (!boards['My Dream Dorm'].includes(c.id)) boards['My Dream Dorm'].push(c.id);
+    if (!saved.includes(c.id)) saved.push(c.id);
+  });
+  saveBoardsState();
+  updateBoardCounters();
+  renderMasonryGrid();
+  showToast(`Saved all ${primary} inspiration makeovers to My Dream Dorm! 📌`);
 }
 
 /* --------------------------------------------------------------------------
-   12. SURPRISE ME & DIY GENERATOR
+   14. FEATURE 2 & DIY GENERATOR
+   -------------------------------------------------------------------------- */
+function renderDIY(idx) {
+  const list = activeDIYFilter === 'All' ? diys : diys.filter(d => d.aesthetic === activeDIYFilter);
+  if (list.length === 0) return;
+
+  currentDIYIdx = idx % list.length;
+  const d = list[currentDIYIdx];
+
+  const def = AESTHETIC_DEFINITIONS[d.aesthetic] || {};
+  const badge = document.getElementById('diyAestheticBadge');
+  if (badge) {
+    badge.textContent = `${d.aesthetic} DIY`;
+    badge.style.background = def.badgeBg || '#FAF5FF';
+    badge.style.color = def.badgeCol || '#7E22CE';
+  }
+
+  document.getElementById('diyTitle').textContent = d.title;
+  document.getElementById('diyCost').textContent = d.cost;
+  document.getElementById('diyTime').textContent = d.time;
+  document.getElementById('diyDiff').textContent = d.diff;
+  document.getElementById('diyMaterials').textContent = d.materials;
+
+  document.getElementById('diySteps').innerHTML = d.steps.map((s, i) => `
+    <div style="display:flex; gap:8px; font-size:0.84rem; color:var(--plum);">
+      <span style="font-weight:800; color:#A855F7;">${i + 1}.</span>
+      <span>${s}</span>
+    </div>
+  `).join('');
+
+  document.getElementById('diySafety').textContent = d.safety;
+}
+
+function filterDIYByAesthetic(aestheticName, btn) {
+  activeDIYFilter = aestheticName;
+  document.querySelectorAll('#diyAestheticPillsRow .vibe-pill').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  currentDIYIdx = 0;
+  renderDIY(0);
+  showToast(`Filtered DIYs to ${aestheticName}! 🔨`);
+}
+
+function nextDIY() {
+  const list = activeDIYFilter === 'All' ? diys : diys.filter(d => d.aesthetic === activeDIYFilter);
+  currentDIYIdx = (currentDIYIdx + 1) % list.length;
+  renderDIY(currentDIYIdx);
+}
+
+function addCurrentDIYToShoppingList() {
+  const list = activeDIYFilter === 'All' ? diys : diys.filter(d => d.aesthetic === activeDIYFilter);
+  const d = list[currentDIYIdx];
+  const numPrice = parseInt(d.cost.replace(/[^0-9]/g, ''), 10) || 200;
+
+  shoppingList.push({ id: Date.now(), name: `${d.title} (DIY Materials)`, price: numPrice, qty: 1, purchased: false });
+  localStorage.setItem('dg_shopping_list', JSON.stringify(shoppingList));
+  showToast(`Added "${d.title}" materials to Shopping List! 🛒`);
+}
+
+/* --------------------------------------------------------------------------
+   15. SURPRISE ME & HELPER FUNCTIONS
    -------------------------------------------------------------------------- */
 function triggerSurpriseMe() {
   const card = cards[Math.floor(Math.random() * cards.length)];
   const body = document.getElementById('surpriseModalBody');
+  const def = AESTHETIC_DEFINITIONS[card.aesthetic] || {};
 
   body.innerHTML = `
     <img src="${card.img}" alt="${card.title}" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:10px;">
-    <span class="pin-tag-badge" style="background:#FAF5FF; color:#7E22CE;">${card.aesthetic}</span>
+    <span class="pin-tag-badge" style="background:${def.badgeBg || '#FAF5FF'}; color:${def.badgeCol || '#7E22CE'};">${card.aesthetic}</span>
     <h4 style="font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; color:var(--plum); margin:6px 0;">${card.title}</h4>
     <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">${card.desc}</p>
     <div style="font-weight:800; color:#059669; margin-top:8px;">Estimated Budget: ${card.budget}</div>
@@ -3106,41 +4304,6 @@ function closeSurpriseModal(e) {
   document.getElementById('surpriseModalOverlay').classList.remove('open');
 }
 
-function renderDIY(idx) {
-  const d = diys[idx];
-  if (!d) return;
-
-  document.getElementById('diyTitle').textContent = d.title;
-  document.getElementById('diyCost').textContent = d.cost;
-  document.getElementById('diyTime').textContent = d.time;
-  document.getElementById('diyDiff').textContent = d.diff;
-  document.getElementById('diyMaterials').textContent = d.materials;
-
-  document.getElementById('diySteps').innerHTML = d.steps.map((s, i) => `
-    <div style="display:flex; gap:8px; font-size:0.84rem; color:var(--plum);">
-      <span style="font-weight:800; color:#A855F7;">${i + 1}.</span>
-      <span>${s}</span>
-    </div>
-  `).join('');
-
-  document.getElementById('diySafety').textContent = d.safety;
-}
-
-function nextDIY() {
-  currentDIYIdx = (currentDIYIdx + 1) % diys.length;
-  renderDIY(currentDIYIdx);
-}
-
-function addCurrentDIYToShoppingList() {
-  const d = diys[currentDIYIdx];
-  shoppingList.push({ id: Date.now(), name: `${d.title} (DIY Materials)`, price: 250, qty: 1, purchased: false });
-  localStorage.setItem('dg_shopping_list', JSON.stringify(shoppingList));
-  showToast(`Added "${d.title}" materials to Shopping List! 🛒`);
-}
-
-/* --------------------------------------------------------------------------
-   13. TOAST, MOBILE MENU & SCROLL HELPERS
-   -------------------------------------------------------------------------- */
 function showToast(msg) {
   const toast = document.getElementById('appToast');
   toast.textContent = msg;
@@ -3156,10 +4319,11 @@ function scrollToAesthetic(type) {
   if (type === 'coquette') filterVibeDirect('Coquette');
   else if (type === 'clean') filterVibeDirect('Clean Girl');
   else if (type === 'boho') filterVibeDirect('Boho');
+  else if (type === 'minimalist') filterVibeDirect('Minimalist');
+  else if (type === 'dark') filterVibeDirect('Dark Academia');
   else if (type === 'pinterest') filterVibeDirect('Pinterest Core');
 }
 
-// Global escape key listener
 window.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeRecreateModal();
@@ -3171,14 +4335,14 @@ window.addEventListener('keydown', e => {
 });
 
 /* --------------------------------------------------------------------------
-   14. INITIALIZATION
+   16. INITIALIZATION ON DOM READY
    -------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-  // Setup vibe pills
+  // Setup vibe pills click listener in gallery
   document.getElementById('vibePills').addEventListener('click', e => {
     const pill = e.target.closest('.vibe-pill');
     if (!pill) return;
-    document.querySelectorAll('.vibe-pill').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('#vibePills .vibe-pill').forEach(p => p.classList.remove('active'));
     pill.classList.add('active');
     currentFilterVibe = pill.dataset.vibe;
     renderMasonryGrid();
@@ -3196,7 +4360,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (notesEl) notesEl.value = savedNotes;
   }
 
-  // Initial calls
+  // Initial rendering
   renderMasonryGrid();
   renderColorStudio();
   renderBudgetStudio();
