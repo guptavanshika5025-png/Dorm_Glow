@@ -14,7 +14,37 @@ for b in broken_photo_ids:
         raise AssertionError(f"BROKEN URL DETECTED in index.html: {b}")
 print("[OK] Zero broken legacy photo IDs in index.html")
 
-# 2. Extract script block
+# 2. Hero Section Background & Hierarchy Validation
+assert 'photo-1522771739844-6a9f6d5f14af' in html, "Hero background image missing"
+assert 'linear-gradient' in html and 'background-size: cover' in html, "Hero background overlay/cover missing"
+assert 'Your Dream Dorm' in html and 'Starts Here.' in html, "Hero headline missing"
+assert 'Discover your aesthetic, plan your budget, and transform your room into a space that feels like you.' in html, "Hero copy missing"
+assert 'Explore Room Ideas' in html, "Hero primary CTA missing"
+assert 'Find My Aesthetic' in html, "Hero secondary CTA missing"
+assert 'Personalized inspiration • Student-friendly budgets • Your style, your space.' in html, "Hero micro-support line missing"
+assert 'hero-glass-card' in html, "Hero floating glass card missing"
+print("[OK] Full-bleed dorm hero background, headline, copy, CTAs, and glassmorphic card verified")
+
+# 3. Section Hierarchy & Order
+sections = re.findall(r'<section[^>]*id=["\']([^"\']+)["\']', html)
+expected_order = ['designs', 'aesthetic-quiz', 'calculator', 'color-studio', 'diy', 'room-journey']
+assert sections == expected_order, f"Expected order {expected_order}, got {sections}"
+assert 'final-cta-banner' in html, "Final call-to-action banner missing"
+print("[OK] Page section flow and final CTA banner verified")
+
+# 4. Interactive Sound System
+assert 'id="soundToggleBtn"' in html, "Desktop sound toggle button missing"
+assert 'id="mobileSoundToggleBtn"' in html, "Mobile sound toggle button missing"
+assert 'const SoundFX =' in html, "SoundFX engine missing"
+assert 'AudioContext' in html, "Web Audio API missing"
+assert 'dg_sound_enabled' in html, "Sound preference persistence missing"
+assert 'keydown' in html and 'isTextInput' in html, "Text input keyboard listener missing"
+assert "SoundFX.play('cardClick')" in html or "SoundFX.play('tap')" in html, "Card and button sounds missing"
+assert "SoundFX.play('open')" in html and "SoundFX.play('close')" in html, "Modal/drawer open/close sounds missing"
+assert "SoundFX.play('chime')" in html, "Save chime missing"
+print("[OK] Centralized SoundFX engine, sound toggle, and triggers verified")
+
+# 5. Extract script block
 script_match = re.search(r"<script>(.*?)</script>", html, re.DOTALL)
 if not script_match:
     raise AssertionError("No <script> tag found in index.html")
@@ -25,7 +55,7 @@ assert ': True' not in script_text, "Found ': True' in script (must be true)"
 assert ': False' not in script_text, "Found ': False' in script (must be false)"
 print("[OK] No Python booleans in JavaScript")
 
-# 3. Check AESTHETIC_DEFINITIONS
+# 6. Check AESTHETIC_DEFINITIONS
 aesthetics = ['Clean Girl', 'Coquette', 'Boho', 'Minimalist', 'Dark Academia', 'Pinterest Core']
 for a in aesthetics:
     if f"'{a}'" not in script_text and f'"{a}"' not in script_text:
@@ -42,7 +72,7 @@ def strip_js_comments(text):
         lines.append(line)
     return '\n'.join(lines)
 
-# 4. Extract cards JSON and validate
+# 7. Extract cards JSON and validate
 cards_match = re.search(r"const cards = (\[.*?\]);\n", script_text, re.DOTALL)
 if not cards_match:
     raise AssertionError("Could not match const cards in script")
@@ -57,7 +87,6 @@ aesthetic_counts = {}
 for c in cards:
     a = c['aesthetic']
     aesthetic_counts[a] = aesthetic_counts.get(a, 0) + 1
-    # Check fields
     for field in ['id', 'cat', 'aesthetic', 'title', 'desc', 'budget', 'minBudget', 'maxBudget', 'diff', 'colors', 'img', 'tags', 'tips', 'recreateItems']:
         assert field in c, f"Card {c.get('id')} missing field {field}"
     assert len(c['colors']) == 4, f"Card {c.get('id')} should have 4 colors"
@@ -71,7 +100,7 @@ for a in aesthetics:
     assert aesthetic_counts.get(a) == 4, f"Aesthetic {a} has {aesthetic_counts.get(a)} cards (expected 4)"
 print("[OK] Exactly 4 cards per aesthetic verified")
 
-# 5. Check Incompatible style contamination in cards
+# 8. Check Incompatible style contamination in cards
 for c in cards:
     title_lower = c['title'].lower()
     if c['aesthetic'] in ['Coquette', 'Boho', 'Clean Girl']:
@@ -83,7 +112,7 @@ for c in cards:
 
 print("[OK] Zero aesthetic contamination in card titles and descriptions")
 
-# 6. Extract DIYs and validate
+# 9. Extract DIYs and validate
 diys_match = re.search(r"const diys = (\[.*?\]);\n", script_text, re.DOTALL)
 if not diys_match:
     raise AssertionError("Could not match const diys in script")
@@ -106,7 +135,7 @@ for a in aesthetics:
     assert diy_counts.get(a) == 3, f"Aesthetic {a} has {diy_counts.get(a)} DIYs (expected 3)"
 print("[OK] Exactly 3 DIYs per aesthetic verified")
 
-# 7. Extract categoryPlans and validate
+# 10. Extract categoryPlans and validate
 plans_match = re.search(r"const categoryPlans = (\{.*?\});\n", script_text, re.DOTALL)
 if not plans_match:
     raise AssertionError("Could not match const categoryPlans in script")
@@ -125,7 +154,7 @@ for k in expected_plan_keys:
 
 print("[OK] All 7 budget plans verified with 4 categories and 2 authentic items each")
 
-# 8. Test Recommendation Scoring Engine simulation
+# 11. Test Recommendation Scoring Engine simulation
 def score_card(card, primary, secondary=None, challenge=None, budget=None, zone=None):
     if card['aesthetic'] != primary and card['aesthetic'] != secondary:
         return -999
@@ -145,7 +174,7 @@ for a in aesthetics:
 
 print("[OK] Quiz scoring strictly preserves aesthetic isolation (0% contamination)")
 
-# 9. Test Blended Style simulation (e.g. Boho + Coquette)
+# 12. Test Blended Style simulation (e.g. Boho + Coquette)
 blend_scored = [c for c in cards if score_card(c, 'Boho', 'Coquette') > 0]
 assert len(blend_scored) == 8, f"Blend Boho + Coquette should match 8 cards (4 Boho + 4 Coquette), got {len(blend_scored)}"
 for c in blend_scored:
@@ -154,5 +183,5 @@ for c in blend_scored:
 print("[OK] Blended aesthetic scoring accurately combines compatible styles without leaks")
 
 print("\n=======================================================")
-print("ALL 9 TEST SUITES PASSED WITH 100% SUCCESS!")
+print("ALL 12 TEST SUITES PASSED WITH 100% SUCCESS!")
 print("=======================================================")

@@ -1,124 +1,79 @@
 # ✦ DormGlow — Colorful Pinterest-Inspired Dorm & Hostel Glow-Up Studio
 
-> **Pinterest × Dreamy Dorm Decor × Colorful Lifestyle Magazine × Personalized Room Makeover Studio**
+> **Pinterest × Dreamy Dorm Decor × Startup Product Portfolio × Personalized Room Makeover Studio**
 
-DormGlow is a colorful, interactive, lifestyle web application designed to help college and hostel students transform their 10×10 ft. rooms into aesthetic sanctuaries on a student budget.
-
----
-
-## ✨ Design System & Visual Palette
-
-- **Soft Lavender & Lilac**: `#C3B1E1`
-- **Pastel Pink & Blush**: `#F9CAD2` / `#FFF0F4`
-- **Butter Yellow**: `#FDE68A` / `#FEF9E7`
-- **Mint Green & Sage**: `#70D6BC` / `#A8C9B9`
-- **Peach & Warm Coral**: `#FDBA9B` / `#FA8C8C`
-- **Sky Blue**: `#A0C8F0` / `#EDF5FD`
-- **Cream & Warm Ivory**: `#FAF7F2` / `#FFFFFF`
-- **Typography**: `Syne`, `Playfair Display`, and `Plus Jakarta Sans`
-- **Visual Touches**: Washi tape stickers, Polaroid tilt frames, delicate drop shadows, and scrapbook accents.
+DormGlow is a modern, interactive, student lifestyle platform designed to help college and hostel students transform their 10×10 ft. rooms into aesthetic sanctuaries on a student budget.
 
 ---
 
-## 🌸 Aesthetic Consistency, Image Accuracy & Recommendation Relevance
+## 🌟 What's New: Premium UI/UX, Immersive Dorm Hero & Sound Effects
 
-DormGlow is powered by a **Single Source of Truth (`AESTHETIC_DEFINITIONS`)** ensuring every image, color palette, budget item, DIY hack, and recommendation matches the chosen aesthetic with zero contamination:
+1. **Full-Bleed Realistic Dorm Room Hero Background**
+   - High-resolution, cozy, warm student dorm photograph featuring fairy lights, polaroid photo wall, layered textiles, and ambient warm lighting.
+   - Elegant dark plum-to-warm translucent gradient overlay ensuring high contrast, clean typography, and responsive mobile-to-desktop presentation.
+   - Polished hero copy:
+     - **Headline**: *Your Dream Dorm Starts Here.*
+     - **Supporting Copy**: *Discover your aesthetic, plan your budget, and transform your room into a space that feels like you.*
+     - **Primary CTA**: **Explore Room Ideas** (smooth scroll to `#designs`).
+     - **Secondary CTA**: **Find My Aesthetic** (smooth scroll to `#aesthetic-quiz`).
+     - **Micro-Support**: *Personalized inspiration • Student-friendly budgets • Your style, your space.*
+   - **Floating Glassmorphic Studio Card**: Showcasing live counters (24 Room Ideas, 6 Signature Aesthetics, ₹0 Wall Damage), student proof, and 1-click aesthetic jump pills.
 
-1. 🕯️ **Clean Girl Sanctuary** (`Minimalist Luxe`)
-   - *Colors*: Crisp White, Oatmeal Beige, Muted Sage, Warm Cream
-   - *Focus*: Fresh, bright, linen bedding, organized clear acrylic desks, no loose cables, scandi calm.
-   - *Excludes*: Cluttered maximalist posters, aggressive RGB gaming, dark heavy ornate decor.
+2. **Interactive Acoustic Lo-Fi Sound Effects System**
+   - Built with lightweight, zero-dependency **Web Audio API** (zero 404s, zero external audio network requests).
+   - Synthesizes gentle, cozy, lo-fi UI feedback:
+     - **Recommendation cards**: Soft pleasant tap.
+     - **Aesthetic cards & Quiz options**: Gentle 2-note confirmation chime.
+     - **Buttons & Filter pills**: Subtle UI click.
+     - **Saving an idea / adding to My Board**: Shimmering 4-note arpeggio chime.
+     - **Budget slider & Color swatches**: Throttled subtle tick (max 1 per 70ms).
+     - **Keyboard typing**: Delicate mechanical key click, scoped strictly to text inputs and ignoring modifier/navigation keys.
+     - **Modals & Drawer**: Gentle open/close sweep tones.
+     - **100% Makeover checklist completion**: Celebratory melodic chime.
+   - **Sound On / Sound Off Toggle**: Prominently accessible in the top navigation and mobile drawer with local storage persistence (`dg_sound_enabled`), silent fallback, and zero autoplay annoyance.
 
-2. 🎀 **Coquette Dream** (`Soft Romantic`)
-   - *Colors*: Blush Pink, Petal Cream, Lavender Rose, Soft Butter Gold
-   - *Focus*: Sheer chiffon cloud canopy, warm 3000K fairy lights, ribbon bows, vintage arched gilded vanity, delicate floristry.
-   - *Excludes*: Cold industrial metal, neon battlestations, dark espresso timber.
-
-3. 🌿 **Pinteresty Boho Sanctuary** (`Warm & Earthy`)
-   - *Colors*: Warm Terracotta, Dusty Sage, Ochre Yellow, Oatmeal Cream
-   - *Focus*: Rattan, handwoven macramé, terracotta pottery, trailing pothos, warm layered earth tones.
-   - *Excludes*: RGB gaming setups, cold chrome, plastic neon furniture.
-
-4. 📐 **Scandinavian Minimalist Zen** (`Functional Zen`)
-   - *Colors*: Warm White, Neutral Sand, Slate Grey, Charcoal Accent
-   - *Focus*: Pure uncluttered surfaces, monochrome linen, foldaway wall desks, magnetic under-shelf lighting, concealed cord channels.
-   - *Excludes*: Decorative knick-knacks, busy prints, frilly ruffles.
-
-5. ☕ **Dark Academia Vintage Study** (`Moody & Scholarly`)
-   - *Colors*: Espresso Brown, Warm Amber, Antique Gold, Aged Parchment, Forest Green
-   - *Focus*: Stacks of classical secondhand novels, vintage book page focal wall, antique brass banker lamp, tartan plaid lap blanket.
-   - *Excludes*: Bright pastel pinks, pop-art stickers, rainbow streamers.
-
-6. 🎨 **Pinterest Core Dreamland** (`Curated & Playful`)
-   - *Colors*: Lilac Mist, Blush Glow, Butter Glow, Sky Mist
-   - *Focus*: Polaroid twine memory grid, white wire memo panels, squiggly wavy mirrors, pastel bias lighting behind desk.
-   - *Excludes*: Drab grey corporate cubicles, aggressive dark gamer caves.
-
----
-
-## 🎨 6 Core Features
-
-1. **💸 Visual Room Makeover Budget Studio**
-   - **Aesthetic-Aware Mode**: Switch between *All Styles*, *Clean Girl*, *Coquette*, *Boho*, *Minimalist*, *Dark Academia*, and *Pinterest Core* to automatically load authentic makeover essentials.
-   - Interactive budget slider with live total, spent, and remaining wallet balance.
-   - Spending categories (*Bedding & Linens*, *Warm Ambient Lighting*, *Wall Decor & Hangings*, *Modular Storage & Plants*) with price items and live under/over budget alerts.
-   - Preset challenges: *My Room Under ₹500*, *Dream Dorm Under ₹1,000*, *Cozy Glow-Up Under ₹2,000*, and *Study Desk Refresh*.
-   - 1-click export to Shopping Checklist or board persistence.
-
-2. **✨ Find Your Dorm Aesthetic Quiz & Multi-Style Blending**
-   - 5-step visual studio quiz exploring signature vibe, palette, room challenge, budget tier, and priority zone.
-   - **Multi-Aesthetic Blending**: Pair your primary style with a secondary aesthetic (e.g. *Boho + Coquette = Romantic Earthy Sanctuary*) with transparent rationale.
-   - Deterministic scoring engine that ranks verified makeover cards, matching DIY weekend projects, and starter budget packages with **0% style contamination**.
-
-3. **📌 Pinterest-Like Save Interactions and Boards**
-   - Every inspiration card features an elegant hover/touch **Save** button.
-   - Save to existing boards (*My Dream Dorm*, *Under ₹1,000*, *Desk Inspo*) or create new custom boards with 1 click.
-   - Visual Boards Drawer displaying collage covers, pin counts, and individual board views.
-   - Full backward compatibility with `dg_saved` and `dg_boards`.
-
-4. **🎨 Interactive Color Studio (Palette Explorer)**
-   - 6 curated aesthetic palettes matched 1:1 with the defined aesthetics.
-   - Clickable large color swatches with one-click hex copying.
-   - **Live Mini-Room SVG Visualizer**: Real-time room mockup that colors walls, bedding, pillows, and lamps according to the active palette.
-   - "Show Matching Makeovers" filters the gallery directly to that palette's aesthetic.
-
-5. **🛏️ My Room Makeover Journey**
-   - Upload your current hostel room photo with replace/remove controls and personal notes.
-   - Interactive **Before-and-After Draggable Slider** to compare bare rooms against aesthetic glow-ups.
-   - Smart Makeover Task Checklist with progress bar and celebration on 100% completion.
-   - Transparent, clearly labeled **AI Room Redesign — Coming Soon** preview.
-
-6. **🛍️ Shop the Look / Recreate the Look**
-   - Click "Shop the Look" on any of the 24 verified inspiration cards.
-   - Authentic decor items with genuine estimated prices in INR.
-   - **Affordable Alternatives** for every item to save money on a student budget.
-   - 1-click addition of items to your Shopping Checklist or Budget Studio.
+3. **Restructured Visual Hierarchy & Logical Flow**
+   1. **Hero Section** with immersive dorm room background & glassmorphic studio card.
+   2. **Featured Room Inspiration & Aesthetics Showcase** (`#designs` — 24 verified cards, masonry grid, search, tags, sort).
+   3. **Find Your Dorm Aesthetic Quiz** (`#aesthetic-quiz` — 5-step visual studio with multi-style blending).
+   4. **Visual Room Makeover Budget Studio** (`#calculator` — aesthetic-aware essentials & budget math).
+   5. **Interactive Color Studio** (`#color-studio` — palette explorer & live mini-room SVG mockup).
+   6. **DIY Idea Generator** (`#diy` — 18 student-tested hacks with step-by-step instructions and safety tips).
+   7. **My Room Makeover Journey** (`#room-journey` — hostel photo upload & draggable before-and-after slider).
+   8. **My Board Drawer** (`#boardsDrawer` — multi-board management & saved pins).
+   9. **Polished Final Call-To-Action Banner** before the footer.
 
 ---
 
-## 🔨 DIY Idea Generator
+## 🌸 6 Signature Aesthetics (Single Source of Truth)
 
-- 18 practical, student-tested hostel hacks (3 per aesthetic).
-- Aesthetic filter pills to cycle within your room style.
-- Detailed step-by-step instructions (1, 2, 3), materials lists, estimated time, difficulty, and **damage-free renter safety notes**.
+- 🕯️ **Clean Girl Sanctuary** (`Minimalist Luxe`): Crisp white organic cotton, oatmeal linen, clear acrylic organizers, minimalist daylight focus.
+- 🎀 **Coquette Dream** (`Soft Romantic`): Soft blush ruffle bedding, sheer chiffon fairy canopy, satin ribbon bows, arched gilded vanity mirror.
+- 🌿 **Pinteresty Boho Sanctuary** (`Warm & Earthy`): Handwoven macramé, natural terracotta pottery, trailing pothos, pinewood crates, warm ochre and sage tones.
+- 📐 **Scandinavian Minimalist Zen** (`Functional Zen`): Pure uncluttered surfaces, monochrome linen, foldaway wall desks, magnetic under-shelf task lighting, concealed wire tracks.
+- ☕ **Dark Academia Vintage Study** (`Moody & Scholarly`): Secondhand classical book stacks, literary book page focal wall, warm amber banker lamp (2200K), forest green tartan throw.
+- 🎨 **Pinterest Core Dreamland** (`Curated & Playful`): Curated polaroid & baker twine memory wall, white wire memo grid, wavy squiggly accent mirrors, subtle behind-desk bias lighting.
 
 ---
 
 ## 🧪 Automated Test Suite
 
-A comprehensive test suite verifies aesthetic consistency, data integrity, and recommendation accuracy:
+A comprehensive 12-suite automated test verifies aesthetic consistency, data integrity, audio triggers, and responsive layout:
 
 ```bash
-python scratch/test_dormglow_suite.py
+python tests/test_dormglow_suite.py
 ```
 
-### Verified Checks:
-- Zero broken or 404 images (all 24 photos tested and verified HTTP 200).
-- Exactly 4 cards per aesthetic with complete metadata.
-- 0% aesthetic contamination across incompatible styles.
-- Exactly 3 DIY projects per aesthetic with materials and safety notes.
-- All 7 budget plans verified with 4 categories and 2 authentic items each.
-- Deterministic quiz scoring isolating aesthetics and supporting intentional blends.
+### Verified Test Suites:
+- [x] Zero broken or 404 image URLs.
+- [x] Full-bleed dorm hero background, headline, copy, CTAs, and glassmorphic card.
+- [x] Restructured section flow and final CTA banner.
+- [x] Centralized SoundFX engine, sound toggle button, and input-scoped typing sounds.
+- [x] Exactly 4 cards per aesthetic with complete metadata (24 total cards).
+- [x] 0% aesthetic contamination across incompatible styles.
+- [x] Exactly 3 DIY projects per aesthetic with materials and safety notes (18 total DIYs).
+- [x] All 7 budget plans verified with 4 categories and 2 authentic items each.
+- [x] Deterministic quiz scoring isolating aesthetics and supporting intentional blends.
 
 ---
 
