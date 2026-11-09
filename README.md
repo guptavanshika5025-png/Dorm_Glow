@@ -1,94 +1,107 @@
-# ✦ DormGlow — Colorful Pinterest-Inspired Dorm & Hostel Glow-Up Studio
+# ✦ DormGlow — Hostel Room Aesthetic & Shopping Assistant
 
-> **Pinterest × Dreamy Dorm Decor × Startup Product Portfolio × Personalized Room Makeover Studio**
+> **Make Your Hostel Room Feel Like You.**
+> Choose your budget, vibe and room needs. Get personalized hostel room setups and shoppable product lists in minutes.
 
-DormGlow is a modern, interactive, student lifestyle platform designed to help college and hostel students transform their 10×10 ft. rooms into aesthetic sanctuaries on a student budget.
-
----
-
-## 🌟 What's New: Premium UI/UX, Immersive Dorm Hero & Sound Effects
-
-1. **Full-Bleed Realistic Dorm Room Hero Background**
-   - High-resolution, cozy, warm student dorm photograph featuring fairy lights, polaroid photo wall, layered textiles, and ambient warm lighting.
-   - Elegant dark plum-to-warm translucent gradient overlay ensuring high contrast, clean typography, and responsive mobile-to-desktop presentation.
-   - Polished hero copy:
-     - **Headline**: *Your Dream Dorm Starts Here.*
-     - **Supporting Copy**: *Discover your aesthetic, plan your budget, and transform your room into a space that feels like you.*
-     - **Primary CTA**: **Explore Room Ideas** (smooth scroll to `#designs`).
-     - **Secondary CTA**: **Find My Aesthetic** (smooth scroll to `#aesthetic-quiz`).
-     - **Micro-Support**: *Personalized inspiration • Student-friendly budgets • Your style, your space.*
-   - **Floating Glassmorphic Studio Card**: Showcasing live counters (24 Room Ideas, 6 Signature Aesthetics, ₹0 Wall Damage), student proof, and 1-click aesthetic jump pills.
-
-2. **Interactive Acoustic Lo-Fi Sound Effects System**
-   - Built with lightweight, zero-dependency **Web Audio API** (zero 404s, zero external audio network requests).
-   - Synthesizes gentle, cozy, lo-fi UI feedback:
-     - **Recommendation cards**: Soft pleasant tap.
-     - **Aesthetic cards & Quiz options**: Gentle 2-note confirmation chime.
-     - **Buttons & Filter pills**: Subtle UI click.
-     - **Saving an idea / adding to My Board**: Shimmering 4-note arpeggio chime.
-     - **Budget slider & Color swatches**: Throttled subtle tick (max 1 per 70ms).
-     - **Keyboard typing**: Delicate mechanical key click, scoped strictly to text inputs and ignoring modifier/navigation keys.
-     - **Modals & Drawer**: Gentle open/close sweep tones.
-     - **100% Makeover checklist completion**: Celebratory melodic chime.
-   - **Sound On / Sound Off Toggle**: Prominently accessible in the top navigation and mobile drawer with local storage persistence (`dg_sound_enabled`), silent fallback, and zero autoplay annoyance.
-
-3. **Restructured Visual Hierarchy & Logical Flow**
-   1. **Hero Section** with immersive dorm room background & glassmorphic studio card.
-   2. **Featured Room Inspiration & Aesthetics Showcase** (`#designs` — 24 verified cards, masonry grid, search, tags, sort).
-   3. **Find Your Dorm Aesthetic Quiz** (`#aesthetic-quiz` — 5-step visual studio with multi-style blending).
-   4. **Visual Room Makeover Budget Studio** (`#calculator` — aesthetic-aware essentials & budget math).
-   5. **Interactive Color Studio** (`#color-studio` — palette explorer & live mini-room SVG mockup).
-   6. **DIY Idea Generator** (`#diy` — 18 student-tested hacks with step-by-step instructions and safety tips).
-   7. **My Room Makeover Journey** (`#room-journey` — hostel photo upload & draggable before-and-after slider).
-   8. **My Board Drawer** (`#boardsDrawer` — multi-board management & saved pins).
-   9. **Polished Final Call-To-Action Banner** before the footer.
+DormGlow is a modern, minimal, student-tested web application designed to help college hostelers across India transform generic, boring hostel rooms into personalized aesthetic sanctuaries on a student budget with **100% renter-friendly, zero-drill solutions**.
 
 ---
 
-## 🌸 6 Signature Aesthetics (Single Source of Truth)
+## 🌟 Core 4-Step User Journey
 
-- 🕯️ **Clean Girl Sanctuary** (`Minimalist Luxe`): Crisp white organic cotton, oatmeal linen, clear acrylic organizers, minimalist daylight focus.
-- 🎀 **Coquette Dream** (`Soft Romantic`): Soft blush ruffle bedding, sheer chiffon fairy canopy, satin ribbon bows, arched gilded vanity mirror.
-- 🌿 **Pinteresty Boho Sanctuary** (`Warm & Earthy`): Handwoven macramé, natural terracotta pottery, trailing pothos, pinewood crates, warm ochre and sage tones.
-- 📐 **Scandinavian Minimalist Zen** (`Functional Zen`): Pure uncluttered surfaces, monochrome linen, foldaway wall desks, magnetic under-shelf task lighting, concealed wire tracks.
-- ☕ **Dark Academia Vintage Study** (`Moody & Scholarly`): Secondhand classical book stacks, literary book page focal wall, warm amber banker lamp (2200K), forest green tartan throw.
-- 🎨 **Pinterest Core Dreamland** (`Curated & Playful`): Curated polaroid & baker twine memory wall, white wire memo grid, wavy squiggly accent mirrors, subtle behind-desk bias lighting.
+The application follows a simple, beginner-friendly 4-step compass flow:
 
----
-
-## 🧪 Automated Test Suite
-
-A comprehensive 12-suite automated test verifies aesthetic consistency, data integrity, audio triggers, and responsive layout:
-
-```bash
-python tests/test_dormglow_suite.py
+```
+[ 1. Choose Budget ] ➔ [ 2. Pick Your Vibe ] ➔ [ 3. Tell Us Your Needs ] ➔ [ 4. Visual Hostel Inspirations & Shoppable Setups ]
 ```
 
-### Verified Test Suites:
-- [x] Zero broken or 404 image URLs.
-- [x] Full-bleed dorm hero background, headline, copy, CTAs, and glassmorphic card.
-- [x] Restructured section flow and final CTA banner.
-- [x] Centralized SoundFX engine, sound toggle button, and input-scoped typing sounds.
-- [x] Exactly 4 cards per aesthetic with complete metadata (24 total cards).
-- [x] 0% aesthetic contamination across incompatible styles.
-- [x] Exactly 3 DIY projects per aesthetic with materials and safety notes (18 total DIYs).
-- [x] All 7 budget plans verified with 4 categories and 2 authentic items each.
-- [x] Deterministic quiz scoring isolating aesthetics and supporting intentional blends.
+### 1. Step 1: Choose Your Budget
+- **Under ₹1,000** (Essential Refresh — Fairy lights, desk organizer, wire grid & renter-safe clips)
+- **₹1,000–₹2,500** (Hostel Makeover — Warm lamp, single bedsheet & cushion covers, desk caddy & faux vines)
+- **₹2,500–₹5,000** (Full Transformation — Bedside rug, sunset lamp, rolling storage cart, throw & statement decor)
+- **₹5,000+** (Dream Setup — Premium bedding set, smart lighting, screenbar & complete room styling)
+
+### 2. Step 2: Pick Your Aesthetic (8 Signature Vibes)
+1. 🤍 **Minimal & Clean**: Crisp whites, natural wood, decluttered desk, calming neutral textures.
+2. 🕯️ **Cozy**: Warm amber fairy lights, plush throws, layered pillows, and comforting warmth.
+3. 🌿 **Boho**: Rattan, macrame hangings, warm terracotta tones, woven baskets and leafy greens.
+4. 🌸 **Cute / Pastel**: Blush pink, lilac bows, cloud lights, pastel organizers, and sweet dreamy accents.
+5. 🖤 **Modern**: Sleek matte black accents, linear study lamps, geometric grids, and crisp styling.
+6. 📖 **Dark / Moody**: Dark academia vibes, warm amber glow, vintage art prints, and rich moody tones.
+7. 📚 **Study-focused**: Ergonomic desk lights, wire organizers, pen caddies, and zero-distraction layout.
+8. 🌱 **Green / Nature**: Faux ivy hanging vines, succulent terrariums, botanical wall art, and sage calm.
+
+### 3. Step 3: What’s Your Hostel Room Problem?
+Multi-select cards tailored specifically to Indian hostel environments & restrictions:
+- 🥱 *Room feels boring*
+- 💡 *Poor lighting* (harsh white tube lights or dim corners)
+- 📦 *Not enough storage*
+- 📐 *Small room* (space-saving hacks)
+- 📚 *Messy study area* (cluttered desk & wires)
+- 🧱 *Empty walls* (blank concrete/lime wash)
+- 🛏️ *Bed looks plain* (flat mattress, uninviting bed)
+- ☕ *No cozy corner* (relaxation zone)
+- 🧹 *Too much clutter* (hidden organizers)
+- 💻 *I want a better study setup* (focus for exams)
+- ✨ *I want the room to look more aesthetic*
+
+### 4. Step 4: Visual Hostel Inspirations & Shoppable Setup Studio
+- **Multiple Visual Inspirations:** Shows 4–6 different realistic hostel room options (e.g., *Cozy Bed Corner*, *Cozy Study Corner*, *Warm Ambient Lighting Setup*, *Minimal Cozy Room*, *Small-Space Cozy Setup*, *Budget Cozy Makeover*).
+- **Strictly Realistic Student Hostel Photography:** Single beds, compact desks, wire memo grids, damage-free wall decor (no luxury hotels or unrealistic master penthouses).
+- **“What’s in this setup?” Interactive Breakdown:**
+  - High-res realistic photo showcase
+  - Itemized checklist with category emojis, prices, and retailer badges (`Amazon`, `Flipkart`, `Myntra`)
+  - Direct shopping links (`View on Amazon ↗`, `View on Flipkart ↗`) opening verified search queries
+  - Checkboxes to toggle individual items and customize total spend live
+- **Dynamic Budget Tracker:** Live progress meter comparing total spend vs selected budget ceiling (`✓ Within Budget` / `⚠️ Over Budget`).
+- **One-Click Actions:**
+  - `🛒 Add All to Shopping List`
+  - `📌 Save Setup to My Board`
+  - `💬 Customize with AI`
+
+---
+
+## 🤖 Roomie AI — Context-Aware Decor Buddy
+
+Roomie AI is an integrated chatbot designed specifically for student hostelers:
+- **Context-Aware**: Automatically detects the user's selected budget, aesthetic, room problem, and currently active inspiration setup.
+- **Quick Action Chips:**
+  - 💰 *"How do I swap items to make this setup under ₹1,500?"*
+  - 🧱 *"How do I hang everything without drilling wall holes?"*
+  - 📐 *"Can you adapt this setup for a small shared hostel room?"*
+  - 💡 *"I don't want fairy lights. What can I use instead?"*
+  - 📚 *"Give me a study-table version of this setup."*
+- **Hostel-Safe Advice:** Recommends Command picture hanging strips, washi tape, bed risers for underbed storage, and directional task lighting.
+
+---
+
+## 🎨 Preserved Secondary Exploration Hub
+
+Foldable container below the assistant providing deep exploration:
+1. **24 Room Makeovers Gallery** with search, filters, and estimated costs.
+2. **18 DIY Hostel Hacks** with materials, costs, and step-by-step instructions.
+3. **Interactive Color Studio** with live SVG room mockup preview.
+4. **Before & After Transformation Slider**.
+5. **My Board & Shopping Checklist Drawer** with LocalStorage persistence.
+6. **SoundFX Synthesizer (Web Audio API)** with audio toggle button in navigation.
 
 ---
 
 ## 🚀 Running Locally
 
-Serve the application locally with Python:
+To run the application locally:
 
 ```bash
+# Start local server on port 8000
 python -m http.server 8000
 ```
 
-Then visit [http://localhost:8000](http://localhost:8000) in your browser.
+Then open `http://localhost:8000` in your browser.
+
+Or simply double-click `index.html` to run offline without any dependencies!
 
 ---
 
 ## 📄 License
 
-MIT License. Crafted for hostel survivors 🌸
+MIT License. Designed with love for hostel students across India 🌸
