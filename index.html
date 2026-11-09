@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DormGlow — Hostel Room Aesthetic & Shopping Assistant</title>
-  <meta name="description" content="Make your hostel room feel like you. Choose your budget, vibe and room needs to get a personalized room setup and curated shopping list in minutes.">
+  <meta name="description" content="Make your hostel room feel like you. Choose your budget, vibe and room needs to get personalized hostel room setups and shoppable product lists in minutes.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -426,7 +426,7 @@
 
     .step-header {
       text-align: center;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto 36px;
     }
     .step-eyebrow {
@@ -711,7 +711,7 @@
       gap: 16px;
       padding-top: 24px;
       border-top: 1px solid var(--border);
-      max-width: 980px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     .btn-step-prev {
@@ -751,13 +751,15 @@
       box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
     }
 
-    /* STEP 4: YOUR PERFECT ROOM SETUP */
+    /* ========================================================
+       STEP 4: VISUAL HOSTEL INSPIRATION & SHOPPING EXPERIENCE
+       ======================================================== */
     .setup-summary-header {
       background: linear-gradient(135deg, #f5f3ff, #fdf2f8);
       border: 1px solid #e9d5ff;
       border-radius: var(--radius-md);
       padding: 24px 28px;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -792,13 +794,377 @@
       color: var(--text);
     }
 
+    /* INSPIRATIONS GALLERY GRID */
+    .inspirations-section-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .inspirations-section-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .inspirations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 22px;
+      margin-bottom: 44px;
+    }
+    .inspiration-card {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+    .inspiration-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: #cbd5e1;
+    }
+    .inspiration-card.active-look {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+    }
+    .inspiration-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 190px;
+      overflow: hidden;
+      background: #f1f5f9;
+    }
+    .inspiration-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .inspiration-card:hover .inspiration-img {
+      transform: scale(1.05);
+    }
+    .inspiration-cost-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(16, 185, 129, 0.95);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .inspiration-type-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .inspiration-card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .inspiration-card-title {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+    .inspiration-card-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+    .inspiration-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .inspiration-items-count {
+      font-size: 12px;
+      color: #475569;
+      font-weight: 600;
+    }
+    .btn-choose-look {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border: 1px solid var(--border-focus);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .inspiration-card.active-look .btn-choose-look {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* RECREATE THIS LOOK - DETAIL SHOWCASE */
+    .recreate-showcase {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+    .recreate-showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .recreate-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      .recreate-showcase {
+        padding: 20px;
+      }
+    }
+    .recreate-left {
+      position: sticky;
+      top: 90px;
+    }
+    .recreate-image-frame {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border: 1px solid var(--border);
+    }
+    .recreate-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .recreate-img-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.85), transparent);
+      padding: 20px;
+      color: #ffffff;
+    }
+    .recreate-overlay-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .recreate-overlay-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    /* WHAT'S IN THIS SETUP - CHECKLIST */
+    .recreate-right {
+      display: flex;
+      flex-direction: column;
+    }
+    .recreate-header-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .recreate-header-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .products-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .checklist-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      transition: var(--transition);
+    }
+    .checklist-item-row:hover {
+      border-color: #cbd5e1;
+      background: var(--bg-warm);
+    }
+    .checklist-item-row.excluded {
+      opacity: 0.5;
+      background: #f8fafc;
+    }
+    .item-toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-grow: 1;
+      cursor: pointer;
+      user-select: none;
+    }
+    .item-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: transparent;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .checklist-item-row:not(.excluded) .item-checkbox {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: #ffffff;
+    }
+    .item-icon {
+      font-size: 20px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .item-meta {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .item-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .item-sub-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 2px;
+    }
+    .item-price {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .platform-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+    }
+    .platform-amazon {
+      background: #fff7ed;
+      color: #c2410c;
+      border: 1px solid #fed7aa;
+    }
+    .platform-flipkart {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+    .platform-myntra {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1px solid #fbcfe8;
+    }
+    .btn-shop-item {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+    .btn-shop-amazon {
+      background: #ff9900;
+      color: #111111;
+    }
+    .btn-shop-amazon:hover {
+      background: #e68a00;
+      transform: translateY(-1px);
+    }
+    .btn-shop-flipkart {
+      background: #2874f0;
+      color: #ffffff;
+    }
+    .btn-shop-flipkart:hover {
+      background: #1e5fc9;
+      transform: translateY(-1px);
+    }
+    .btn-shop-myntra {
+      background: #ff3f6c;
+      color: #ffffff;
+    }
+    .btn-shop-myntra:hover {
+      background: #e02f5a;
+      transform: translateY(-1px);
+    }
+
     /* BUDGET METER BAR */
     .budget-tracker-box {
       background: #ffffff;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 20px 24px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
     }
     .tracker-header {
@@ -866,12 +1232,11 @@
     }
 
     /* ACTIONS BAR */
-    .setup-actions-bar {
+    .recreate-actions-bar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 12px;
-      margin-bottom: 30px;
     }
     .btn-action-primary {
       padding: 12px 24px;
@@ -909,146 +1274,6 @@
     .btn-action-secondary:hover {
       background: var(--bg-warm);
       transform: translateY(-1px);
-    }
-
-    /* PRODUCT SETUP GRID */
-    .products-recommendation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    .product-rec-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-    }
-    .product-rec-card:hover {
-      box-shadow: var(--shadow-hover);
-      border-color: #cbd5e1;
-      transform: translateY(-2px);
-    }
-    .product-rec-card.excluded {
-      opacity: 0.55;
-      background: #f8fafc;
-    }
-    .product-rec-img-wrap {
-      position: relative;
-      width: 100%;
-      height: 190px;
-      overflow: hidden;
-      background: #f1f5f9;
-    }
-    .product-rec-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .product-rec-card:hover .product-rec-img {
-      transform: scale(1.04);
-    }
-    .product-category-tag {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(4px);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .product-rec-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .product-rec-title {
-      font-family: var(--font-heading);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-    .product-why-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: var(--amber-light);
-      color: #92400e;
-      font-size: 11px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .product-rec-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: auto;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-    }
-    .product-price {
-      font-family: var(--font-heading);
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--primary);
-    }
-    .product-card-btns {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-buy-amazon {
-      padding: 8px 14px;
-      border-radius: var(--radius-pill);
-      background: #ff9900;
-      color: #111111;
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: var(--transition);
-    }
-    .btn-buy-amazon:hover {
-      background: #e68a00;
-      transform: translateY(-1px);
-    }
-    .btn-item-toggle {
-      width: 32px;
-      height: 32px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--border);
-      background: #ffffff;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 14px;
-      transition: var(--transition);
-    }
-    .btn-item-toggle:hover {
-      background: var(--bg-warm);
-    }
-    .btn-item-toggle.active {
-      background: var(--sage);
-      border-color: var(--sage);
-      color: #ffffff;
     }
 
     /* SECONDARY FOLDABLE HUB */
@@ -1594,7 +1819,7 @@
       box-shadow: 0 12px 28px rgba(168, 85, 247, 0.6);
     }
 
-    /* MY BOARD & SHOPPING LIST MODAL */
+    /* MY BOARD & SHOPPING LIST DRAWER */
     .board-drawer {
       position: fixed;
       top: 0;
@@ -1707,7 +1932,7 @@
         Make Your Hostel Room<br><em>Feel Like You.</em>
       </h1>
       <p class="hero-subtitle">
-        Choose your budget, vibe and room needs. Get a personalized room setup in minutes with student-tested decor and 100% renter-friendly solutions.
+        Choose your budget, vibe and room needs. Get multiple realistic hostel room setups with verified shoppable products in minutes.
       </p>
 
       <div class="hero-actions">
@@ -1747,14 +1972,14 @@
           <div class="step-number">4</div>
           <div class="step-preview-info">
             <h4>Get Your Setup</h4>
-            <p>Curated shopping kit</p>
+            <p>Hostel looks + products</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ASSISTANT CONTAINER -->
+  <!-- ASSISTANT CONTAINER (UNCHANGED 4-STEP COMPASS FLOW) -->
   <section class="assistant-section" id="assistant">
     <div class="container">
       <div class="assistant-card">
@@ -1789,7 +2014,7 @@
           <div class="step-header">
             <span class="step-eyebrow">Step 1 of 4</span>
             <h2 class="step-title">What’s your budget for your room?</h2>
-            <p class="step-desc">Pick what you want to spend. We will ensure every single rupee makes an impactful difference.</p>
+            <p class="step-desc">Pick what you want to spend. We ensure every single rupee makes an impactful difference.</p>
           </div>
 
           <div class="budget-grid">
@@ -1806,7 +2031,7 @@
               <span class="budget-card-badge">Most Popular</span>
               <div class="budget-card-amount">₹1,000–₹2,500</div>
               <div class="budget-card-title">Hostel Makeover</div>
-              <p class="budget-card-desc">Warm lamp, aesthetic duvet cover/tapestry, desk organizer & faux vines.</p>
+              <p class="budget-card-desc">Warm lamp, single bedsheet & cushion covers, desk caddy & faux vines.</p>
             </div>
 
             <div class="budget-card" onclick="selectBudget('₹2,500–₹5,000', this)">
@@ -1814,7 +2039,7 @@
               <span class="budget-card-badge">Full Transformation</span>
               <div class="budget-card-amount">₹2,500–₹5,000</div>
               <div class="budget-card-title">Cozy Haven</div>
-              <p class="budget-card-desc">Fluffy bedside rug, sunset projection lamp, shelves, cushions & full styling.</p>
+              <p class="budget-card-desc">Bedside rug, sunset lamp, rolling storage cart, throw & statement decor.</p>
             </div>
 
             <div class="budget-card" onclick="selectBudget('₹5,000+', this)">
@@ -1822,7 +2047,7 @@
               <span class="budget-card-badge">Dream Setup</span>
               <div class="budget-card-amount">₹5,000+</div>
               <div class="budget-card-title">Pinterest Luxe</div>
-              <p class="budget-card-desc">Premium bedding, smart lighting, ergonomic study additions & statement decor.</p>
+              <p class="budget-card-desc">Premium bedding set, smart lighting, screenbar & complete room styling.</p>
             </div>
           </div>
 
@@ -1839,7 +2064,7 @@
           <div class="step-header">
             <span class="step-eyebrow">Step 2 of 4</span>
             <h2 class="step-title">What vibe do you want for your room?</h2>
-            <p class="step-desc">Choose the aesthetic that matches your personality. This guides your entire color palette and product style.</p>
+            <p class="step-desc">Choose the aesthetic that matches your personality. This guides your entire hostel room look and shopping list.</p>
           </div>
 
           <div class="aesthetic-grid">
@@ -2117,12 +2342,14 @@
           </div>
         </div>
 
-        <!-- STEP 4: YOUR PERFECT ROOM SETUP -->
+        <!-- ========================================================
+             STEP 4: VISUAL HOSTEL INSPIRATION & SHOPPING EXPERIENCE
+             ======================================================== -->
         <div class="step-body" id="stepPane4">
           <div class="step-header">
-            <span class="step-eyebrow">Step 4: Personalized Recommendation</span>
-            <h2 class="step-title">Your Perfect Room Setup</h2>
-            <p class="step-desc">Handpicked products tailored directly to your chosen aesthetic, budget ceiling, and room challenges.</p>
+            <span class="step-eyebrow">YOUR HOSTEL LOOK ✨</span>
+            <h2 class="step-title">Here’s Your Hostel Inspiration</h2>
+            <p class="step-desc">Multiple realistic hostel room setups tailored to your vibe and room needs. Pick any look to view the exact items used and shop them directly.</p>
           </div>
 
           <!-- Dynamic Setup Summary Header -->
@@ -2130,55 +2357,116 @@
             <div class="setup-summary-info">
               <h3>
                 <span id="summaryVibeEmoji">✨</span>
-                <span id="summaryVibeTitle">Minimal & Clean</span> Setup
+                <span id="summaryVibeTitle">Cozy</span> Inspiration Collection
               </h3>
               <div class="setup-pills" id="summaryPills">
                 <span class="setup-pill" id="summaryPillBudget">💰 Under ₹1,000</span>
                 <span class="setup-pill" id="summaryPillProblems">🎯 3 Needs Addressed</span>
+                <span class="setup-pill" id="summaryPillRenter">🔒 100% Renter-Friendly</span>
               </div>
             </div>
 
-            <div class="setup-actions-bar" style="margin-bottom:0;">
-              <button class="btn-action-primary" onclick="addAllToShoppingList()">
-                <span>🛒 Add All to Shopping List</span>
-              </button>
-              <button class="btn-action-secondary" onclick="saveSetupToBoard()">
-                <span>📌 Save Setup to Board</span>
-              </button>
+            <div class="recreate-actions-bar">
               <button class="btn-action-secondary" onclick="goToStep(1)">
                 <span>🔄 Change Answers</span>
               </button>
+              <button class="btn-action-secondary" onclick="openRoomieWithContext()">
+                <span>💬 Ask Roomie AI</span>
+              </button>
             </div>
           </div>
 
-          <!-- DYNAMIC BUDGET METER -->
-          <div class="budget-tracker-box">
-            <div class="tracker-header">
-              <span class="tracker-title">Budget Tracker & Total Spend</span>
-              <span class="tracker-status-badge status-ok" id="budgetStatusBadge">
-                ✓ Within Budget
-              </span>
+          <!-- SECTION 1: MULTIPLE HOSTEL INSPIRATIONS GRID -->
+          <div style="margin-bottom: 30px;">
+            <div class="inspirations-section-title">
+              <span>🖼️ Pick Your Inspiration</span>
+              <span style="font-size:14px; font-weight:600; color:var(--text-muted);">(Click any setup to view products)</span>
             </div>
-            <div class="tracker-meter-track">
-              <div class="tracker-meter-fill" id="budgetMeterFill"></div>
-            </div>
-            <div class="tracker-footer">
-              <span>Estimated Total: <span class="tracker-total-val" id="trackerTotalVal">₹848</span></span>
-              <span id="trackerMaxVal">Max Budget: ₹1,000</span>
+            <p class="inspirations-section-sub">
+              Every setup uses realistic student hostel photography—single beds, compact desks, and damage-free adhesive decor.
+            </p>
+
+            <div class="inspirations-grid" id="inspirationsGrid">
+              <!-- Dynamically populated by JS: 4-6 Inspiration Cards -->
             </div>
           </div>
 
-          <!-- RECOMMENDED PRODUCTS GRID -->
-          <div class="products-recommendation-grid" id="recommendationsGrid">
-            <!-- Dynamically populated by JS -->
+          <!-- SECTION 2: RECREATE THIS LOOK SHOWCASE & SHOPPING CHECKLIST -->
+          <div id="recreateLookSection" class="recreate-showcase">
+            <div class="recreate-showcase-grid">
+              
+              <!-- Left Column: Realistic Inspiration Image Showcase -->
+              <div class="recreate-left">
+                <div class="recreate-image-frame">
+                  <img id="recreateMainImg" src="" alt="Hostel Room Inspiration" class="recreate-image">
+                  <div class="recreate-img-overlay">
+                    <div class="recreate-overlay-title" id="recreateOverlayTitle">Cozy Bed Corner</div>
+                    <div class="recreate-overlay-badge">
+                      <span>✓ 100% Achievable in Indian Hostels</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-muted);">
+                  <span>📸 Real student dorm setup</span>
+                  <a href="#inspirationsGrid" style="color: var(--primary); font-weight: 600; text-decoration: none;">↑ Switch Inspiration</a>
+                </div>
+              </div>
+
+              <!-- Right Column: What's in this setup & shopping links -->
+              <div class="recreate-right">
+                <div style="margin-bottom: 16px;">
+                  <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--primary);">Recreate This Look</span>
+                  <h3 class="recreate-header-title" id="recreateTitle">What’s in this setup?</h3>
+                  <p class="recreate-header-sub" id="recreateSub">
+                    Identify the major elements visible in this look. Check or uncheck items to customize your total.
+                  </p>
+                </div>
+
+                <!-- Products Checklist with shopping links -->
+                <div class="products-checklist" id="productsChecklist">
+                  <!-- Populated dynamically with checkboxes, prices, and Amazon/Flipkart links -->
+                </div>
+
+                <!-- DYNAMIC BUDGET METER -->
+                <div class="budget-tracker-box">
+                  <div class="tracker-header">
+                    <span class="tracker-title">Estimated Setup Cost</span>
+                    <span class="tracker-status-badge status-ok" id="budgetStatusBadge">
+                      ✓ Within Budget
+                    </span>
+                  </div>
+                  <div class="tracker-meter-track">
+                    <div class="tracker-meter-fill" id="budgetMeterFill"></div>
+                  </div>
+                  <div class="tracker-footer">
+                    <span>Selected Items Total: <span class="tracker-total-val" id="trackerTotalVal">₹1,844</span></span>
+                    <span id="trackerMaxVal">Max Budget: ₹2,500</span>
+                  </div>
+                </div>
+
+                <!-- ACTIONS BAR -->
+                <div class="recreate-actions-bar">
+                  <button class="btn-action-primary" onclick="addAllToShoppingList()">
+                    <span>🛒 Add All to Shopping List</span>
+                  </button>
+                  <button class="btn-action-secondary" onclick="saveActiveSetupToBoard()">
+                    <span>📌 Save Setup to My Board</span>
+                  </button>
+                  <button class="btn-action-secondary" onclick="openRoomieWithContext()">
+                    <span>💬 Customize with AI</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
           </div>
 
           <div class="step-footer">
             <button class="btn-step-prev" onclick="goToStep(3)">
               <span>← Edit Room Problems</span>
             </button>
-            <button class="btn-step-next" onclick="toggleRoomieDrawer(true)">
-              <span>💬 Ask Roomie AI to Review This Setup →</span>
+            <button class="btn-step-next" onclick="openRoomieWithContext()">
+              <span>💬 Ask Roomie AI to Review This Look →</span>
             </button>
           </div>
         </div>
@@ -2337,7 +2625,7 @@
     </div>
   </section>
 
-  <!-- ROOMIE AI DRAWER -->
+  <!-- ROOMIE AI CHATBOT DRAWER -->
   <div class="roomie-drawer-overlay" id="roomieOverlay" onclick="toggleRoomieDrawer(false)"></div>
   <aside class="roomie-drawer" id="roomieDrawer">
     <div class="roomie-header">
@@ -2351,26 +2639,26 @@
       <button class="btn-close-drawer" onclick="toggleRoomieDrawer(false)">✕</button>
     </div>
 
-    <!-- Quick Prompt Chips -->
-    <div class="chat-chips">
-      <button class="chip-btn" onclick="sendQuickPrompt('How do I fix harsh white hostel tube lights?')">💡 Fix harsh tube lights</button>
-      <button class="chip-btn" onclick="sendQuickPrompt('What are the best no-drill wall decor hacks?')">🧱 No-drill wall hacks</button>
-      <button class="chip-btn" onclick="sendQuickPrompt('How to make a tiny hostel room look bigger?')">📐 Small room hacks</button>
-      <button class="chip-btn" onclick="sendQuickPrompt('Under ₹500 student room upgrades?')">💰 Under ₹500 upgrades</button>
-      <button class="chip-btn" onclick="sendQuickPrompt('Best desk setup for late-night exams?')">📚 Exam study setup</button>
+    <!-- Quick Prompt Chips (Context-Aware) -->
+    <div class="chat-chips" id="roomieQuickChips">
+      <button class="chip-btn" onclick="sendQuickPrompt('How do I swap items to make this setup under ₹1,500?')">💰 Make this under ₹1,500</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('How do I hang everything without drilling wall holes?')">🧱 No-drill hanging hacks</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('Can you adapt this setup for a small shared hostel room?')">📐 Small shared room setup</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('I don\'t want fairy lights. What can I use instead?')">💡 Alternatives to fairy lights</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('Give me a study-table version of this setup.')">📚 Study desk version</button>
     </div>
 
     <!-- Messages Container -->
     <div class="roomie-messages" id="roomieMessages">
       <div class="chat-bubble bubble-bot">
         Hey! I'm <strong>Roomie AI</strong>, your personal hostel room styling buddy. ✨<br><br>
-        Ask me anything about renter-friendly dorm decor, landlord-safe adhesive hacks, lighting fixes, or staying within your college budget!
+        I can help you customize any of your hostel inspirations, swap products to fit a tighter budget, or give you zero-damage hanging hacks!
       </div>
     </div>
 
     <!-- Chat Input Area -->
     <div class="roomie-input-area">
-      <input type="text" class="roomie-input" id="roomieInput" placeholder="Ask Roomie anything about your room..." onkeydown="handleRoomieKey(event)">
+      <input type="text" class="roomie-input" id="roomieInput" placeholder="Ask Roomie to customize your setup..." onkeydown="handleRoomieKey(event)">
       <button class="btn-send-roomie" onclick="sendRoomieMessage()">➤</button>
     </div>
   </aside>
@@ -2408,7 +2696,7 @@
     <div class="container">
       <div class="footer-brand">Dorm<span>Glow</span></div>
       <p style="margin-bottom: 8px;">Hostel Room Aesthetic & Shopping Assistant for College Students.</p>
-      <p style="font-size: 11px; color: var(--text-light);">Designed with love for hostelers across India • Renter-friendly & Budget-first</p>
+      <p style="font-size: 11px; color: var(--text-light);">Designed with love for hostelers across India • 100% Renter-Friendly & Achievable</p>
     </div>
   </footer>
 
@@ -2416,16 +2704,20 @@
   <script>
     // Embedded Data
     const CATALOG_PRODUCTS = [{"id": "prod_fairy_lights", "name": "Warm 3000K Copper Wire Fairy Lights (10m)", "category": "Lighting", "price": 249, "img": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cozy", "Boho", "Cute / Pastel", "Minimal & Clean", "Green / Nature"], "problems": ["Poor lighting", "Room feels boring", "No cozy corner", "I want the room to look more aesthetic"], "why": "Eliminates depressing tube light glare with warm 3000K ambient glow.", "amazonQuery": "warm white fairy lights copper wire 10m usb"}, {"id": "prod_clip_lamp", "name": "Flexible Warm LED Bunk & Desk Clip Lamp", "category": "Lighting", "price": 399, "img": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Study-focused", "Modern", "Minimal & Clean", "Dark / Moody"], "problems": ["Poor lighting", "Messy study area", "I want a better study setup", "Small room"], "why": "Clamps to bed rail or desk edge with zero desk space footprint.", "amazonQuery": "clip on desk lamp flexible usb rechargeable warm"}, {"id": "prod_amber_banker", "name": "Vintage Antique Brass Banker Task Lamp", "category": "Lighting", "price": 699, "img": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Dark / Moody", "Study-focused", "Modern"], "problems": ["Poor lighting", "Room feels boring", "I want a better study setup"], "why": "Classic scholarly amber lighting that protects eyes during midnight study sessions.", "amazonQuery": "vintage brass banker lamp green glass"}, {"id": "prod_tulip_nightlight", "name": "Soft Pastel Tulip Flower Bedside Nightlight", "category": "Lighting", "price": 349, "img": "https://images.unsplash.com/photo-1582533561751-ef6f6ab93a2e?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cute / Pastel", "Cozy"], "problems": ["Poor lighting", "Bed looks plain", "I want the room to look more aesthetic"], "why": "Gentle bedtime radiance with an adorable pastel floral silhouette.", "amazonQuery": "tulip cloud night light lamp bedroom"}, {"id": "prod_cotton_duvet", "name": "Washed Cotton Single Bed Duvet & Sheet Set", "category": "Bedding", "price": 699, "img": "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Minimal & Clean", "Modern", "Cozy"], "problems": ["Bed looks plain", "Room feels boring", "I want the room to look more aesthetic"], "why": "Instantly replaces faded hostel mattress cover with clean, hotel-grade crisp cotton.", "amazonQuery": "single bed cotton bedsheet with pillow cover pure white beige"}, {"id": "prod_waffle_throw", "name": "Chunky Knit Textured Bed & Chair Throw Blanket", "category": "Bedding", "price": 499, "img": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cozy", "Boho", "Dark / Moody"], "problems": ["Bed looks plain", "No cozy corner", "Room feels boring"], "why": "Layers instant cozy warmth over your single bed or desk chair.", "amazonQuery": "waffle knit throw blanket single bed sofa"}, {"id": "prod_bow_pillow", "name": "Plush Velvet Bow Accent Cushion", "category": "Bedding", "price": 299, "img": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cute / Pastel", "Cozy"], "problems": ["Bed looks plain", "I want the room to look more aesthetic"], "why": "Iconic Coquette bow aesthetic that makes a plain bed feel styled.", "amazonQuery": "velvet bow cushion pillow blush pink"}, {"id": "prod_floor_cushion", "name": "Tufted Cotton Floor Reading Cushion (60x60cm)", "category": "Bedding", "price": 549, "img": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cozy", "Boho", "Dark / Moody"], "problems": ["No cozy corner", "Small room", "Room feels boring"], "why": "Creates an instant reading & relaxation nook on the floor without bulky chairs.", "amazonQuery": "tufted floor cushion 60x60 cotton meditation seating"}, {"id": "prod_fabric_cubes", "name": "Foldable Fabric Underbed Storage Baskets (Set of 2)", "category": "Storage", "price": 349, "img": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Minimal & Clean", "Modern", "Study-focused", "Green / Nature"], "problems": ["Not enough storage", "Small room", "Too much clutter"], "why": "Slides neatly under your bunk bed to conceal off-season clothes and clutter.", "amazonQuery": "foldable fabric storage cubes underbed organizer"}, {"id": "prod_acrylic_riser", "name": "Clear Acrylic 3-Tier Desk Organizer & Monitor Riser", "category": "Storage", "price": 389, "img": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Minimal & Clean", "Cute / Pastel", "Study-focused", "Modern"], "problems": ["Messy study area", "Not enough storage", "Too much clutter", "I want a better study setup"], "why": "Elevates your laptop screen while creating storage underneath for notebooks.", "amazonQuery": "clear acrylic desk organizer monitor stand riser"}, {"id": "prod_jute_basket", "name": "Handmade Woven Jute Storage Caddy with Handles", "category": "Storage", "price": 329, "img": "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Boho", "Cozy", "Green / Nature"], "problems": ["Not enough storage", "Too much clutter", "Room feels boring"], "why": "Natural woven texture that keeps toiletries, chargers, and snacks tidy.", "amazonQuery": "cotton rope woven storage basket jute organizer"}, {"id": "prod_cable_ties", "name": "Reusable Velcro Cable Sleeves & Desk Clips (Pack of 20)", "category": "Storage", "price": 149, "img": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Study-focused", "Minimal & Clean", "Modern"], "problems": ["Messy study area", "Too much clutter", "I want a better study setup"], "why": "Tucks laptop, phone, and lamp wires invisibly behind table legs.", "amazonQuery": "velcro reusable cable ties wire management cord clips"}, {"id": "prod_polaroid_twine", "name": "Polaroid Photo Twine Kit + 30 Mini Wooden Pegs", "category": "Wall Decor", "price": 199, "img": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cozy", "Cute / Pastel", "Boho"], "problems": ["Empty walls", "Room feels boring", "I want the room to look more aesthetic"], "why": "Pins friends and memories on bare walls with zero nail holes or paint damage.", "amazonQuery": "jute twine fairy lights photo clips display wooden pegs"}, {"id": "prod_line_art", "name": "Minimalist Botanical & Line Art Poster Set (6 Prints)", "category": "Wall Decor", "price": 249, "img": "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Minimal & Clean", "Green / Nature", "Modern"], "problems": ["Empty walls", "Room feels boring"], "why": "Pre-curated gallery wall prints mounted with damage-free blue painter tape.", "amazonQuery": "minimalist botanical line art prints unframed aesthetic"}, {"id": "prod_wire_grid", "name": "White Metal Wire Wall Memo Grid (45x65cm) + 6 Clips", "category": "Wall Decor", "price": 379, "img": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cute / Pastel", "Study-focused", "Modern"], "problems": ["Empty walls", "Messy study area", "I want a better study setup"], "why": "Multi-purpose wall grid to clip timetables, sticky notes, and aesthetic prints.", "amazonQuery": "wire grid photo wall panel memo board with clips"}, {"id": "prod_vintage_bookpages", "name": "Classical Literature & Botanical Wall Prints (12 Pack)", "category": "Wall Decor", "price": 189, "img": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Dark / Moody", "Study-focused"], "problems": ["Empty walls", "Room feels boring"], "why": "Creates an antique scholarly focal wall behind your study table.", "amazonQuery": "vintage antique book pages botanical prints wall collage"}, {"id": "prod_full_mirror", "name": "Full-Length Floor Mirror Rubber Grip Bumpers", "category": "Wall Decor", "price": 899, "img": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Minimal & Clean", "Cute / Pastel", "Modern", "Cozy"], "problems": ["Small room", "Poor lighting", "I want the room to look more aesthetic"], "why": "Leaning mirror opposite the window instantly doubles daylight and visually expands small rooms.", "amazonQuery": "full length floor mirror standing wooden frame"}, {"id": "prod_pothos_pot", "name": "Live Pothos (Money Plant) in Breathable Terracotta Pot", "category": "Greenery", "price": 229, "img": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Green / Nature", "Boho", "Minimal & Clean"], "problems": ["Room feels boring", "No cozy corner", "I want the room to look more aesthetic"], "why": "Hardy air-purifying plant that thrives in low hostel light with minimal watering.", "amazonQuery": "money plant pothos with ceramic terracotta pot"}, {"id": "prod_artificial_ivy", "name": "Fairy Light Trailing Ivy Vine Garland (2m)", "category": "Greenery", "price": 199, "img": "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Green / Nature", "Boho", "Cozy"], "problems": ["Empty walls", "Bed looks plain", "Room feels boring"], "why": "Zero-maintenance lush green drape to wrap around bunk bed posts or mirrors.", "amazonQuery": "artificial ivy garland vine with led fairy lights"}, {"id": "prod_desk_mat", "name": "Oversized Waterproof Pastel Desk Blotter Mat (80x40cm)", "category": "Study Desk", "price": 329, "img": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Study-focused", "Cute / Pastel", "Minimal & Clean", "Modern"], "problems": ["Messy study area", "I want a better study setup", "Room feels boring"], "why": "Covers scratched hostel table surfaces and dampens typing noise.", "amazonQuery": "leather desk pad mat large dual sided waterproof 80x40"}, {"id": "prod_macrame_shelf", "name": "Handmade Cotton Macramé Hanging Wall Shelf", "category": "Storage", "price": 369, "img": "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Boho", "Cozy", "Green / Nature"], "problems": ["Empty walls", "Not enough storage", "Small room"], "why": "Hangs from a single damage-free command hook to hold small books and plants.", "amazonQuery": "macrame wall hanging shelf wooden floating bohemian"}, {"id": "prod_scallop_bedding", "name": "Scalloped Blush Pink Duvet & Pillowcase Set", "category": "Bedding", "price": 749, "img": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cute / Pastel", "Cozy"], "problems": ["Bed looks plain", "Room feels boring", "I want the room to look more aesthetic"], "why": "Romantic scalloped trim with soft microfiber touch for an instant coquette glow.", "amazonQuery": "scalloped edge duvet cover blush pink single bed"}, {"id": "prod_pegboard", "name": "Modular White Desk Pegboard Panel + 6 Storage Hooks", "category": "Storage", "price": 449, "img": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Study-focused", "Cute / Pastel", "Modern", "Minimal & Clean"], "problems": ["Messy study area", "Not enough storage", "I want a better study setup", "Small room"], "why": "Frees up 60% of desk surface by hanging stationery, headphones, and keys vertically.", "amazonQuery": "modular pegboard desk organizer white with hooks"}, {"id": "prod_succulents_set", "name": "Mini Desktop Faux Succulents in Ceramic Pots (Set of 3)", "category": "Greenery", "price": 279, "img": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Minimal & Clean", "Modern", "Green / Nature", "Cozy"], "problems": ["Room feels boring", "No cozy corner", "I want the room to look more aesthetic"], "why": "Zero-maintenance fresh greenery pops that sit neatly on any bookshelf or desk.", "amazonQuery": "mini artificial succulent plants ceramic pots set"}, {"id": "prod_wavy_mirror", "name": "Pastel Wavy Squiggly Tabletop Vanity Mirror", "category": "Wall Decor", "price": 369, "img": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80", "aesthetics": ["Cute / Pastel", "Cozy", "Modern"], "problems": ["Empty walls", "Room feels boring", "I want the room to look more aesthetic"], "why": "Trendy Gen-Z aesthetic accent that bounces warm daylight onto your vanity table.", "amazonQuery": "wavy squiggly decorative mirror pastel frame tabletop"}];
+    const INSPIRATIONS_DATA = {"Cozy": [{"id": "cozy_bed_corner", "title": "Cozy Bed Corner", "tagline": "Warm fairy lights, soft cotton bedsheet & layered cushions for a restful single bed", "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80", "problems": ["Bed looks plain", "Room feels boring", "No cozy corner", "Poor lighting"], "tier": "1k_2.5k", "items": [{"name": "Warm Amber Fairy String Lights (10m)", "icon": "✨", "price": 249, "platform": "Amazon", "query": "warm white fairy lights 10m usb", "url": "https://www.amazon.in/s?k=warm+white+fairy+lights+10m+usb"}, {"name": "Solid Cotton Single Bedsheet with Pillow Cover (Beige)", "icon": "🛏️", "price": 499, "platform": "Amazon", "query": "cotton single bedsheet beige plain", "url": "https://www.amazon.in/s?k=cotton+single+bedsheet+beige+plain"}, {"name": "Soft Velvet Cushion Covers (Set of 2, 16x16)", "icon": "🛋️", "price": 299, "platform": "Flipkart", "query": "velvet cushion covers set of 2 beige", "url": "https://www.flipkart.com/search?q=velvet+cushion+covers+set+of+2+beige"}, {"name": "Warm Glow Bedside Wooden Base Lamp", "icon": "💡", "price": 399, "platform": "Amazon", "query": "wooden base bedside warm table lamp", "url": "https://www.amazon.in/s?k=wooden+base+bedside+warm+table+lamp"}, {"name": "Mini Artificial Potted Table Plant", "icon": "🌿", "price": 199, "platform": "Amazon", "query": "small artificial potted succulent desk", "url": "https://www.amazon.in/s?k=small+artificial+potted+succulent+desk"}, {"name": "Wooden Photo Clip Fairy String (Pack of 20 clips)", "icon": "🖼️", "price": 199, "platform": "Flipkart", "query": "wooden clips with jute string photo wall", "url": "https://www.flipkart.com/search?q=wooden+clips+with+jute+string+photo+wall"}], "total": 1844}, {"id": "cozy_study_corner", "title": "Cozy Study Corner", "tagline": "Warm task lighting, desk organizer & comforting touches for late-night exams", "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "I want a better study setup", "Poor lighting", "Small room"], "tier": "1k_2.5k", "items": [{"name": "Adjustable Warm LED Study Desk Lamp", "icon": "💡", "price": 449, "platform": "Amazon", "query": "led desk lamp warm light study table", "url": "https://www.amazon.in/s?k=led+desk+lamp+warm+light+study+table"}, {"name": "Mesh Metal 4-Slot Desk Caddy Organizer", "icon": "📚", "price": 279, "platform": "Amazon", "query": "metal mesh desk stationery organizer", "url": "https://www.amazon.in/s?k=metal+mesh+desk+stationery+organizer"}, {"name": "Felt Dual-Sided Desk Blotter Mat (Brown/Cream)", "icon": "🪵", "price": 349, "platform": "Amazon", "query": "felt desk mat blotter pad warm", "url": "https://www.amazon.in/s?k=felt+desk+mat+blotter+pad+warm"}, {"name": "Ceramic Mug & Coaster with Warmer Plate", "icon": "☕", "price": 299, "platform": "Flipkart", "query": "ceramic coffee mug with cork coaster", "url": "https://www.flipkart.com/search?q=ceramic+coffee+mug+with+cork+coaster"}, {"name": "Metal Wire Wall Grid for Timetable & Notes", "icon": "🧱", "price": 299, "platform": "Amazon", "query": "wall wire grid panel photo display black", "url": "https://www.amazon.in/s?k=wall+wire+grid+panel+photo+display+black"}], "total": 1675}, {"id": "cozy_lighting_setup", "title": "Warm Ambient Lighting Setup", "tagline": "Completely replace harsh clinical tube lights with warm layered ambient glow", "image": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=900&q=80", "problems": ["Poor lighting", "Room feels boring", "I want the room to look more aesthetic"], "tier": "under_1k", "items": [{"name": "Warm Sunset Projection Atmosphere Lamp", "icon": "🌅", "price": 399, "platform": "Amazon", "query": "sunset projection lamp usb 16 colors", "url": "https://www.amazon.in/s?k=sunset+projection+lamp+usb+16+colors"}, {"name": "Warm Rice Bulb Curtain Fairy String", "icon": "✨", "price": 299, "platform": "Amazon", "query": "curtain fairy string lights warm white", "url": "https://www.amazon.in/s?k=curtain+fairy+string+lights+warm+white"}, {"name": "3M Command Damage-Free Wall Wire Hooks (Pack of 6)", "icon": "🪝", "price": 199, "platform": "Amazon", "query": "command clear mini light clips adhesive hooks", "url": "https://www.amazon.in/s?k=command+clear+mini+light+clips+adhesive+hooks"}], "total": 897}, {"id": "cozy_minimal_room", "title": "Minimal Cozy Room", "tagline": "Uncluttered, serene setup with neutral bedding and warm bedside glow", "image": "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Bed looks plain", "Small room"], "tier": "1k_2.5k", "items": [{"name": "Washed Cotton Single Quilt / Dohar (Sand Neutral)", "icon": "🛏️", "price": 699, "platform": "Amazon", "query": "cotton single dohar neutral beige", "url": "https://www.amazon.in/s?k=cotton+single+dohar+neutral+beige"}, {"name": "Minimalist Bedside Felt Caddy Organizer", "icon": "📦", "price": 299, "platform": "Amazon", "query": "bedside felt hanging organizer pocket", "url": "https://www.amazon.in/s?k=bedside+felt+hanging+organizer+pocket"}, {"name": "Warm Clip-on Reading Book Light", "icon": "💡", "price": 249, "platform": "Amazon", "query": "clip on reading light warm rechargeable", "url": "https://www.amazon.in/s?k=clip+on+reading+light+warm+rechargeable"}], "total": 1247}, {"id": "cozy_small_space", "title": "Small-Space Cozy Setup", "tagline": "Smart under-bed storage, door organizers & warm textiles for compact rooms", "image": "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=900&q=80", "problems": ["Small room", "Not enough storage", "Too much clutter", "No cozy corner"], "tier": "1k_2.5k", "items": [{"name": "Slim Under-Bed Storage Bag with Clear Window", "icon": "📦", "price": 349, "platform": "Amazon", "query": "underbed storage bag fabric clear window", "url": "https://www.amazon.in/s?k=underbed+storage+bag+fabric+clear+window"}, {"name": "Behind-Door Multi-Pocket Hanging Organizer", "icon": "🚪", "price": 399, "platform": "Amazon", "query": "over the door hanging organizer pockets", "url": "https://www.amazon.in/s?k=over+the+door+hanging+organizer+pockets"}, {"name": "Plush Faux Fur Mini Floor Rug (2x3 ft)", "icon": "🧶", "price": 499, "platform": "Flipkart", "query": "faux fur bedside rug soft 2x3", "url": "https://www.flipkart.com/search?q=faux+fur+bedside+rug+soft+2x3"}, {"name": "Warm Globe Night Light Bulb with USB Plug", "icon": "💡", "price": 199, "platform": "Amazon", "query": "usb night light bulb warm white", "url": "https://www.amazon.in/s?k=usb+night+light+bulb+warm+white"}], "total": 1446}, {"id": "cozy_budget_makeover", "title": "Budget Cozy Makeover", "tagline": "Super affordable transformation under ₹1,000 using warm lights & soft accents", "image": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Poor lighting", "Empty walls"], "tier": "under_1k", "items": [{"name": "Warm Fairy String with Wooden Photo Clips (20 Clips)", "icon": "✨", "price": 299, "platform": "Amazon", "query": "photo clip fairy lights battery usb warm", "url": "https://www.amazon.in/s?k=photo+clip+fairy+lights+battery+usb+warm"}, {"name": "Solid Fluffy Cushion Cover (Warm Mustard / Camel)", "icon": "🛋️", "price": 199, "platform": "Flipkart", "query": "fluffy cushion cover 16x16 single", "url": "https://www.flipkart.com/search?q=fluffy+cushion+cover+16x16+single"}, {"name": "Renter-Friendly Aesthetic Wall Art Postcard Kit (Set of 30)", "icon": "🖼️", "price": 199, "platform": "Amazon", "query": "aesthetic wall collage kit 30 prints warm", "url": "https://www.amazon.in/s?k=aesthetic+wall+collage+kit+30+prints+warm"}, {"name": "Decorative Washi Tape for Res-Safe Wall Mounting", "icon": "🩹", "price": 99, "platform": "Amazon", "query": "washi tape set pastel neutral", "url": "https://www.amazon.in/s?k=washi+tape+set+pastel+neutral"}], "total": 796}], "Minimal & Clean": [{"id": "minimal_bed_zen", "title": "Minimal Zen Bed Setup", "tagline": "Crisp white linen, clean geometry, zero clutter, and natural relaxation", "image": "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=900&q=80", "problems": ["Bed looks plain", "Room feels boring", "Too much clutter"], "tier": "1k_2.5k", "items": [{"name": "Pure White Cotton Single Fitted Bedsheet", "icon": "🛏️", "price": 499, "platform": "Amazon", "query": "white cotton single fitted bedsheet", "url": "https://www.amazon.in/s?k=white+cotton+single+fitted+bedsheet"}, {"name": "Monochrome Linen Pillow Cover (Charcoal Trim)", "icon": "🛋️", "price": 249, "platform": "Flipkart", "query": "linen pillow covers minimalist neutral", "url": "https://www.flipkart.com/search?q=linen+pillow+covers+minimalist+neutral"}, {"name": "Sleek Matte White LED Desk & Bedside Lamp", "icon": "💡", "price": 399, "platform": "Amazon", "query": "minimalist white desk lamp led touch", "url": "https://www.amazon.in/s?k=minimalist+white+desk+lamp+led+touch"}, {"name": "Natural Jute Bedside Trash Bin / Basket", "icon": "🧺", "price": 299, "platform": "Amazon", "query": "small jute basket round organizer", "url": "https://www.amazon.in/s?k=small+jute+basket+round+organizer"}], "total": 1446}, {"id": "minimal_desk_zen", "title": "Minimal Focus Study Desk", "tagline": "Clean white and beech-toned desk setup engineered for distraction-free revision", "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "I want a better study setup", "Small room"], "tier": "1k_2.5k", "items": [{"name": "Ergonomic White Acrylic Laptop Riser Stand", "icon": "💻", "price": 399, "platform": "Amazon", "query": "laptop stand ergonomic minimalist white", "url": "https://www.amazon.in/s?k=laptop+stand+ergonomic+minimalist+white"}, {"name": "Minimalist Matte White Pen Holder & Note Caddy", "icon": "✏️", "price": 199, "platform": "Amazon", "query": "white minimalist pen holder desk organizer", "url": "https://www.amazon.in/s?k=white+minimalist+pen+holder+desk+organizer"}, {"name": "Large Minimal Grey Leatherette Desk Mat", "icon": "🪵", "price": 349, "platform": "Amazon", "query": "minimalist desk mat extended grey", "url": "https://www.amazon.in/s?k=minimalist+desk+mat+extended+grey"}, {"name": "Self-Adhesive Cable Management Clips (Pack of 10)", "icon": "🔌", "price": 149, "platform": "Amazon", "query": "cable management clips adhesive silicone", "url": "https://www.amazon.in/s?k=cable+management+clips+adhesive+silicone"}], "total": 1096}, {"id": "minimal_storage_nook", "title": "Decluttered Clean Storage Nook", "tagline": "Concealed organization bins to keep tiny hostel rooms looking open and airy", "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=80", "problems": ["Not enough storage", "Too much clutter", "Small room"], "tier": "1k_2.5k", "items": [{"name": "Fabric Foldable Wardrobe Storage Cubes (Pack of 3)", "icon": "📦", "price": 449, "platform": "Amazon", "query": "fabric storage organizer boxes foldable set of 3", "url": "https://www.amazon.in/s?k=fabric+storage+organizer+boxes+foldable+set+of+3"}, {"name": "Over-Door Heavy Duty Stainless Steel Hanger Hook", "icon": "🚪", "price": 249, "platform": "Amazon", "query": "over door hook rack stainless steel 6 hooks", "url": "https://www.amazon.in/s?k=over+door+hook+rack+stainless+steel+6+hooks"}, {"name": "Clear Stackable Shoe Storage Boxes (Set of 2)", "icon": "👟", "price": 399, "platform": "Amazon", "query": "stackable shoe boxes clear plastic", "url": "https://www.amazon.in/s?k=stackable+shoe+boxes+clear+plastic"}], "total": 1097}, {"id": "minimal_light_haven", "title": "Natural Light Minimal Corner", "tagline": "Simple light-filtering sheer curtain and warm minimalist illumination", "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80", "problems": ["Poor lighting", "Room feels boring", "Empty walls"], "tier": "1k_2.5k", "items": [{"name": "White Sheer Window Curtain with Rod Pocket (Single)", "icon": "🪟", "price": 349, "platform": "Amazon", "query": "white sheer curtain 5ft window single", "url": "https://www.amazon.in/s?k=white+sheer+curtain+5ft+window+single"}, {"name": "Minimalist Framed Botanical Line Art Print", "icon": "🖼️", "price": 299, "platform": "Amazon", "query": "minimalist line art wall poster framed", "url": "https://www.amazon.in/s?k=minimalist+line+art+wall+poster+framed"}, {"name": "Warm Minimalist Night Lamp with Touch Sensor", "icon": "💡", "price": 399, "platform": "Flipkart", "query": "touch sensor night light warm minimalist", "url": "https://www.flipkart.com/search?q=touch+sensor+night+light+warm+minimalist"}], "total": 1047}, {"id": "minimal_budget_zen", "title": "Under ₹1,000 Minimal Refresh", "tagline": "Essentials-only declutter kit with wire desk grid and cable management", "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "Too much clutter", "Room feels boring"], "tier": "under_1k", "items": [{"name": "Black Metal Grid Wire Organizer for Wall/Desk", "icon": "🧱", "price": 299, "platform": "Amazon", "query": "wall wire grid display black 45x45", "url": "https://www.amazon.in/s?k=wall+wire+grid+display+black+45x45"}, {"name": "Minimalist Pen Caddy & Phone Stand", "icon": "📱", "price": 199, "platform": "Amazon", "query": "phone stand with pen holder wood", "url": "https://www.amazon.in/s?k=phone+stand+with+pen+holder+wood"}, {"name": "Reusable Cable Ties & Wire Clips Kit", "icon": "🔌", "price": 149, "platform": "Amazon", "query": "reusable velcro cable ties pack of 20", "url": "https://www.amazon.in/s?k=reusable+velcro+cable+ties+pack+of+20"}], "total": 647}, {"id": "minimal_luxe_upgrade", "title": "Clean Minimal Room Transformation", "tagline": "Full bed upgrade, slim storage chest, and Scandinavian desk styling", "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80", "problems": ["Bed looks plain", "Not enough storage", "I want the room to look more aesthetic"], "tier": "2.5k_5k", "items": [{"name": "Premium Cotton Single Duvet Cover Set (Ivory White)", "icon": "🛏️", "price": 899, "platform": "Amazon", "query": "single duvet cover set cotton white", "url": "https://www.amazon.in/s?k=single+duvet+cover+set+cotton+white"}, {"name": "3-Tier Slim Rolling Utility Cart for Bedside", "icon": "🛒", "price": 1199, "platform": "Amazon", "query": "3 tier metal rolling cart slim", "url": "https://www.amazon.in/s?k=3+tier+metal+rolling+cart+slim"}, {"name": "Ergonomic Desk LED Bar with Monitor Clip", "icon": "💻", "price": 899, "platform": "Amazon", "query": "monitor light bar desk lamp eye care", "url": "https://www.amazon.in/s?k=monitor+light+bar+desk+lamp+eye+care"}, {"name": "Neutral Flatweave Cotton Bedside Dhurrie Rug", "icon": "🧶", "price": 599, "platform": "Myntra", "query": "cotton dhurrie rug bedside beige", "url": "https://www.myntra.com/cotton+dhurrie+rug+bedside+beige"}], "total": 3596}], "Boho": [{"id": "boho_bed_corner", "title": "Boho Bed Corner", "tagline": "Warm terracotta tones, woven textures, leafy greens & macrame tapestry", "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Bed looks plain", "Empty walls"], "tier": "1k_2.5k", "items": [{"name": "Handmade Cotton Woven Macrame Wall Hanging", "icon": "🧶", "price": 399, "platform": "Amazon", "query": "macrame wall hanging woven small boho", "url": "https://www.amazon.in/s?k=macrame+wall+hanging+woven+small+boho"}, {"name": "Terracotta & Mustard Cotton Single Bedsheet", "icon": "🛏️", "price": 499, "platform": "Amazon", "query": "boho single bedsheet terracotta geometric", "url": "https://www.amazon.in/s?k=boho+single+bedsheet+terracotta+geometric"}, {"name": "Textured Tufted Boho Cushion Cover with Tassels", "icon": "🛋️", "price": 349, "platform": "Flipkart", "query": "tufted boho cushion cover tassels 16x16", "url": "https://www.flipkart.com/search?q=tufted+boho+cushion+cover+tassels+16x16"}, {"name": "Faux Hanging Pothos Vine in Woven Basket", "icon": "🌿", "price": 299, "platform": "Amazon", "query": "artificial hanging plant in jute woven basket", "url": "https://www.amazon.in/s?k=artificial+hanging+plant+in+jute+woven+basket"}, {"name": "Warm Amber Fairy Lights with Wooden Clips", "icon": "✨", "price": 249, "platform": "Amazon", "query": "warm fairy lights with clips for photos", "url": "https://www.amazon.in/s?k=warm+fairy+lights+with+clips+for+photos"}], "total": 1795}, {"id": "boho_study_desk", "title": "Earthy Boho Study Desk", "tagline": "Rattan pen organizers, mini succulent pots & warm natural desk styling", "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "I want a better study setup", "Room feels boring"], "tier": "1k_2.5k", "items": [{"name": "Natural Bamboo / Rattan Pen Stand & Organizer", "icon": "🪵", "price": 299, "platform": "Amazon", "query": "bamboo desk organizer pen stand natural", "url": "https://www.amazon.in/s?k=bamboo+desk+organizer+pen+stand+natural"}, {"name": "Set of 3 Miniature Ceramic Pots with Succulents", "icon": "🪴", "price": 349, "platform": "Amazon", "query": "mini artificial succulent plants ceramic pots set", "url": "https://www.amazon.in/s?k=mini+artificial+succulent+plants+ceramic+pots+set"}, {"name": "Boho Woven Cotton Desk Coaster Set (Pack of 4)", "icon": "☕", "price": 199, "platform": "Amazon", "query": "woven cotton macrame coasters set of 4", "url": "https://www.amazon.in/s?k=woven+cotton+macrame+coasters+set+of+4"}, {"name": "Warm Bamboo Finish LED Table Reading Lamp", "icon": "💡", "price": 499, "platform": "Flipkart", "query": "wood bamboo led desk lamp warm", "url": "https://www.flipkart.com/search?q=wood+bamboo+led+desk+lamp+warm"}], "total": 1346}, {"id": "boho_wall_gallery", "title": "Bohemian Tapestry & Wall Haven", "tagline": "Turn dull hostel walls into a sun-soaked boho oasis with no-drill tapestry", "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80", "problems": ["Empty walls", "Room feels boring", "Poor lighting"], "tier": "under_1k", "items": [{"name": "Mandala / Sun Bohemian Fabric Wall Tapestry (50x60 in)", "icon": "🎨", "price": 399, "platform": "Amazon", "query": "boho wall tapestry sun mandala fabric", "url": "https://www.amazon.in/s?k=boho+wall+tapestry+sun+mandala+fabric"}, {"name": "Warm Golden Star Fairy String Lights (10m)", "icon": "⭐", "price": 249, "platform": "Amazon", "query": "star fairy lights warm white string", "url": "https://www.amazon.in/s?k=star+fairy+lights+warm+white+string"}, {"name": "No-Trace Wall Tapestry Hanging Clips & Adhesive Strips", "icon": "🪝", "price": 149, "platform": "Amazon", "query": "tapestry hanging clips damage free wall", "url": "https://www.amazon.in/s?k=tapestry+hanging+clips+damage+free+wall"}], "total": 797}, {"id": "boho_green_corner", "title": "Green Boho Relaxation Nook", "tagline": "Hanging greenery, woven jute planter & floor cushion for tea and music", "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=900&q=80", "problems": ["No cozy corner", "Room feels boring", "I want the room to look more aesthetic"], "tier": "1k_2.5k", "items": [{"name": "Jute Braided Round Floor Mat / Rug (60cm)", "icon": "🧶", "price": 449, "platform": "Amazon", "query": "jute braided round mat 60cm floor", "url": "https://www.amazon.in/s?k=jute+braided+round+mat+60cm+floor"}, {"name": "Faux Trailing Ivy Vine Garland (Pack of 6 strands)", "icon": "🌿", "price": 249, "platform": "Amazon", "query": "artificial ivy garland green leaves pack of 6", "url": "https://www.amazon.in/s?k=artificial+ivy+garland+green+leaves+pack+of+6"}, {"name": "Tufted Floor Sitting Cushion (Terracotta)", "icon": "🛋️", "price": 399, "platform": "Flipkart", "query": "floor sitting cushion square tufted", "url": "https://www.flipkart.com/search?q=floor+sitting+cushion+square+tufted"}, {"name": "Aromatherapy Reed Diffuser (Warm Amber & Vanilla)", "icon": "🕯️", "price": 299, "platform": "Amazon", "query": "reed diffuser essential oil amber vanilla", "url": "https://www.amazon.in/s?k=reed+diffuser+essential+oil+amber+vanilla"}], "total": 1396}, {"id": "boho_small_storage", "title": "Woven Storage & Clutter Solution", "tagline": "Handwoven baskets and hanging organizers that look gorgeous while storing gear", "image": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80", "problems": ["Not enough storage", "Too much clutter", "Small room"], "tier": "1k_2.5k", "items": [{"name": "Cotton Rope Woven Storage Basket with Handles", "icon": "🧺", "price": 449, "platform": "Amazon", "query": "cotton rope woven basket for blankets laundry", "url": "https://www.amazon.in/s?k=cotton+rope+woven+basket+for+blankets+laundry"}, {"name": "Hanging Woven Pocket Wall Organizer (3 Pockets)", "icon": "📦", "price": 349, "platform": "Amazon", "query": "hanging wall organizer fabric pockets boho", "url": "https://www.amazon.in/s?k=hanging+wall+organizer+fabric+pockets+boho"}, {"name": "Wooden Bead Garland with Tassels for Wall Accent", "icon": "📿", "price": 199, "platform": "Amazon", "query": "wood bead garland with tassels boho decor", "url": "https://www.amazon.in/s?k=wood+bead+garland+with+tassels+boho+decor"}], "total": 997}, {"id": "boho_budget_refresh", "title": "Under ₹1,000 Boho Refresh", "tagline": "Get instant bohemian vibes on a shoestring student budget", "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Empty walls"], "tier": "under_1k", "items": [{"name": "Mini Macrame Wall Hanging Banner", "icon": "🧶", "price": 249, "platform": "Amazon", "query": "small macrame wall hanging tapestry", "url": "https://www.amazon.in/s?k=small+macrame+wall+hanging+tapestry"}, {"name": "Warm 10m Copper Wire Fairy Lights", "icon": "✨", "price": 199, "platform": "Amazon", "query": "copper wire fairy lights 10m warm white usb", "url": "https://www.amazon.in/s?k=copper+wire+fairy+lights+10m+warm+white+usb"}, {"name": "Pack of 12 Botanical Herb Art Prints (Postcard Size)", "icon": "🌿", "price": 199, "platform": "Amazon", "query": "botanical art prints postcard set aesthetic", "url": "https://www.amazon.in/s?k=botanical+art+prints+postcard+set+aesthetic"}], "total": 647}], "Cute / Pastel": [{"id": "cute_pastel_bed", "title": "Cute Pastel Dream Bed", "tagline": "Blush pink, lavender accents, cloud lighting & adorable plush cushions", "image": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80", "problems": ["Bed looks plain", "Room feels boring", "I want the room to look more aesthetic"], "tier": "1k_2.5k", "items": [{"name": "Soft Pastel Pink / Lilac Single Bedsheet Set", "icon": "🛏️", "price": 499, "platform": "Amazon", "query": "pastel pink single bedsheet cotton", "url": "https://www.amazon.in/s?k=pastel+pink+single+bedsheet+cotton"}, {"name": "Cute Bow / Flower Shaped Plush Cushion", "icon": "🌸", "price": 349, "platform": "Flipkart", "query": "flower shaped cushion pillow plush cute", "url": "https://www.flipkart.com/search?q=flower+shaped+cushion+pillow+plush+cute"}, {"name": "Warm Cloud Silhouette LED Neon Wall Sign", "icon": "☁️", "price": 399, "platform": "Amazon", "query": "cloud neon light sign warm pink usb", "url": "https://www.amazon.in/s?k=cloud+neon+light+sign+warm+pink+usb"}, {"name": "Pastel Pink Fairy Clip Lights (20 Clips)", "icon": "✨", "price": 249, "platform": "Amazon", "query": "fairy lights photo clips warm white", "url": "https://www.amazon.in/s?k=fairy+lights+photo+clips+warm+white"}], "total": 1496}, {"id": "cute_desk_corner", "title": "Pastel Study & Planner Desk", "tagline": "Sweet organizers, pastel highlighters caddy & mood-boosting stationery setup", "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "I want a better study setup", "Small room"], "tier": "1k_2.5k", "items": [{"name": "Pastel Pink 5-Drawer Desk Organizer Storage Box", "icon": "📦", "price": 349, "platform": "Amazon", "query": "desktop mini drawer organizer pastel pink", "url": "https://www.amazon.in/s?k=desktop+mini+drawer+organizer+pastel+pink"}, {"name": "Rotating Cute Pen Caddy with Compartments", "icon": "✏️", "price": 249, "platform": "Amazon", "query": "rotating pen holder desk organizer pastel", "url": "https://www.amazon.in/s?k=rotating+pen+holder+desk+organizer+pastel"}, {"name": "Cute Rabbit / Bear Silicone Warm Night Light", "icon": "🐰", "price": 399, "platform": "Amazon", "query": "silicone animal night light rechargeable cute", "url": "https://www.amazon.in/s?k=silicone+animal+night+light+rechargeable+cute"}, {"name": "Pastel Desk Blotter Mousepad with Cute Print", "icon": "🎀", "price": 299, "platform": "Amazon", "query": "cute pastel desk mat mousepad large", "url": "https://www.amazon.in/s?k=cute+pastel+desk+mat+mousepad+large"}], "total": 1296}, {"id": "cute_wall_haven", "title": "Sweet Pastel Wall Gallery", "tagline": "Blush prints, fairy lights and pink wire grid for polaroids and daily reminders", "image": "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=900&q=80", "problems": ["Empty walls", "Room feels boring", "Poor lighting"], "tier": "under_1k", "items": [{"name": "Rose Gold / Pastel Pink Wall Wire Grid (45x45 cm)", "icon": "🧱", "price": 349, "platform": "Amazon", "query": "wall wire grid panel pink rose gold photo", "url": "https://www.amazon.in/s?k=wall+wire+grid+panel+pink+rose+gold+photo"}, {"name": "Pastel Aesthetic Polaroid Collage Prints (Pack of 30)", "icon": "🖼️", "price": 199, "platform": "Amazon", "query": "aesthetic room decor posters pastel cute pack", "url": "https://www.amazon.in/s?k=aesthetic+room+decor+posters+pastel+cute+pack"}, {"name": "Mini Heart / Star Wooden Clips for Photo Hanging", "icon": "💖", "price": 149, "platform": "Flipkart", "query": "wooden heart craft clips photo string", "url": "https://www.flipkart.com/search?q=wooden+heart+craft+clips+photo+string"}, {"name": "Warm Fairy Rice Lights (10m USB)", "icon": "✨", "price": 199, "platform": "Amazon", "query": "fairy lights 10m warm white usb copper", "url": "https://www.amazon.in/s?k=fairy+lights+10m+warm+white+usb+copper"}], "total": 896}, {"id": "cute_cozy_luxe", "title": "Dreamy Coquette Corner", "tagline": "Ruffle edges, satin bows, soft bedside rug & dreamy ambient glow", "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80", "problems": ["No cozy corner", "Bed looks plain", "I want the room to look more aesthetic"], "tier": "2.5k_5k", "items": [{"name": "Ruffle Edge Pastel Single Quilt / Blanket", "icon": "🛏️", "price": 799, "platform": "Amazon", "query": "ruffle blanket single pastel pink soft", "url": "https://www.amazon.in/s?k=ruffle+blanket+single+pastel+pink+soft"}, {"name": "Fluffy Heart-Shaped Bedside Rug (Blush Pink)", "icon": "🧶", "price": 499, "platform": "Amazon", "query": "heart shaped faux fur rug pink", "url": "https://www.amazon.in/s?k=heart+shaped+faux+fur+rug+pink"}, {"name": "Vintage Gold Rim Table Mirror with Bow Stand", "icon": "🪞", "price": 449, "platform": "Amazon", "query": "vintage table mirror aesthetic cute desk", "url": "https://www.amazon.in/s?k=vintage+table+mirror+aesthetic+cute+desk"}, {"name": "Tulip Flower Night Lamp (Warm Glow)", "icon": "🌷", "price": 399, "platform": "Amazon", "query": "tulip night light bedside lamp cute", "url": "https://www.amazon.in/s?k=tulip+night+light+bedside+lamp+cute"}], "total": 2146}, {"id": "cute_storage_magic", "title": "Pastel Space Saver Solution", "tagline": "Foldable pastel storage crates to neatly hide snacks, makeup & books", "image": "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=900&q=80", "problems": ["Small room", "Not enough storage", "Too much clutter"], "tier": "1k_2.5k", "items": [{"name": "Pastel Stackable Folding Crates (Set of 3, Pink/Lilac/Cream)", "icon": "📦", "price": 399, "platform": "Amazon", "query": "pastel folding storage crates small set", "url": "https://www.amazon.in/s?k=pastel+folding+storage+crates+small+set"}, {"name": "Door-Hanging 4-Pocket Fabric Organiser (Pastel Lilac)", "icon": "🚪", "price": 349, "platform": "Amazon", "query": "hanging wall organizer fabric pockets pastel", "url": "https://www.amazon.in/s?k=hanging+wall+organizer+fabric+pockets+pastel"}, {"name": "Cute Cat Paw Anti-Slip Seat Cushion Pad", "icon": "🐾", "price": 399, "platform": "Flipkart", "query": "cat paw seat cushion chair pad soft", "url": "https://www.flipkart.com/search?q=cat+paw+seat+cushion+chair+pad+soft"}], "total": 1147}, {"id": "cute_budget_makeover", "title": "Under ₹1,000 Pastel Fix", "tagline": "Transform cold walls with cute prints, fairy clips & sweet pastel energy", "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Empty walls"], "tier": "under_1k", "items": [{"name": "Cute Korean Aesthetic Postcard Kit (Set of 25)", "icon": "🖼️", "price": 199, "platform": "Amazon", "query": "korean aesthetic room decor wall postcards", "url": "https://www.amazon.in/s?k=korean+aesthetic+room+decor+wall+postcards"}, {"name": "Warm Fairy Light String with Mini Clips", "icon": "✨", "price": 249, "platform": "Amazon", "query": "fairy lights 10m with clips warm white", "url": "https://www.amazon.in/s?k=fairy+lights+10m+with+clips+warm+white"}, {"name": "Pastel Pink Washi Tape Multi-Pack", "icon": "🩹", "price": 149, "platform": "Amazon", "query": "pastel washi tape set decorative masking tape", "url": "https://www.amazon.in/s?k=pastel+washi+tape+set+decorative+masking+tape"}], "total": 597}], "Modern": [{"id": "modern_bed_chic", "title": "Modern Monochrome Bed", "tagline": "Crisp charcoal and slate tones with sleek lines and minimal distraction", "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80", "problems": ["Bed looks plain", "Room feels boring", "Small room"], "tier": "1k_2.5k", "items": [{"name": "Charcoal Grey Single Fitted Bedsheet Set", "icon": "🛏️", "price": 499, "platform": "Amazon", "query": "charcoal grey single bedsheet fitted", "url": "https://www.amazon.in/s?k=charcoal+grey+single+bedsheet+fitted"}, {"name": "Geometric Monochrome Cushion Cover (Pack of 2)", "icon": "🛋️", "price": 299, "platform": "Flipkart", "query": "geometric cushion covers black white set of 2", "url": "https://www.flipkart.com/search?q=geometric+cushion+covers+black+white+set+of+2"}, {"name": "Sleek Matte Black LED Bedside Lamp with Touch Dimmer", "icon": "💡", "price": 449, "platform": "Amazon", "query": "black modern desk lamp touch dimmable", "url": "https://www.amazon.in/s?k=black+modern+desk+lamp+touch+dimmable"}, {"name": "Minimalist Metal Alarm Clock with Silent Sweep", "icon": "⏰", "price": 299, "platform": "Amazon", "query": "silent analog desk alarm clock matte black", "url": "https://www.amazon.in/s?k=silent+analog+desk+alarm+clock+matte+black"}], "total": 1546}, {"id": "modern_study_tech", "title": "Modern Student Tech Desk", "tagline": "Clean monitor bar light, cable organizers & ergonomic productivity setup", "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "I want a better study setup", "Poor lighting"], "tier": "1k_2.5k", "items": [{"name": "USB Screenbar Monitor Clip Light (Warm/Cool Dimming)", "icon": "💻", "price": 799, "platform": "Amazon", "query": "monitor light bar computer desk reading lamp", "url": "https://www.amazon.in/s?k=monitor+light+bar+computer+desk+reading+lamp"}, {"name": "Extended Waterproof PU Leather Desk Mat (Black)", "icon": "🪵", "price": 349, "platform": "Amazon", "query": "black desk mat extended mousepad", "url": "https://www.amazon.in/s?k=black+desk+mat+extended+mousepad"}, {"name": "Heavy Duty Aluminium Laptop Ergonomic Stand", "icon": "🖥️", "price": 499, "platform": "Amazon", "query": "aluminium laptop stand foldable portable", "url": "https://www.amazon.in/s?k=aluminium+laptop+stand+foldable+portable"}, {"name": "Magnetic Cable Organizer Clips for Desk Edge", "icon": "🔌", "price": 199, "platform": "Amazon", "query": "magnetic cable clips desk wire holder", "url": "https://www.amazon.in/s?k=magnetic+cable+clips+desk+wire+holder"}], "total": 1846}, {"id": "modern_grid_wall", "title": "Modern Wire Grid Organizer", "tagline": "Sleek black wire grid to hang photos, calendar, earphones & notes without wall holes", "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80", "problems": ["Empty walls", "Room feels boring", "Too much clutter"], "tier": "under_1k", "items": [{"name": "Black Metal Wire Grid Memo Board (65x45 cm)", "icon": "🧱", "price": 349, "platform": "Amazon", "query": "black wire grid panel wall organizer", "url": "https://www.amazon.in/s?k=black+wire+grid+panel+wall+organizer"}, {"name": "Metal Wire Hanging Shelf Basket for Grid", "icon": "🧺", "price": 199, "platform": "Amazon", "query": "hanging wire basket for grid panel", "url": "https://www.amazon.in/s?k=hanging+wire+basket+for+grid+panel"}, {"name": "Warm LED String Lights for Grid Outline", "icon": "✨", "price": 199, "platform": "Amazon", "query": "led copper string lights 5m warm usb", "url": "https://www.amazon.in/s?k=led+copper+string+lights+5m+warm+usb"}], "total": 747}, {"id": "modern_small_room", "title": "Compact Modern Studio Setup", "tagline": "Vertical hooks, sleek rolling cart & functional modern storage for tiny hostel rooms", "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=900&q=80", "problems": ["Small room", "Not enough storage", "Too much clutter"], "tier": "1k_2.5k", "items": [{"name": "Matte Black Over-the-Door Multi-Hook Rack", "icon": "🚪", "price": 299, "platform": "Amazon", "query": "matte black over door hook rack 6 hooks", "url": "https://www.amazon.in/s?k=matte+black+over+door+hook+rack+6+hooks"}, {"name": "Under-Shelf Wire Hanging Basket (Add-on Shelf)", "icon": "📦", "price": 249, "platform": "Amazon", "query": "under shelf wire storage basket hanging", "url": "https://www.amazon.in/s?k=under+shelf+wire+storage+basket+hanging"}, {"name": "Minimalist Wall Mounted Key & Wallet Organizer Shelf", "icon": "🔑", "price": 299, "platform": "Flipkart", "query": "adhesive wall key holder shelf black", "url": "https://www.flipkart.com/search?q=adhesive+wall+key+holder+shelf+black"}], "total": 847}, {"id": "modern_lighting_upgrade", "title": "Sleek Modern Ambient Glow", "tagline": "Linear LED light bar and soft backlighting for a contemporary dorm vibe", "image": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=900&q=80", "problems": ["Poor lighting", "I want the room to look more aesthetic"], "tier": "under_1k", "items": [{"name": "USB RGB & Warm White Light Bar with Remote", "icon": "💡", "price": 399, "platform": "Amazon", "query": "usb led strip lights warm white tv desk", "url": "https://www.amazon.in/s?k=usb+led+strip+lights+warm+white+tv+desk"}, {"name": "Matte Black Wireless Bedside Touch Sensor Lamp", "icon": "🔦", "price": 399, "platform": "Amazon", "query": "wireless touch bedside lamp portable rechargeable", "url": "https://www.amazon.in/s?k=wireless+touch+bedside+lamp+portable+rechargeable"}], "total": 798}, {"id": "modern_budget_chic", "title": "Under ₹1,000 Modern Fix", "tagline": "Smart wire grid, black organizer caddy & sleek cable tidying", "image": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Messy study area"], "tier": "under_1k", "items": [{"name": "Black Metal Mesh Desktop Organizer", "icon": "📚", "price": 299, "platform": "Amazon", "query": "metal mesh desk organizer black 3 compartments", "url": "https://www.amazon.in/s?k=metal+mesh+desk+organizer+black+3+compartments"}, {"name": "Minimalist Black & White Typography Postcards (Pack of 20)", "icon": "🖼️", "price": 199, "platform": "Amazon", "query": "black and white minimalist wall prints postcards", "url": "https://www.amazon.in/s?k=black+and+white+minimalist+wall+prints+postcards"}, {"name": "Adhesive Black Wire Clips (Set of 10)", "icon": "🔌", "price": 149, "platform": "Amazon", "query": "black adhesive cable clips for desk", "url": "https://www.amazon.in/s?k=black+adhesive+cable+clips+for+desk"}], "total": 647}], "Dark / Moody": [{"id": "dark_academia_bed", "title": "Dark Academia Bed Nook", "tagline": "Deep charcoal linen, rich amber glow, vintage art prints & cozy intellectual warmth", "image": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=900&q=80", "problems": ["Bed looks plain", "Room feels boring", "Poor lighting"], "tier": "1k_2.5k", "items": [{"name": "Deep Midnight Charcoal Cotton Single Bedsheet", "icon": "🛏️", "price": 499, "platform": "Amazon", "query": "dark charcoal cotton single bedsheet", "url": "https://www.amazon.in/s?k=dark+charcoal+cotton+single+bedsheet"}, {"name": "Vintage Botanical & Astronomy Postcard Collage (Pack of 30)", "icon": "🖼️", "price": 249, "platform": "Amazon", "query": "dark academia vintage wall collage prints", "url": "https://www.amazon.in/s?k=dark+academia+vintage+wall+collage+prints"}, {"name": "Warm Amber Edison Bulb Desk / Bedside Lamp", "icon": "💡", "price": 449, "platform": "Amazon", "query": "edison bulb warm desk lamp vintage", "url": "https://www.amazon.in/s?k=edison+bulb+warm+desk+lamp+vintage"}, {"name": "Rich Velvet Wine/Navy Cushion Cover (Pack of 2)", "icon": "🛋️", "price": 349, "platform": "Flipkart", "query": "velvet cushion cover navy blue dark 16x16", "url": "https://www.flipkart.com/search?q=velvet+cushion+cover+navy+blue+dark+16x16"}], "total": 1546}, {"id": "dark_study_corner", "title": "Vintage Intellectual Study Desk", "tagline": "Wooden bookends, antique bronze task lighting & scholarly exam retreat", "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "I want a better study setup", "Empty walls"], "tier": "1k_2.5k", "items": [{"name": "Warm Antique Finish Metal Desk Lamp", "icon": "💡", "price": 499, "platform": "Amazon", "query": "vintage brass desk lamp adjustable", "url": "https://www.amazon.in/s?k=vintage+brass+desk+lamp+adjustable"}, {"name": "Heavy Wood Finish Desktop Bookends (Pair)", "icon": "📚", "price": 299, "platform": "Amazon", "query": "wooden bookends for shelves desk", "url": "https://www.amazon.in/s?k=wooden+bookends+for+shelves+desk"}, {"name": "Vintage Kraft Paper World Map Wall Poster", "icon": "🗺️", "price": 199, "platform": "Amazon", "query": "vintage world map kraft paper poster", "url": "https://www.amazon.in/s?k=vintage+world+map+kraft+paper+poster"}, {"name": "Leatherette Pen Cup & Fountain Pen Caddy", "icon": "✒️", "price": 249, "platform": "Amazon", "query": "leather pen holder for desk dark brown", "url": "https://www.amazon.in/s?k=leather+pen+holder+for+desk+dark+brown"}], "total": 1246}, {"id": "dark_moody_lighting", "title": "Amber Shadow & Mood Lighting", "tagline": "Replace bright hospital glare with golden amber glow and candle warmer atmosphere", "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80", "problems": ["Poor lighting", "Room feels boring", "No cozy corner"], "tier": "under_1k", "items": [{"name": "Amber Yellow Fairy String Rice Lights (10m)", "icon": "✨", "price": 249, "platform": "Amazon", "query": "amber fairy lights 10m warm white usb", "url": "https://www.amazon.in/s?k=amber+fairy+lights+10m+warm+white+usb"}, {"name": "Flameless LED Flickering Pillar Candles (Set of 3)", "icon": "🕯️", "price": 349, "platform": "Amazon", "query": "flameless led candles battery operated set of 3", "url": "https://www.amazon.in/s?k=flameless+led+candles+battery+operated+set+of+3"}, {"name": "Vintage Brass Photo Clips on Jute String", "icon": "📎", "price": 149, "platform": "Flipkart", "query": "bronze metal clips vintage photo display", "url": "https://www.flipkart.com/search?q=bronze+metal+clips+vintage+photo+display"}], "total": 747}, {"id": "dark_cozy_retreat", "title": "Moody Reading & Chill Corner", "tagline": "Thick knit throw, dark velvet cushions & book collector atmosphere", "image": "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=900&q=80", "problems": ["No cozy corner", "Bed looks plain", "I want the room to look more aesthetic"], "tier": "1k_2.5k", "items": [{"name": "Waffle Weave Charcoal Throw Blanket", "icon": "🧶", "price": 599, "platform": "Amazon", "query": "waffle throw blanket charcoal grey", "url": "https://www.amazon.in/s?k=waffle+throw+blanket+charcoal+grey"}, {"name": "Dark Forest Green Velvet Cushion Cover", "icon": "🛋️", "price": 249, "platform": "Flipkart", "query": "dark green velvet cushion cover 16x16", "url": "https://www.flipkart.com/search?q=dark+green+velvet+cushion+cover+16x16"}, {"name": "Rechargeable Clip-on Amber Page Book Light", "icon": "💡", "price": 299, "platform": "Amazon", "query": "amber book light reading clip rechargeable", "url": "https://www.amazon.in/s?k=amber+book+light+reading+clip+rechargeable"}], "total": 1147}, {"id": "dark_small_library", "title": "Compact Scholar Wall & Storage", "tagline": "Under-desk file organizer and moody vintage prints for small hostel rooms", "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80", "problems": ["Small room", "Not enough storage", "Too much clutter"], "tier": "1k_2.5k", "items": [{"name": "4-Tier Metal Desktop Magazine & Book Rack (Black)", "icon": "📂", "price": 399, "platform": "Amazon", "query": "metal mesh magazine file holder rack 4 tier", "url": "https://www.amazon.in/s?k=metal+mesh+magazine+file+holder+rack+4+tier"}, {"name": "Dark Wooden Hanging Wall Shelf (Rope Support)", "icon": "🪵", "price": 349, "platform": "Amazon", "query": "wooden hanging shelf with rope wall decor", "url": "https://www.amazon.in/s?k=wooden+hanging+shelf+with+rope+wall+decor"}, {"name": "Vintage Aesthetic Jute Storage Crate", "icon": "📦", "price": 299, "platform": "Amazon", "query": "jute fabric storage box with handle", "url": "https://www.amazon.in/s?k=jute+fabric+storage+box+with+handle"}], "total": 1047}, {"id": "dark_budget_haven", "title": "Under ₹1,000 Dark Academia Fix", "tagline": "Instant vintage atmosphere with kraft prints, amber fairy lights & brass accents", "image": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Empty walls"], "tier": "under_1k", "items": [{"name": "Vintage Dark Academia Postcard Set (30 Pieces)", "icon": "🖼️", "price": 199, "platform": "Amazon", "query": "dark academia vintage postcards wall collage", "url": "https://www.amazon.in/s?k=dark+academia+vintage+postcards+wall+collage"}, {"name": "Warm Amber Fairy String Lights (10m)", "icon": "✨", "price": 249, "platform": "Amazon", "query": "amber fairy lights copper wire usb", "url": "https://www.amazon.in/s?k=amber+fairy+lights+copper+wire+usb"}, {"name": "Antique Kraft Paper Sticky Notes & Washi Tape", "icon": "📜", "price": 149, "platform": "Amazon", "query": "vintage kraft sticky notes washi tape", "url": "https://www.amazon.in/s?k=vintage+kraft+sticky+notes+washi+tape"}], "total": 597}], "Study-focused": [{"id": "study_exam_ready", "title": "Exam-Ready Focus Desk Setup", "tagline": "Eye-care lamp, book stand, wire timetable grid & distraction-free organization", "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "I want a better study setup", "Poor lighting"], "tier": "1k_2.5k", "items": [{"name": "Multi-Angle Adjustable Metal Textbook Reading Stand", "icon": "📖", "price": 349, "platform": "Amazon", "query": "metal book stand reading bookrest adjustable", "url": "https://www.amazon.in/s?k=metal+book+stand+reading+bookrest+adjustable"}, {"name": "Eye-Friendly LED Desk Lamp with 3 Light Modes & Dimmer", "icon": "💡", "price": 499, "platform": "Amazon", "query": "led desk lamp eye care dimmable usb", "url": "https://www.amazon.in/s?k=led+desk+lamp+eye+care+dimmable+usb"}, {"name": "Metal Wire Memo Grid Panel for Daily Timetable", "icon": "🧱", "price": 299, "platform": "Amazon", "query": "wall wire grid memo board black", "url": "https://www.amazon.in/s?k=wall+wire+grid+memo+board+black"}, {"name": "Desktop 4-Compartment Pen & Marker Organizer", "icon": "✏️", "price": 249, "platform": "Amazon", "query": "desktop stationery organizer 4 compartments", "url": "https://www.amazon.in/s?k=desktop+stationery+organizer+4+compartments"}, {"name": "Motivational Minimalist Study Poster (Pack of 3)", "icon": "🎯", "price": 199, "platform": "Amazon", "query": "study motivational posters for wall unframed", "url": "https://www.amazon.in/s?k=study+motivational+posters+for+wall+unframed"}], "total": 1595}, {"id": "study_small_desk", "title": "Compact Hostel Desk Maximizer", "tagline": "Clear desk surface by lifting laptop, pens & cables off the tabletop", "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=80", "problems": ["Small room", "Messy study area", "Too much clutter"], "tier": "1k_2.5k", "items": [{"name": "Foldable Ventilated Aluminium Laptop Stand", "icon": "💻", "price": 399, "platform": "Amazon", "query": "foldable aluminium laptop stand portable", "url": "https://www.amazon.in/s?k=foldable+aluminium+laptop+stand+portable"}, {"name": "Under-Desk Slide-out Hidden Drawer Box", "icon": "📦", "price": 299, "platform": "Amazon", "query": "under desk drawer adhesive slide out", "url": "https://www.amazon.in/s?k=under+desk+drawer+adhesive+slide+out"}, {"name": "Clip-on Desk Edge Cup & Headphone Holder", "icon": "🎧", "price": 249, "platform": "Amazon", "query": "cup holder with headphone hook desk clamp", "url": "https://www.amazon.in/s?k=cup+holder+with+headphone+hook+desk+clamp"}, {"name": "Dual-Sided Waterproof Desk Pad (Navy / Yellow)", "icon": "🪵", "price": 299, "platform": "Amazon", "query": "pu leather desk pad waterproof 80x40", "url": "https://www.amazon.in/s?k=pu+leather+desk+pad+waterproof+80x40"}], "total": 1246}, {"id": "study_bedside_reader", "title": "Bedside Study & Reading Station", "tagline": "For hostelers who study from bed: sturdy bed table, clip lamp & felt pocket", "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80", "problems": ["I want a better study setup", "Bed looks plain", "Poor lighting"], "tier": "1k_2.5k", "items": [{"name": "Foldable Wooden Bed Laptop Table with Cup Slot", "icon": "🛏️", "price": 549, "platform": "Amazon", "query": "foldable bed laptop table with cup holder", "url": "https://www.amazon.in/s?k=foldable+bed+laptop+table+with+cup+holder"}, {"name": "Flexible Gooseneck Clip-on Study Reading Light", "icon": "💡", "price": 299, "platform": "Amazon", "query": "clip on study lamp flexible gooseneck usb", "url": "https://www.amazon.in/s?k=clip+on+study+lamp+flexible+gooseneck+usb"}, {"name": "Bedside Hanging Caddy Pocket for Books & Tablet", "icon": "📚", "price": 299, "platform": "Amazon", "query": "bedside felt organizer pocket hanging caddy", "url": "https://www.amazon.in/s?k=bedside+felt+organizer+pocket+hanging+caddy"}], "total": 1147}, {"id": "study_exam_luxe", "title": "Semester 1 Top Ranker Suite", "tagline": "Screenbar lighting, ergonomic back cushion & full stationery system", "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80", "problems": ["I want a better study setup", "Messy study area", "Not enough storage"], "tier": "2.5k_5k", "items": [{"name": "Computer Monitor Screenbar Light (Zero Screen Glare)", "icon": "💻", "price": 899, "platform": "Amazon", "query": "monitor screenbar light lamp usb eye care", "url": "https://www.amazon.in/s?k=monitor+screenbar+light+lamp+usb+eye+care"}, {"name": "Ergonomic Memory Foam Lumbar Support Back Cushion", "icon": "🪑", "price": 699, "platform": "Amazon", "query": "memory foam lumbar support cushion chair", "url": "https://www.amazon.in/s?k=memory+foam+lumbar+support+cushion+chair"}, {"name": "3-Tier Desk Paper Tray & Document Organizer", "icon": "📂", "price": 499, "platform": "Amazon", "query": "metal mesh 3 tier document paper tray", "url": "https://www.amazon.in/s?k=metal+mesh+3+tier+document+paper+tray"}, {"name": "Stainless Steel Motivational Water Bottle (1 Litre)", "icon": "💧", "price": 399, "platform": "Amazon", "query": "stainless steel water bottle 1 litre with time marker", "url": "https://www.amazon.in/s?k=stainless+steel+water+bottle+1+litre+with+time+marker"}], "total": 2496}, {"id": "study_wall_timetable", "title": "Exam Timetable & Goal Wall", "tagline": "Peel-and-stick whiteboard sheet and weekly planner calendar for hostel wall", "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=900&q=80", "problems": ["Empty walls", "I want a better study setup"], "tier": "under_1k", "items": [{"name": "Self-Adhesive Whiteboard Wall Sticker Roll (45x200 cm)", "icon": "📋", "price": 299, "platform": "Amazon", "query": "whiteboard sticker roll for wall with markers", "url": "https://www.amazon.in/s?k=whiteboard+sticker+roll+for+wall+with+markers"}, {"name": "Dry Erase Markers with Eraser Caps (Pack of 4)", "icon": "🖍️", "price": 149, "platform": "Amazon", "query": "whiteboard marker pens with magnetic cap eraser", "url": "https://www.amazon.in/s?k=whiteboard+marker+pens+with+magnetic+cap+eraser"}, {"name": "A3 Weekly Planner Desk Pad (52 Tear-off Sheets)", "icon": "🗓️", "price": 249, "platform": "Amazon", "query": "weekly planner desk pad tear off sheets", "url": "https://www.amazon.in/s?k=weekly+planner+desk+pad+tear+off+sheets"}], "total": 697}, {"id": "study_budget_exam", "title": "Under ₹1,000 Study Desk Refresh", "tagline": "Everything you need to organize your desk for tests without spending much", "image": "https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "Poor lighting"], "tier": "under_1k", "items": [{"name": "USB Powered Clip-on LED Study Light", "icon": "💡", "price": 249, "platform": "Amazon", "query": "usb clip on led reading light flexible", "url": "https://www.amazon.in/s?k=usb+clip+on+led+reading+light+flexible"}, {"name": "Mesh Metal 3-Compartment Pen Stand", "icon": "✏️", "price": 199, "platform": "Amazon", "query": "metal mesh pen stand 3 compartment", "url": "https://www.amazon.in/s?k=metal+mesh+pen+stand+3+compartment"}, {"name": "Adhesive Desk Cable Clips (Set of 10)", "icon": "🔌", "price": 149, "platform": "Amazon", "query": "adhesive cable clips wire organizer desk", "url": "https://www.amazon.in/s?k=adhesive+cable+clips+wire+organizer+desk"}], "total": 597}], "Green / Nature": [{"id": "green_plant_haven", "title": "Lush Greenery Bed Nook", "tagline": "Hanging trailing ivy, botanical prints, sage green bedding & calming vibes", "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Bed looks plain", "Empty walls"], "tier": "1k_2.5k", "items": [{"name": "Artificial Trailing Ivy Vines (Pack of 12 Strands, 84 ft)", "icon": "🌿", "price": 299, "platform": "Amazon", "query": "artificial ivy garland green leaves pack of 12", "url": "https://www.amazon.in/s?k=artificial+ivy+garland+green+leaves+pack+of+12"}, {"name": "Sage Green Soft Cotton Single Bedsheet with Pillowcase", "icon": "🛏️", "price": 499, "platform": "Amazon", "query": "sage green single bedsheet cotton", "url": "https://www.amazon.in/s?k=sage+green+single+bedsheet+cotton"}, {"name": "Botanical Monstera Leaf Wall Canvas Prints (Set of 3)", "icon": "🖼️", "price": 299, "platform": "Amazon", "query": "botanical green leaf prints for wall set of 3", "url": "https://www.amazon.in/s?k=botanical+green+leaf+prints+for+wall+set+of+3"}, {"name": "Warm Fairy Rice Lights (Woven into Ivy)", "icon": "✨", "price": 249, "platform": "Amazon", "query": "fairy lights 10m warm white usb", "url": "https://www.amazon.in/s?k=fairy+lights+10m+warm+white+usb"}, {"name": "Potted Faux Succulent Plant in Ceramic Pot", "icon": "🪴", "price": 199, "platform": "Flipkart", "query": "artificial succulent plant ceramic pot desk", "url": "https://www.flipkart.com/search?q=artificial+succulent+plant+ceramic+pot+desk"}], "total": 1545}, {"id": "green_desk_oasis", "title": "Botanical Study Desk Oasis", "tagline": "Mini terrarium, bamboo desk organizer & leaf coasters for calm study sessions", "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80", "problems": ["Messy study area", "I want a better study setup", "Room feels boring"], "tier": "1k_2.5k", "items": [{"name": "Mini Glass Bulb Terrarium with Wooden Stand", "icon": "🌱", "price": 349, "platform": "Amazon", "query": "glass test tube hydroponic vase wooden stand", "url": "https://www.amazon.in/s?k=glass+test+tube+hydroponic+vase+wooden+stand"}, {"name": "Natural Bamboo Desktop Organizer & Stationery Holder", "icon": "🪵", "price": 349, "platform": "Amazon", "query": "bamboo desk organizer pen holder wood", "url": "https://www.amazon.in/s?k=bamboo+desk+organizer+pen+holder+wood"}, {"name": "Monstera Leaf Shaped Felt Coasters (Pack of 4)", "icon": "🍃", "price": 199, "platform": "Amazon", "query": "monstera leaf coasters felt green set", "url": "https://www.amazon.in/s?k=monstera+leaf+coasters+felt+green+set"}, {"name": "Warm Gooseneck Lamp with Wooden Base", "icon": "💡", "price": 399, "platform": "Flipkart", "query": "wooden base desk lamp warm led", "url": "https://www.flipkart.com/search?q=wooden+base+desk+lamp+warm+led"}], "total": 1296}, {"id": "green_ivy_wall", "title": "Faux Ivy Fairy Light Wall", "tagline": "Drape plain hostel brick with trailing green vines and warm micro fairy lights", "image": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=900&q=80", "problems": ["Empty walls", "Room feels boring", "Poor lighting"], "tier": "under_1k", "items": [{"name": "Artificial Ivy Vines Curtain (Pack of 12 Strands)", "icon": "🌿", "price": 299, "platform": "Amazon", "query": "artificial ivy leaf garland 12 strands", "url": "https://www.amazon.in/s?k=artificial+ivy+leaf+garland+12+strands"}, {"name": "Copper Wire Fairy String Lights (10m USB)", "icon": "✨", "price": 199, "platform": "Amazon", "query": "copper wire fairy lights 10m warm white", "url": "https://www.amazon.in/s?k=copper+wire+fairy+lights+10m+warm+white"}, {"name": "Command Damage-Free Clear Wall Hooks (Pack of 6)", "icon": "🪝", "price": 199, "platform": "Amazon", "query": "command clear mini clips adhesive hooks", "url": "https://www.amazon.in/s?k=command+clear+mini+clips+adhesive+hooks"}], "total": 697}, {"id": "green_small_room", "title": "Compact Green Corner Sanctuary", "tagline": "Air-purifying faux plants, hanging basket & sage cushions for small rooms", "image": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80", "problems": ["Small room", "No cozy corner", "I want the room to look more aesthetic"], "tier": "1k_2.5k", "items": [{"name": "Jute Hanging Planter with Artificial String of Pearls", "icon": "🪴", "price": 349, "platform": "Amazon", "query": "artificial hanging plant string of pearls pot", "url": "https://www.amazon.in/s?k=artificial+hanging+plant+string+of+pearls+pot"}, {"name": "Sage Green Textured Cushion Cover (16x16)", "icon": "🛋️", "price": 249, "platform": "Flipkart", "query": "sage green cushion cover textured 16x16", "url": "https://www.flipkart.com/search?q=sage+green+cushion+cover+textured+16x16"}, {"name": "Faux Eucalyptus Leaf Spray in Slim Glass Bottle", "icon": "🍃", "price": 299, "platform": "Amazon", "query": "artificial eucalyptus stems in glass bottle vase", "url": "https://www.amazon.in/s?k=artificial+eucalyptus+stems+in+glass+bottle+vase"}, {"name": "Warm Amber Fairy Light String", "icon": "✨", "price": 199, "platform": "Amazon", "query": "fairy lights 10m warm white usb", "url": "https://www.amazon.in/s?k=fairy+lights+10m+warm+white+usb"}], "total": 1096}, {"id": "green_storage_fresh", "title": "Fresh Green Storage Nook", "tagline": "Botanical printed wardrobe bins & wire hanging shelves to hide clutter", "image": "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=900&q=80", "problems": ["Not enough storage", "Too much clutter", "Small room"], "tier": "1k_2.5k", "items": [{"name": "Botanical Leaf Print Fabric Storage Baskets (Set of 2)", "icon": "📦", "price": 399, "platform": "Amazon", "query": "fabric storage basket botanical print set of 2", "url": "https://www.amazon.in/s?k=fabric+storage+basket+botanical+print+set+of+2"}, {"name": "Hanging 3-Pocket Jute Wall Organizer", "icon": "🧺", "price": 299, "platform": "Amazon", "query": "jute hanging wall organizer 3 pockets", "url": "https://www.amazon.in/s?k=jute+hanging+wall+organizer+3+pockets"}, {"name": "Self-Adhesive Heavy Duty Green Wall Hooks", "icon": "🪝", "price": 149, "platform": "Amazon", "query": "adhesive wall hooks heavy duty utility", "url": "https://www.amazon.in/s?k=adhesive+wall+hooks+heavy+duty+utility"}], "total": 847}, {"id": "green_budget_oasis", "title": "Under ₹1,000 Botanical Refresh", "tagline": "Ivy vines, fairy string & succulent pot for an immediate natural transformation", "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80", "problems": ["Room feels boring", "Empty walls"], "tier": "under_1k", "items": [{"name": "Artificial Hanging Ivy Vines (Pack of 6 Strands)", "icon": "🌿", "price": 199, "platform": "Amazon", "query": "artificial ivy garland pack of 6 green leaves", "url": "https://www.amazon.in/s?k=artificial+ivy+garland+pack+of+6+green+leaves"}, {"name": "Warm 10m Copper Wire Fairy Lights", "icon": "✨", "price": 199, "platform": "Amazon", "query": "copper wire fairy lights 10m warm white", "url": "https://www.amazon.in/s?k=copper+wire+fairy+lights+10m+warm+white"}, {"name": "Mini Artificial Potted Succulent for Table", "icon": "🪴", "price": 149, "platform": "Amazon", "query": "small artificial succulent in white pot", "url": "https://www.amazon.in/s?k=small+artificial+succulent+in+white+pot"}], "total": 547}]};
     const ROOM_CARDS = [{"id": 1, "cat": "small", "aesthetic": "Clean Girl", "title": "Full Mirror Light Illusion", "desc": "Floor-leaning minimalist wooden mirror placed opposite window instantly doubles natural light and expands room depth.", "budget": "₹800–₹1,500", "minBudget": 800, "maxBudget": 1500, "diff": 1, "colors": ["#FFFFFF", "#FAF8F5", "#E6DFD5", "#A8C9B9"], "img": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80", "tags": ["smallspace", "nodrill", "renter", "nopaint"], "tips": ["Position directly opposite your window to bounce daylight across the ceiling", "Attach clear rubber wall bumpers to frame top to prevent wall scuffs", "Keep the base clutter-free with a single ceramic catchall dish"], "recreateItems": [{"name": "Minimalist wooden framed floor mirror", "price": 850, "icon": "🪞", "alt": "Thrifted full-length mirror frame cleaned with white wax (Save ₹350)"}, {"name": "Non-slip rubber grip pads & corner bumpers", "price": 90, "icon": "🛡️", "alt": "Adhesive felt dots under frame base (Save ₹50)"}]}, {"id": 2, "cat": "budget", "aesthetic": "Clean Girl", "title": "Crisp Linen Sanctuary Bed", "desc": "Layered breathable white washed cotton duvet with oatmeal pillow shams for that hotel-grade calm bed aesthetic.", "budget": "₹700–₹1,400", "minBudget": 700, "maxBudget": 1400, "diff": 1, "colors": ["#FFFFFF", "#FAF8F5", "#E6DFD5", "#CBD5E1"], "img": "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Wash 100% cotton sheets with white vinegar in final rinse for cloud-like softness", "Hospital-corner mattress tuck keeps your single bed crisp all week", "Layer a neutral waffle blanket at the foot of the bed for texture"], "recreateItems": [{"name": "Washed white cotton duvet & sheet set", "price": 680, "icon": "🛏️", "alt": "Local cotton export surplus outlet single sheet (Save ₹320)"}, {"name": "Oatmeal linen throw pillow cover set", "price": 220, "icon": "☁️", "alt": "Repurposed beige canvas pillow covers (Save ₹120)"}]}, {"id": 3, "cat": "study", "aesthetic": "Clean Girl", "title": "Scandi Minimal Study Nook", "desc": "Decluttered light-wood study surface with acrylic stationery riser, slim warm task lamp, and zero loose wire clutter.", "budget": "₹600–₹1,300", "minBudget": 600, "maxBudget": 1300, "diff": 1, "colors": ["#FAF8F5", "#E6DFD5", "#A8C9B9", "#334155"], "img": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "smallspace"], "tips": ["Store only today’s 3 notebooks on surface; stow others in vertical organizers", "Use clear acrylic desk organizers to maintain visual openness", "Route laptop and phone chargers through a single under-desk Velcro strap"], "recreateItems": [{"name": "Clear acrylic 3-tier desk riser organizer", "price": 340, "icon": "📁", "alt": "Clear shoe box lids arranged as desk trays (Save ₹240)"}, {"name": "Minimalist warm LED 3000K touch task lamp", "price": 380, "icon": "💡", "alt": "Rechargeable clip-on book light (Save ₹180)"}]}, {"id": 4, "cat": "diy", "aesthetic": "Clean Girl", "title": "Foldaway Floating Desk Nook", "desc": "Space-saving wall-mounted study board that folds flat against the wall with magnetic cork strip for study goals.", "budget": "₹1,200–₹2,600", "minBudget": 1200, "maxBudget": 2600, "diff": 2, "colors": ["#FFFFFF", "#E2E8F0", "#FAF8F5", "#A8C9B9"], "img": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=700&q=80", "tags": ["smallspace", "renter"], "tips": ["Heavy duty folding spring brackets support up to 35kg securely", "Add an under-desk magnetic strip to stick USB flash drives and scissors", "Folds completely flush to reclaim 12 sq.ft. of hostel floor space"], "recreateItems": [{"name": "Heavy duty fold-down wall brackets (pair)", "price": 490, "icon": "🔧", "alt": "Heavy duty L-brackets from local hardware store (Save ₹210)"}, {"name": "Laminated white pre-cut pine board (60x40cm)", "price": 520, "icon": "🪵", "alt": "Repurposed study table leaf or drawing board (Save ₹300)"}, {"name": "Magnetic cork strip with 6 pins", "price": 180, "icon": "📌", "alt": "Wine corks sliced in half with adhesive tape (Save ₹150)"}]}, {"id": 5, "cat": "budget", "aesthetic": "Coquette", "title": "Fairy Light Canopy Drape", "desc": "Delicate sheer chiffon cloud canopy draped over bed frame with warm 3000K micro fairy lights and satin ribbon ties.", "budget": "₹400–₹800", "minBudget": 400, "maxBudget": 800, "diff": 1, "colors": ["#F9CAD2", "#FFF0F4", "#C3B1E1", "#FDE68A"], "img": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Use clear adhesive command hooks on ceiling corners for 100% damage-free hanging", "Gather chiffon folds with pink satin ribbon bows tied around bunk posts", "Warm copper wire LEDs emit zero heat and give a dreamy bedroom glow"], "recreateItems": [{"name": "10m Warm copper fairy string lights", "price": 220, "icon": "💡", "alt": "Local festive lighting market string lights (Save ₹70)"}, {"name": "Sheer white chiffon fabric drape (3m)", "price": 250, "icon": "🎀", "alt": "Mum’s vintage sheer white/blush dupatta (Save ₹250)"}, {"name": "Clear damage-free command ceiling hooks (6 pcs)", "price": 140, "icon": "🪝", "alt": "Clear suction hooks on smooth tile/wood (Save ₹80)"}]}, {"id": 6, "cat": "aesthetic", "aesthetic": "Coquette", "title": "Blush Ruffle & Ribbon Bedding", "desc": "Romantic coquette sanctuary bed styled with ruffled petal-pink duvet, plush velvet bow pillows, and soft scalloped details.", "budget": "₹700–₹1,500", "minBudget": 700, "maxBudget": 1500, "diff": 1, "colors": ["#F9CAD2", "#FFF0F4", "#FDBA9B", "#FAF5FF"], "img": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Tie pastel ribbon bows around pillowcase corners for an effortless coquette touch", "Pair with a soft ivory knit throw blanket at the bed base", "Mist pillow with calming lavender rose water before sleep"], "recreateItems": [{"name": "Scalloped blush pink duvet & pillowcase set", "price": 690, "icon": "🛏️", "alt": "Plain pink single bedsheet with DIY sewn ribbon bows (Save ₹350)"}, {"name": "Plush velvet bow accent cushion", "price": 260, "icon": "🎀", "alt": "Tie a silk scarf into a bow around existing cushion (Save ₹260)"}]}, {"id": 7, "cat": "study", "aesthetic": "Coquette", "title": "Vintage Gilded Vanity & Ribbon Nook", "desc": "A delicate vanity and study corner featuring an arched gilded mirror, ribbed glass perfume trays, and ribbon-tied organizers.", "budget": "₹600–₹1,400", "minBudget": 600, "maxBudget": 1400, "diff": 1, "colors": ["#FFF0F4", "#F9CAD2", "#FDE68A", "#E8D7F1"], "img": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "smallspace"], "tips": ["Repurpose glass dessert bowls and saucers as romantic jewelry catchalls", "Wrap satin blush ribbons around pen cups and stationery holders", "A warm 3W mini lamp next to the mirror gives studio-quality soft lighting"], "recreateItems": [{"name": "Arched vintage gold-trimmed vanity mirror", "price": 540, "icon": "🪞", "alt": "Thrifted tabletop mirror painted with antique gold acrylic (Save ₹320)"}, {"name": "Fluted glass accessory tray with gold rim", "price": 190, "icon": "✨", "alt": "Vintage glass saucer from home (Save ₹190)"}]}, {"id": 8, "cat": "small", "aesthetic": "Coquette", "title": "Soft Rose & Petal Dream Corner", "desc": "Pastel romantic cozy corner with dried rose arrangements in ceramic bud vases, floral art postcards, and warm bedside ambiance.", "budget": "₹350–₹750", "minBudget": 350, "maxBudget": 750, "diff": 1, "colors": ["#F9CAD2", "#FFF0F4", "#E8D7F1", "#FAF5FF"], "img": "https://images.unsplash.com/photo-1582533561751-ef6f6ab93a2e?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "smallspace"], "tips": ["Dry fresh roses upside down for 5 days to create everlasting coquette decor", "Tape vintage floral postcard prints using pastel pink washi tape loops", "Drop warm battery tea lights inside vintage glass jars for cozy evenings"], "recreateItems": [{"name": "Ceramic pastel rosebud vase (set of 2)", "price": 240, "icon": "🏺", "alt": "Upcycled beverage glass bottles wrapped in lace tape (Save ₹200)"}, {"name": "Vintage French botanical postcard print set", "price": 120, "icon": "🌸", "alt": "Print vintage illustrations at campus print shop (Save ₹80)"}]}, {"id": 9, "cat": "aesthetic", "aesthetic": "Boho", "title": "Sage Green Botanical Corner", "desc": "Peel-and-stick sage corner accented with terracotta plant pots, lush trailing pothos, and warm ambient sunlight.", "budget": "₹600–₹1,800", "minBudget": 600, "maxBudget": 1800, "diff": 2, "colors": ["#A8C9B9", "#E07A5F", "#F4F1DE", "#52796F"], "img": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Peel-and-stick removable wallpaper peels clean without residue at move-out", "Terracotta pots breathe and prevent plant root rot in dorm climates", "Snake plants and pothos thrive even in low-light hostel corners"], "recreateItems": [{"name": "Matte sage removable wallpaper roll (2m)", "price": 460, "icon": "🌿", "alt": "Hang a botanical linen wall tapestry (Save ₹200)"}, {"name": "Natural terracotta desktop pots (set of 2)", "price": 220, "icon": "🏺", "alt": "Repurposed clay kulhads painted with clear sealant (Save ₹180)"}, {"name": "Trailing pothos / money plant in nursery pot", "price": 140, "icon": "🌱", "alt": "Water cuttings propagated from college garden (Save ₹140)"}]}, {"id": 10, "cat": "budget", "aesthetic": "Boho", "title": "Stacked Crate Modular Rustic Shelf", "desc": "Repurposed pinewood fruit crates stacked organically to display textbooks, trailing succulents, and woven storage baskets.", "budget": "₹500–₹1,200", "minBudget": 500, "maxBudget": 1200, "diff": 2, "colors": ["#E07A5F", "#A8C9B9", "#E9C46A", "#F4F1DE"], "img": "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "smallspace"], "tips": ["Sand crate slats with 120-grit paper to avoid splinters", "Fasten crates together with heavy zip ties for sturdy wobble-free shelving", "Stow charging cables and laundry in a woven jute basket inside bottom cubby"], "recreateItems": [{"name": "Pinewood storage crates (set of 3)", "price": 540, "icon": "📦", "alt": "Ask neighborhood fruit vendor for mango/apple crates (Save ₹420)"}, {"name": "Jute braided desktop storage basket", "price": 210, "icon": "🧺", "alt": "DIY coiled jute rope basket over plastic tub (Save ₹140)"}]}, {"id": 11, "cat": "small", "aesthetic": "Boho", "title": "Rattan & Macramé Dream Bed Nook", "desc": "Earthy bohemian sleeping sanctuary with woven cotton macramé hanging shelf, textured rust throw, and natural cane accents.", "budget": "₹700–₹1,600", "minBudget": 700, "maxBudget": 1600, "diff": 2, "colors": ["#E07A5F", "#D4A373", "#F4F1DE", "#A8C9B9"], "img": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "smallspace"], "tips": ["Hang macramé shelf from a single adhesive picture hook rated for 5kg", "Layer a waffle rust throw blanket over white sheets for instant warmth", "Place woven coasters beside bed to prevent water cup rings on furniture"], "recreateItems": [{"name": "Handmade cotton macramé wall hanging shelf", "price": 380, "icon": "🧶", "alt": "DIY cotton rope macramé with wooden dowel (Save ₹230)"}, {"name": "Woven rattan bedside organizer caddy", "price": 320, "icon": "🧺", "alt": "Cardboard shoe box wrapped in jute twine (Save ₹260)"}]}, {"id": 12, "cat": "diy", "aesthetic": "Boho", "title": "Earthy Terracotta & Sunlight Nook", "desc": "Warm golden sunlight, terracotta linen bedding, trailing pothos cuttings, and handcrafted woven accents.", "budget": "₹450–₹950", "minBudget": 450, "maxBudget": 950, "diff": 1, "colors": ["#E07A5F", "#E9C46A", "#F4F1DE", "#52796F"], "img": "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Position bedding near natural window light to highlight warm terracotta tones", "Use botanical prints in simple wooden clipboards as interchangeable wall art", "Add a small scented cedar or sandalwood room spray for earthy ambience"], "recreateItems": [{"name": "Washed terracotta linen bed throw", "price": 480, "icon": "🛏️", "alt": "Dye existing white sheet with warm terracotta fabric dye (Save ₹360)"}, {"name": "Macramé plant hanging rope holder", "price": 190, "icon": "🌱", "alt": "Knot cotton clothesline rope into spiral plant hanger (Save ₹140)"}]}, {"id": 13, "cat": "diy", "aesthetic": "Minimalist", "title": "Freestanding Minimalist Wardrobe Rail", "desc": "Sleek matte white freestanding clothing rack displaying capsule wardrobe with space for shoe storage trays beneath.", "budget": "₹500–₹1,100", "minBudget": 500, "maxBudget": 1100, "diff": 2, "colors": ["#FFFFFF", "#E2E8F0", "#94A3B8", "#334155"], "img": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "smallspace"], "tips": ["Assemble using 1-inch hardware pipes sprayed in matte white or light grey", "Use uniform slim non-slip velvet hangers to save 50% closet width", "Keeps tomorrow's outfit wrinkle-free and off the hostel study chair"], "recreateItems": [{"name": "1-inch PVC pipes & elbow connector kit", "price": 340, "icon": "🔧", "alt": "Heavy bamboo pole suspended by heavy cord (Save ₹200)"}, {"name": "Ultra-slim velvet non-slip hangers (pack of 10)", "price": 210, "icon": "👔", "alt": "Uniform wooden or wire hangers (Save ₹90)"}]}, {"id": 14, "cat": "small", "aesthetic": "Minimalist", "title": "Scandinavian Zen Platform Bed Nook", "desc": "Calm, functional bedroom with zero visual clutter, flat neutral stone bedding, and concealed underbed storage drawers.", "budget": "₹650–₹1,400", "minBudget": 650, "maxBudget": 1400, "diff": 1, "colors": ["#FFFFFF", "#F1F5F9", "#E2E8F0", "#475569"], "img": "https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=700&q=80", "tags": ["smallspace", "renter", "nopaint"], "tips": ["A monotone bedspread eliminates visual noise in compact hostel spaces", "Slide low-profile fabric storage boxes underneath bed frame", "Keep bedside surfaces 100% clear except for phone and water"], "recreateItems": [{"name": "Monochrome stone-washed linen bedspread", "price": 590, "icon": "🛏️", "alt": "Pure grey cotton sheet tightly tucked (Save ₹280)"}, {"name": "Underbed fabric zippered storage box", "price": 280, "icon": "📦", "alt": "Recycled flat carton wrapped in craft paper (Save ₹240)"}]}, {"id": 15, "cat": "budget", "aesthetic": "Minimalist", "title": "Geometric Wall Frame Bed Sanctuary", "desc": "Minimalist bedroom wall with a single clean thin oak frame, warm white bedding, and concealed cord tracks.", "budget": "₹450–₹900", "minBudget": 450, "maxBudget": 900, "diff": 1, "colors": ["#FFFFFF", "#FAF8F5", "#D4A373", "#334155"], "img": "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["One purposeful piece of art creates more zen calm than 10 busy posters", "Hang frame with Velcro damage-free picture strips (leaves paint intact)", "Keep side wall bare to create feeling of openness"], "recreateItems": [{"name": "Thin oak minimal poster frame A3", "price": 290, "icon": "🖼️", "alt": "Magnetic poster hanger strips (Save ₹140)"}, {"name": "Damage-free heavy picture hanging strips (4 pairs)", "price": 140, "icon": "🪝", "alt": "Blue painter tape border frame (Save ₹100)"}]}, {"id": 16, "cat": "study", "aesthetic": "Minimalist", "title": "Decluttered Study & Space-Saving Desk", "desc": "High-focus minimal workstation with hidden under-desk cable management tray and slim matte black eye-care task lamp.", "budget": "₹600–₹1,350", "minBudget": 600, "maxBudget": 1350, "diff": 1, "colors": ["#FFFFFF", "#E2E8F0", "#334155", "#0F172A"], "img": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=700&q=80", "tags": ["smallspace", "renter"], "tips": ["Fasten power extension cord under desk using heavy adhesive strips", "A single matte lamp with 4000K daylight LED enhances study stamina", "Wipe desk clean at the end of each evening study session"], "recreateItems": [{"name": "Under-desk wire management basket", "price": 280, "icon": "🔌", "alt": "Binder clips clamped to desk edge for wire routing (Save ₹240)"}, {"name": "Matte black clamp-on flexible desk lamp", "price": 420, "icon": "💡", "alt": "USB rechargeable flexible study light (Save ₹220)"}]}, {"id": 17, "cat": "study", "aesthetic": "Dark Academia", "title": "Zen Reading Corner & Amber Cushion Nook", "desc": "Floor cushion reading sanctuary by window with vintage book stacks, tartan wool throw, and flexible warm amber clip lamp.", "budget": "₹600–₹1,400", "minBudget": 600, "maxBudget": 1400, "diff": 1, "colors": ["#4A3525", "#D4A373", "#C5A059", "#FAEDCD"], "img": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint", "smallspace"], "tips": ["Dense floor cushion + wall bolster = supreme posture support for late night reading", "Flexible amber clip lamp mounts to bunk bed pole without tools", "Stack favorite heavy hardcovers into an organic bedside table"], "recreateItems": [{"name": "Tufted espresso floor cushion 60x60cm", "price": 440, "icon": "🛋️", "alt": "Folded winter quilt layered with pillows (Save ₹440)"}, {"name": "Vintage amber flexible clip lamp (2200K)", "price": 290, "icon": "💡", "alt": "Bedside rechargeable warm torch (Save ₹180)"}]}, {"id": 18, "cat": "budget", "aesthetic": "Dark Academia", "title": "Vintage Book Stack & Amber Study", "desc": "Scholarly desk atmosphere with open classical book pages, brass banker style LED lighting, and warm parchment tones.", "budget": "₹450–₹1,100", "minBudget": 450, "maxBudget": 1100, "diff": 1, "colors": ["#4A3525", "#C5A059", "#FAEDCD", "#2D4A3E"], "img": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Secondhand bookstore paperbacks make the best aesthetic book walls", "Warm 2200K amber lighting protects eyes and feels like an ancient library", "Keep a leatherette notebook open for fountain pen notes"], "recreateItems": [{"name": "Antique book focal wall pages pack", "price": 95, "icon": "📖", "alt": "Recycled discarded damaged library novel pages (Save ₹95)"}, {"name": "Antique brass finish warm LED banker lamp", "price": 580, "icon": "💡", "alt": "Amber bulb inside desk clamp shade (Save ₹350)"}]}, {"id": 19, "cat": "small", "aesthetic": "Dark Academia", "title": "Scholarly Library Wall & Plaid Throw", "desc": "Rich dark espresso wooden desktop shelving with classical novels, brass bookends, and a deep forest plaid wool lap blanket.", "budget": "₹700–₹1,500", "minBudget": 700, "maxBudget": 1500, "diff": 1, "colors": ["#4A3525", "#2D4A3E", "#D4A373", "#FAEDCD"], "img": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "smallspace"], "tips": ["Stain plain wooden crate in dark walnut for instant antique look", "Tartan plaid throw adds scholarly texture to plain hostel mattress", "Display vintage postcards and classical quotes on a small cork strip"], "recreateItems": [{"name": "Dark walnut tabletop desktop bookrack", "price": 380, "icon": "📚", "alt": "Sturdy cardboard box trimmed and painted dark brown (Save ₹300)"}, {"name": "Tartan forest plaid wool-blend lap blanket", "price": 450, "icon": "🧣", "alt": "Vintage woolen winter muffler draped on chair (Save ₹350)"}]}, {"id": 20, "cat": "diy", "aesthetic": "Dark Academia", "title": "Antique Botanical & Classical Art Study", "desc": "Moody desk sanctuary styled with classical botanical sketches, vintage inkpot, and dark timber organizers.", "budget": "₹350–₹850", "minBudget": 350, "maxBudget": 850, "diff": 1, "colors": ["#4A3525", "#C5A059", "#D4A373", "#334155"], "img": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Print antique public-domain anatomical and botanical plates on sepia paper", "Tape pages with blue painter tape loops to leave hostel paint undamaged", "Upcycle dark amber glass medicine bottles as desktop flower or quill holders"], "recreateItems": [{"name": "Vintage botanical & classical art print set (12 prints)", "price": 180, "icon": "📜", "alt": "Print public domain museum scans at campus lab (Save ₹120)"}, {"name": "Amber glass inkpot & brass pen rest", "price": 170, "icon": "✒️", "alt": "Cleaned amber medicine bottle with wooden chopstick rest (Save ₹150)"}]}, {"id": 21, "cat": "aesthetic", "aesthetic": "Pinterest Core", "title": "Polaroid & Twine Memory Wall", "desc": "Curated mini photo prints clipped to natural baker twine with warm micro fairy lights, dried flowers, and colorful sticker accents.", "budget": "₹400–₹850", "minBudget": 400, "maxBudget": 850, "diff": 1, "colors": ["#F9CAD2", "#C3B1E1", "#E9C46A", "#FFF0F4"], "img": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Print mini polaroids at local photo lab for ₹6/print or print 9 per A4 page", "Adhesive clear command hooks hold twine taut without wall nails", "Weave micro copper fairy lights through clips for evening twinkle"], "recreateItems": [{"name": "Polaroid style prints pack of 30", "price": 210, "icon": "📷", "alt": "Color printouts on thick glossy sheet cut with scissors (Save ₹120)"}, {"name": "Natural jute twine + 30 mini wooden clips", "price": 95, "icon": "🎀", "alt": "Cotton sewing thread with small paper binder clips (Save ₹60)"}, {"name": "Warm 5m micro copper wire string lights", "price": 140, "icon": "💡", "alt": "Use existing fairy lights (Save ₹140)"}]}, {"id": 22, "cat": "gaming", "aesthetic": "Pinterest Core", "title": "Pastel Battlestation & Bias Glow", "desc": "Aesthetic pastel study and gaming setup with soft ambient bias LED strip behind monitor, lilac desk mat, and neat cable sleeve.", "budget": "₹800–₹2,200", "minBudget": 800, "maxBudget": 2200, "diff": 2, "colors": ["#A0C8F0", "#C3B1E1", "#F9CAD2", "#70D6BC"], "img": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=700&q=80", "tags": ["nodrill", "renter"], "tips": ["Soft bias lighting behind monitor relieves late night dorm eye fatigue", "Oversized pastel desk mat protects hostel desk wood and dampens keyboard clatter", "Velcro ties keep messy charger cords completely hidden behind table legs"], "recreateItems": [{"name": "USB ambient pastel bias LED strip (1m)", "price": 320, "icon": "💡", "alt": "Place warm bedside lamp directly behind laptop (Save ₹200)"}, {"name": "Pastel lilac oversized faux-leather desk mat (80x40cm)", "price": 380, "icon": "⌨️", "alt": "Pastel chart paper laminated with clear film (Save ₹300)"}, {"name": "Reusable Velcro cable organizer wraps (20 pcs)", "price": 110, "icon": "🔌", "alt": "Twist ties from bread packets (Save ₹110)"}]}, {"id": 23, "cat": "budget", "aesthetic": "Pinterest Core", "title": "Fairy Light Grid & Youthful Collage Wall", "desc": "White wire memo grid panel styled with colorful art prints, glowing fairy lights, cute stickers, and pastel post-its.", "budget": "₹450–₹950", "minBudget": 450, "maxBudget": 950, "diff": 1, "colors": ["#C3B1E1", "#FDE68A", "#70D6BC", "#FFF0F4"], "img": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80", "tags": ["renter", "nodrill", "nopaint"], "tips": ["Mount wire grid using two adhesive clear utility hooks", "Clip daily reminders, photos, and motivational quotes with colored binder clips", "Add mini dried flower sprigs at grid intersections"], "recreateItems": [{"name": "White wire grid photo memo panel 45x65cm", "price": 380, "icon": "📌", "alt": "Wire barbecue grill rack from D-Mart painted white (Save ₹220)"}, {"name": "Pastel decorative washi tape pack of 4", "price": 110, "icon": "🎨", "alt": "Colored masking tape from stationery shop (Save ₹60)"}]}, {"id": 24, "cat": "small", "aesthetic": "Pinterest Core", "title": "Pastel Dreamland Bed & Squiggle Decor", "desc": "Colorful youthful dorm bed styled with reversible lilac & butter yellow duvet, checkered cushion, and whimsical wavy wall accents.", "budget": "₹750–₹1,600", "minBudget": 750, "maxBudget": 1600, "diff": 1, "colors": ["#C3B1E1", "#FDE68A", "#F9CAD2", "#A0C8F0"], "img": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80", "tags": ["smallspace", "renter", "nopaint"], "tips": ["Reversible two-tone duvet lets you change your room vibe whenever you flip it", "A pastel wavy acrylic mirror bounces light and adds a trendy sculptural pop", "Mix checkered and smiley face throw cushions for curated Gen-Z aesthetic"], "recreateItems": [{"name": "Reversible lilac & butter yellow duvet set", "price": 680, "icon": "🛏️", "alt": "Layer two contrasting pastel single bedsheets (Save ₹300)"}, {"name": "Squiggly wavy pastel accent mirror", "price": 390, "icon": "🪞", "alt": "DIY clay squiggle border around mini mirror (Save ₹280)"}]}];
     const DIY_IDEAS = [{"aesthetic": "Clean Girl", "title": "Minimalist Acrylic Desk Organizer", "cost": "₹150", "time": "1 hr", "diff": "Beginner", "materials": "Clear acrylic pencil holder, neutral washi label tape, fine-line black marker, rubber base pads.", "steps": ["Wipe acrylic organizer with microfiber cloth and rubbing alcohol.", "Label slots neatly using matte neutral tape (Pens, Highlighters, Tech).", "Attach rubber bumper dots beneath base to prevent desk surface scratches."], "safety": "⚠️ Safety: Use non-permanent washi tape so labels peel cleanly without glue residue."}, {"aesthetic": "Clean Girl", "title": "Aesthetic Framed Line Art Poster", "cost": "₹120", "time": "45 mins", "diff": "Beginner", "materials": "Printed minimalist line art on matte cardstock (A4), slim wooden frame, 2 pairs Velcro picture strips.", "steps": ["Download copyright-free line art or sketch a continuous face/flower outline.", "Fit into a lightweight natural pine or white photo frame.", "Press Velcro picture strips firmly against frame and wall for 30 seconds."], "safety": "⚠️ Renter note: Pull Velcro tab straight down against wall when removing to protect hostel paint."}, {"aesthetic": "Clean Girl", "title": "Foldable Fabric Underbed Storage Box", "cost": "₹180", "time": "1.5 hrs", "diff": "Beginner", "materials": "Clean corrugated cardboard delivery box, neutral cream linen fabric offcut, fabric glue, scissors.", "steps": ["Trim delivery box to 15cm height so it slides effortlessly under hostel bed.", "Wrap outer surface and rim in neutral cream or oatmeal linen fabric, securing with fabric glue.", "Add a folded ribbon tab on the front for easy pull-out access."], "safety": "⚠️ Tip: Ensure cardboard is clean and dry before wrapping to maintain hygiene."}, {"aesthetic": "Coquette", "title": "Fairy Light Cloud Bed Canopy", "cost": "₹300", "time": "2 hrs", "diff": "Beginner", "materials": "5m warm copper wire LEDs, sheer white chiffon fabric or dupatta, 4 adhesive clear ceiling command hooks, pink satin ribbon.", "steps": ["Affix clear adhesive hooks to ceiling corners above bed and allow 30 minutes to bond.", "Drape sheer chiffon across hooks, allowing it to swoop in soft romantic clouds.", "Weave micro fairy lights through fabric folds and tie pink satin bows at each hook point."], "safety": "⚠️ Safety: Use low-voltage LED string lights that remain cool to the touch. Never use incandescent bulbs near fabric."}, {"aesthetic": "Coquette", "title": "Vintage Ribbon Bow Photo Frame", "cost": "₹140", "time": "1 hr", "diff": "Beginner", "materials": "Thrifted tabletop photo frame, pastel pink satin ribbon (1m), hot glue or fabric adhesive, floral postcard.", "steps": ["Clean frame glass and insert your favorite vintage floral art or friend photo.", "Tie a neat double bow with pastel pink satin ribbon.", "Dab glue on top center frame arch and press bow firmly until dry."], "safety": "⚠️ Caution: Be mindful of hot glue temperature on fingertips."}, {"aesthetic": "Coquette", "title": "Scalloped Perfume & Jewelry Vanity Tray", "cost": "₹160", "time": "1.5 hrs", "diff": "Intermediate", "materials": "Air-dry white clay (250g), pastel pink acrylic paint, gloss varnish, rolling pin, butter knife.", "steps": ["Roll air-dry clay flat into a 15cm oval about 5mm thick.", "Gently curve edges upward and use fingertips to create wavy scalloped ridges.", "Allow to dry 24 hours, paint in soft blush pink, and finish with a clear gloss coat."], "safety": "⚠️ Note: Air-dry clay is decorative only; wipe clean with dry cloth, do not submerge in water."}, {"aesthetic": "Boho", "title": "Macramé Plant Hanging Shelf", "cost": "₹250", "time": "3 hrs", "diff": "Intermediate", "materials": "Natural cotton rope (10m), smooth wooden dowel or branch, small potted pothos/succulent.", "steps": ["Cut cotton rope into 8 strands of 2.5m each and fold over dowel with lark’s head knots.", "Knot alternating square knots to form an open diamond netting basket.", "Insert plant pot firmly in base cradle and test balance before hanging."], "safety": "⚠️ Renter note: Hang only lightweight plastic nursery pots or propagated cuttings to avoid excess weight."}, {"aesthetic": "Boho", "title": "Botanical Leaf Wall Tapestry & Postcards", "cost": "₹150", "time": "1 hr", "diff": "Beginner", "materials": "Raw cotton canvas or unbleached muslin cloth, green fabric paint, sponge brush, wooden hanger rod.", "steps": ["Collect fallen leaves from campus trees and press flat inside heavy book.", "Coat leaf vein side with sage or forest fabric paint and stamp onto canvas cloth.", "Tie jute twine to top wooden dowel and hang with damage-free hook."], "safety": "⚠️ Tip: Place scrap cardboard under fabric when stamping to avoid table stains."}, {"aesthetic": "Boho", "title": "Jute Rope Coiled Storage Basket", "cost": "₹180", "time": "2 hrs", "diff": "Beginner", "materials": "Thick jute rope (12m), glue gun, plastic food container (mould), craft scissors.", "steps": ["Invert plastic bowl or container to act as your internal shape guide.", "Coil jute rope tightly starting from base circle, applying hot glue between rows.", "Form two loop handles at top rim and slip mould out once dry."], "safety": "⚠️ Tip: Apply glue on outer side of rope so mould releases easily."}, {"aesthetic": "Minimalist", "title": "Under-Desk Hidden Cable Management Tray", "cost": "₹110", "time": "45 mins", "diff": "Beginner", "materials": "Stiff wire mesh basket or cardboard cable box, heavy duty adhesive cable clips, reusable Velcro ties.", "steps": ["Group power adapters, laptop charger block, and extension strip inside tray.", "Fasten tray under desk tabletop using heavy-duty adhesive mounting strips.", "Bundle excess wire lengths with reusable Velcro ties."], "safety": "⚠️ Safety: Leave 2 inches of ventilation around high-wattage laptop charger bricks to prevent heat buildup."}, {"aesthetic": "Minimalist", "title": "Modular Pegboard Study Organizer", "cost": "₹280", "time": "1.5 hrs", "diff": "Beginner", "materials": "Pre-drilled wooden or MDF pegboard panel (30x40cm), white spray paint, 6 wooden dowel pegs.", "steps": ["Spray pegboard in smooth matte white or light ash grey.", "Insert dowel pegs at customized heights to hold headphones, watch, and calculator.", "Rest on desk backboard or mount using two heavy adhesive nail strips."], "safety": "⚠️ Renter note: Adhesive nail strips hold up to 3kg and peel cleanly without drilling."}, {"aesthetic": "Minimalist", "title": "Space-Saving Freestanding Garment Rail", "cost": "₹340", "time": "2 hrs", "diff": "Intermediate", "materials": "1-inch PVC pipes cut to size (2x1m, 2x40cm, 4 elbow joints, 2 T-joints), matte white spray paint.", "steps": ["Dry-assemble base rectangular footings and vertical uprights with elbows.", "Spray all parts evenly in matte white or graphite grey in well-ventilated area.", "Slide rubber feet under base corners to protect hostel floor tiles."], "safety": "⚠️ Safety: Spray paint outdoors or near open window with mask."}, {"aesthetic": "Dark Academia", "title": "Vintage Book Page Literary Focal Wall", "cost": "₹60", "time": "2 hrs", "diff": "Beginner", "materials": "Damaged vintage paperback book pages, blue painter tape, ruler, amber tea-staining mix (optional).", "steps": ["Carefully tear aged yellowed pages featuring poetry or classical prose from recycled book.", "Optionally dip paper edges in black tea for authentic antique deckled look.", "Roll blue painter tape into loops and mount pages in an organic staggered grid behind study desk."], "safety": "⚠️ Renter note: Blue painter tape never damages or peels hostel wall paint."}, {"aesthetic": "Dark Academia", "title": "Antique Glass Inkpot & Amber Bottle Vases", "cost": "₹80", "time": "45 mins", "diff": "Beginner", "materials": "Empty brown glass medicine bottles, twine, brass/gold acrylic paint, dried grass or quill.", "steps": ["Soak glass bottles in warm water to cleanly remove pharmacy labels.", "Dry thoroughly and lightly dry-brush bottle rims with antique brass acrylic paint.", "Insert dried botanicals, wheat stems, or vintage wooden pens."], "safety": "⚠️ Safety: Wash recycled bottles thoroughly with soap before crafting."}, {"aesthetic": "Dark Academia", "title": "Repurposed Walnut Crate Bookrack", "cost": "₹220", "time": "2 hrs", "diff": "Intermediate", "materials": "Pinewood fruit crate, walnut wood stain or dark brown diluted acrylic, rag, 120-grit sandpaper.", "steps": ["Sand wood slats smooth along grain to eliminate splinters.", "Wipe walnut stain across wood with a cotton rag for rich deep espresso color.", "Stack vertically on desk to house hardcovers and study notebooks."], "safety": "⚠️ Tip: Wear disposable gloves when applying wood stain."}, {"aesthetic": "Pinterest Core", "title": "Polaroid & Baker Twine Memory Wall", "cost": "₹160", "time": "1.5 hrs", "diff": "Beginner", "materials": "30 mini photo prints, 4m jute/cotton baker twine, mini wooden craft clips, 2 clear command hooks.", "steps": ["Tie twin strands of twine between two clear adhesive command hooks on wall.", "Clip photos in chronological or color-gradient order using mini wooden craft pegs.", "Weave micro copper fairy lights through clips for evening ambiance."], "safety": "⚠️ Renter note: Clear command hooks hold firmly and release with pull-tab without mark."}, {"aesthetic": "Pinterest Core", "title": "Cardboard Arch Upholstered Headboard", "cost": "₹240", "time": "2.5 hrs", "diff": "Intermediate", "materials": "Heavy delivery box cardboard, foam sheet offcut, pastel velvet fabric (1m), heavy duty Velcro tape.", "steps": ["Draw and cut a trendy geometric arch shape from heavy corrugated cardboard.", "Layer 1-inch foam sheet over cardboard and wrap tightly in pastel velvet fabric.", "Staple or glue fabric tightly on backside and mount between mattress and wall with Velcro."], "safety": "⚠️ Renter note: Traps between bed frame and wall; zero permanent drilling needed."}, {"aesthetic": "Pinterest Core", "title": "White Wire Grid Memo & Affirmation Board", "cost": "₹220", "time": "1 hr", "diff": "Beginner", "materials": "Wire mesh grid panel (40x60cm), white spray paint, pastel binder clips, aesthetic postcards.", "steps": ["Spray metal wire panel in clean gloss white or soft butter yellow.", "Hang using two adhesive utility wall hooks above your desk.", "Clip class schedule, cute stickers, and polaroids for an inspirational study backdrop."], "safety": "⚠️ Tip: Distribute weight evenly across grid to keep hooks stable."}];
 
-    // State
+    // State Machine
     let currentStep = 1;
-    let selectedBudget = 'Under ₹1,000';
-    let selectedAesthetic = 'Minimal & Clean';
+    let selectedBudget = '₹1,000–₹2,500';
+    let selectedAesthetic = 'Cozy';
     let selectedProblems = new Set(['Room feels boring', 'Poor lighting', 'Empty walls']);
-    let currentSetupItems = [];
-    let excludedItemIds = new Set();
+    
+    // Step 4 State
+    let currentInspirations = [];
+    let activeInspiration = null;
+    let excludedItemIndices = new Set();
     let savedBoardItems = [];
     let isSoundEnabled = true;
 
@@ -2555,7 +2847,7 @@
       if (fill) fill.style.width = `${step * 25}%`;
 
       if (step === 4) {
-        renderStep4Setup();
+        renderStep4Experience();
       }
     }
 
@@ -2610,7 +2902,7 @@
       SoundFX.play('chime');
     }
 
-    // Recommendation Engine for Step 4
+    // Budget Ceiling Helper
     function getBudgetCeiling(budgetStr) {
       if (budgetStr.includes('Under ₹1,000')) return 1000;
       if (budgetStr.includes('1,000–₹2,500')) return 2500;
@@ -2632,102 +2924,90 @@
       return map[vibe] || '✨';
     }
 
-    function renderStep4Setup() {
+    // ========================================================
+    // STEP 4: VISUAL HOSTEL INSPIRATION & SHOPPING EXPERIENCE
+    // ========================================================
+    function renderStep4Experience() {
       const budgetCeiling = getBudgetCeiling(selectedBudget);
       const vibeEmoji = getAestheticEmoji(selectedAesthetic);
 
-      // Update Summary Header
+      // 1. Update Header Summary
       document.getElementById('summaryVibeEmoji').textContent = vibeEmoji;
       document.getElementById('summaryVibeTitle').textContent = selectedAesthetic;
       document.getElementById('summaryPillBudget').textContent = `💰 ${selectedBudget}`;
       document.getElementById('summaryPillProblems').textContent = `🎯 ${selectedProblems.size} Needs Addressed`;
       document.getElementById('trackerMaxVal').textContent = `Max Budget: ₹${budgetCeiling.toLocaleString('en-IN')}`;
 
-      // Score all products
-      const scored = CATALOG_PRODUCTS.map(p => {
+      // 2. Fetch and Score Inspirations for Selected Aesthetic
+      const rawSetups = INSPIRATIONS_DATA[selectedAesthetic] || INSPIRATIONS_DATA['Cozy'];
+
+      // Rank setups by problem match and budget closeness
+      const scoredSetups = rawSetups.map(s => {
         let score = 0;
-        let reasons = [];
+        let matchedProbs = [];
 
-        // Match Aesthetic
-        if (p.aesthetics.includes(selectedAesthetic)) {
-          score += 5;
-          reasons.push(`${selectedAesthetic} match`);
-        }
-
-        // Match Problems
-        p.problems.forEach(prob => {
-          if (selectedProblems.has(prob)) {
-            score += 4;
-            reasons.push(prob);
+        s.problems.forEach(p => {
+          if (selectedProblems.has(p)) {
+            score += 5;
+            matchedProbs.push(p);
           }
         });
 
-        // Budget fit
-        if (p.price <= budgetCeiling * 0.45) score += 3;
+        // Budget alignment bonus
+        if (selectedBudget === 'Under ₹1,000' && s.total <= 1000) score += 8;
+        else if (selectedBudget === '₹1,000–₹2,500' && s.total <= 2500 && s.total >= 1000) score += 6;
+        else if (selectedBudget === '₹2,500–₹5,000' && s.total <= 5000) score += 4;
 
         return {
-          ...p,
+          ...s,
           score,
-          whyText: reasons.slice(0, 2).join(' • ') || 'Hostel staple'
+          matchedProbs
         };
       });
 
-      // Sort by score descending
-      scored.sort((a, b) => b.score - a.score);
+      scoredSetups.sort((a, b) => b.score - a.score);
+      currentInspirations = scoredSetups;
 
-      // Select top 4-6 balanced items that fit under budget ceiling
-      const selected = [];
-      const categoriesSeen = new Map();
-      let runningTotal = 0;
+      // Render the 4-6 Inspiration Cards
+      renderInspirationsGrid();
 
-      for (const item of scored) {
-        const catCount = categoriesSeen.get(item.category) || 0;
-        if (catCount >= 2) continue; // avoid too many items in single category
-
-        if (runningTotal + item.price <= budgetCeiling || selected.length < 3) {
-          selected.push(item);
-          runningTotal += item.price;
-          categoriesSeen.set(item.category, catCount + 1);
-        }
-        if (selected.length >= 6) break;
+      // Set active inspiration (default to first/top scored look)
+      if (currentInspirations.length > 0) {
+        setActiveInspiration(currentInspirations[0].id, false);
       }
-
-      currentSetupItems = selected;
-      excludedItemIds.clear();
-
-      renderProductsGrid();
-      updateBudgetMeter();
     }
 
-    function renderProductsGrid() {
-      const grid = document.getElementById('recommendationsGrid');
+    function renderInspirationsGrid() {
+      const grid = document.getElementById('inspirationsGrid');
       grid.innerHTML = '';
 
-      currentSetupItems.forEach(item => {
-        const isExcluded = excludedItemIds.has(item.id);
+      currentInspirations.forEach((insp, idx) => {
         const card = document.createElement('div');
-        card.className = `product-rec-card ${isExcluded ? 'excluded' : ''}`;
-        card.id = `prodCard_${item.id}`;
+        card.className = `inspiration-card ${activeInspiration && activeInspiration.id === insp.id ? 'active-look' : ''}`;
+        card.id = `inspCard_${insp.id}`;
+        card.onclick = () => setActiveInspiration(insp.id, true);
+
+        // Derive category pill
+        let catLabel = '🛏️ Bed Setup';
+        if (insp.title.toLowerCase().includes('study') || insp.title.toLowerCase().includes('desk')) catLabel = '📚 Study Setup';
+        else if (insp.title.toLowerCase().includes('lighting')) catLabel = '💡 Lighting';
+        else if (insp.title.toLowerCase().includes('storage')) catLabel = '📦 Storage';
+        else if (insp.title.toLowerCase().includes('budget')) catLabel = '💰 Budget Refresh';
 
         card.innerHTML = `
-          <div class="product-rec-img-wrap">
-            <img src="${item.image}" alt="${item.title}" class="product-rec-img" loading="lazy">
-            <span class="product-category-tag">${item.category}</span>
+          <div class="inspiration-img-wrap">
+            <img src="${insp.image}" alt="${insp.title}" class="inspiration-img" loading="lazy">
+            <span class="inspiration-type-tag">${catLabel}</span>
+            <span class="inspiration-cost-badge">Est. ₹${insp.total.toLocaleString('en-IN')}</span>
           </div>
-          <div class="product-rec-body">
-            <h4 class="product-rec-title">${item.title}</h4>
-            <div class="product-why-badge">✨ Solves: ${item.whyText}</div>
-            <div class="product-rec-footer">
-              <span class="product-price">₹${item.price.toLocaleString('en-IN')}</span>
-              <div class="product-card-btns">
-                <a href="${item.amazonSearchUrl}" target="_blank" rel="noopener noreferrer" class="btn-buy-amazon" onclick="SoundFX.play('click')">
-                  <span>Amazon</span>
-                  <span>↗</span>
-                </a>
-                <button class="btn-item-toggle ${isExcluded ? '' : 'active'}" onclick="toggleItemInSetup('${item.id}')" title="${isExcluded ? 'Add back to setup' : 'Remove from setup'}">
-                  ${isExcluded ? '＋' : '✓'}
-                </button>
-              </div>
+          <div class="inspiration-card-body">
+            <h4 class="inspiration-card-title">${insp.title}</h4>
+            <p class="inspiration-card-tagline">${insp.tagline}</p>
+            <div class="inspiration-card-footer">
+              <span class="inspiration-items-count">${insp.items.length} items included</span>
+              <button class="btn-choose-look">
+                ${activeInspiration && activeInspiration.id === insp.id ? '✓ Selected' : 'Recreate Look →'}
+              </button>
             </div>
           </div>
         `;
@@ -2735,22 +3015,93 @@
       });
     }
 
-    function toggleItemInSetup(itemId) {
-      if (excludedItemIds.has(itemId)) {
-        excludedItemIds.delete(itemId);
+    function setActiveInspiration(inspId, scrollIntoView = true) {
+      const found = currentInspirations.find(i => i.id === inspId);
+      if (!found) return;
+
+      activeInspiration = found;
+      excludedItemIndices.clear();
+
+      // Update card visual active states
+      document.querySelectorAll('.inspiration-card').forEach(c => c.classList.remove('active-look'));
+      const activeCard = document.getElementById(`inspCard_${inspId}`);
+      if (activeCard) activeCard.classList.add('active-look');
+
+      // Update "Recreate This Look" Left Image & Headers
+      document.getElementById('recreateMainImg').src = activeInspiration.image;
+      document.getElementById('recreateMainImg').alt = activeInspiration.title;
+      document.getElementById('recreateOverlayTitle').textContent = activeInspiration.title;
+      document.getElementById('recreateTitle').textContent = `What’s in the "${activeInspiration.title}" setup?`;
+      document.getElementById('recreateSub').textContent = `${activeInspiration.items.length} items visible in this room look. Check or uncheck to adjust your total:`;
+
+      // Render items checklist
+      renderProductsChecklist();
+      updateBudgetMeter();
+
+      SoundFX.play('select');
+
+      if (scrollIntoView) {
+        const section = document.getElementById('recreateLookSection');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    function renderProductsChecklist() {
+      const container = document.getElementById('productsChecklist');
+      container.innerHTML = '';
+
+      if (!activeInspiration) return;
+
+      activeInspiration.items.forEach((item, index) => {
+        const isExcluded = excludedItemIndices.has(index);
+        const row = document.createElement('div');
+        row.className = `checklist-item-row ${isExcluded ? 'excluded' : ''}`;
+
+        const platformClass = item.platform === 'Flipkart' ? 'platform-flipkart' : (item.platform === 'Myntra' ? 'platform-myntra' : 'platform-amazon');
+        const shopBtnClass = item.platform === 'Flipkart' ? 'btn-shop-flipkart' : (item.platform === 'Myntra' ? 'btn-shop-myntra' : 'btn-shop-amazon');
+
+        row.innerHTML = `
+          <div class="item-toggle-wrap" onclick="toggleItemInLook(${index})">
+            <div class="item-checkbox">✓</div>
+            <div class="item-icon">${item.icon}</div>
+            <div class="item-meta">
+              <span class="item-name">${item.name}</span>
+              <div class="item-sub-info">
+                <span class="item-price">₹${item.price.toLocaleString('en-IN')}</span>
+                <span class="platform-pill ${platformClass}">${item.platform}</span>
+              </div>
+            </div>
+          </div>
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="btn-shop-item ${shopBtnClass}" onclick="SoundFX.play('click')" title="View on ${item.platform}">
+            <span>View on ${item.platform}</span>
+            <span>↗</span>
+          </a>
+        `;
+
+        container.appendChild(row);
+      });
+    }
+
+    function toggleItemInLook(index) {
+      if (excludedItemIndices.has(index)) {
+        excludedItemIndices.delete(index);
       } else {
-        excludedItemIds.add(itemId);
+        excludedItemIndices.add(index);
       }
       SoundFX.play('click');
-      renderProductsGrid();
+      renderProductsChecklist();
       updateBudgetMeter();
     }
 
     function updateBudgetMeter() {
+      if (!activeInspiration) return;
+
       const budgetCeiling = getBudgetCeiling(selectedBudget);
       let total = 0;
-      currentSetupItems.forEach(item => {
-        if (!excludedItemIds.has(item.id)) {
+      activeInspiration.items.forEach((item, idx) => {
+        if (!excludedItemIndices.has(idx)) {
           total += item.price;
         }
       });
@@ -2766,7 +3117,7 @@
 
       if (total <= budgetCeiling) {
         badge.className = 'tracker-status-badge status-ok';
-        badge.innerHTML = '✓ Within Budget';
+        badge.innerHTML = `✓ Within Budget (₹${total.toLocaleString('en-IN')} of ₹${budgetCeiling.toLocaleString('en-IN')})`;
         if (pct > 80) meterFill.classList.add('warning');
       } else {
         badge.className = 'tracker-status-badge status-over';
@@ -2776,29 +3127,57 @@
     }
 
     function addAllToShoppingList() {
-      const activeItems = currentSetupItems.filter(item => !excludedItemIds.has(item.id));
+      if (!activeInspiration) return;
+      const activeItems = activeInspiration.items.filter((item, idx) => !excludedItemIndices.has(idx));
+      
       activeItems.forEach(item => {
-        if (!savedBoardItems.some(b => b.id === item.id)) {
+        if (!savedBoardItems.some(b => b.title === item.name)) {
           savedBoardItems.push({
-            id: item.id,
-            title: item.title,
+            id: 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+            title: item.name,
             price: item.price,
-            image: item.image,
-            category: item.category,
-            url: item.amazonSearchUrl
+            image: activeInspiration.image,
+            category: item.platform,
+            url: item.url
           });
         }
       });
 
       localStorage.setItem('dg_saved_items', JSON.stringify(savedBoardItems));
       updateBoardBadge();
-      showToast(`🛒 Added ${activeItems.length} items to your Shopping List!`);
+      showToast(`🛒 Added ${activeItems.length} items from "${activeInspiration.title}" to your Shopping List!`);
       SoundFX.play('chime');
     }
 
-    function saveSetupToBoard() {
+    function saveActiveSetupToBoard() {
+      if (!activeInspiration) return;
+      // Add room card to board
+      savedBoardItems.push({
+        id: 'setup_' + activeInspiration.id + '_' + Date.now(),
+        title: activeInspiration.title + ` (${selectedAesthetic} Setup)`,
+        price: activeInspiration.total,
+        image: activeInspiration.image,
+        category: selectedAesthetic,
+        url: '#'
+      });
+
+      // Also add items
       addAllToShoppingList();
       toggleBoardDrawer(true);
+    }
+
+    // Context-Aware Roomie AI Trigger
+    function openRoomieWithContext() {
+      toggleRoomieDrawer(true);
+      if (activeInspiration) {
+        const container = document.getElementById('roomieMessages');
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble bubble-bot';
+        bubble.innerHTML = `I see you're looking at <strong>${activeInspiration.title}</strong> (Est. ₹${activeInspiration.total})! ✨<br><br>
+        Would you like to swap any items for lower-cost alternatives, adapt this for a smaller desk, or get zero-damage wall hanging tips?`;
+        container.appendChild(bubble);
+        container.scrollTop = container.scrollHeight;
+      }
     }
 
     // Secondary Hub Toggle
@@ -2825,12 +3204,12 @@
       const container = document.getElementById('roomCardsGrid');
       container.innerHTML = '';
       cards.forEach(card => {
-        const isSaved = savedBoardItems.some(b => b.id === card.id);
+        const isSaved = savedBoardItems.some(b => b.title === card.title);
         const cardEl = document.createElement('div');
         cardEl.className = 'room-card';
         cardEl.innerHTML = `
           <div class="room-card-img-wrap">
-            <img src="${card.image}" alt="${card.title}" class="room-card-img" loading="lazy">
+            <img src="${card.image || card.img}" alt="${card.title}" class="room-card-img" loading="lazy">
             <span class="room-card-badge">${card.aesthetic}</span>
             <button class="room-card-fav ${isSaved ? 'saved' : ''}" onclick="toggleSaveRoomCard('${card.id}', this)">
               ${isSaved ? '♥' : '♡'}
@@ -2841,7 +3220,7 @@
             <p class="room-card-desc">${card.desc}</p>
             <div class="room-card-footer">
               <span class="room-card-cost">Est. ₹${card.budget}</span>
-              <span style="font-size:11px; color:var(--text-muted);">${card.tagline}</span>
+              <span style="font-size:11px; color:var(--text-muted);">${card.tagline || ''}</span>
             </div>
           </div>
         `;
@@ -2863,9 +3242,9 @@
     }
 
     function toggleSaveRoomCard(id, btnEl) {
-      const card = ROOM_CARDS.find(c => c.id === id);
+      const card = ROOM_CARDS.find(c => String(c.id) === String(id));
       if (!card) return;
-      const idx = savedBoardItems.findIndex(b => b.id === id);
+      const idx = savedBoardItems.findIndex(b => b.title === card.title);
       if (idx > -1) {
         savedBoardItems.splice(idx, 1);
         btnEl.classList.remove('saved');
@@ -2873,10 +3252,10 @@
         showToast('Removed room from board');
       } else {
         savedBoardItems.push({
-          id: card.id,
+          id: 'card_' + card.id,
           title: card.title,
           price: card.budget,
-          image: card.image,
+          image: card.image || card.img,
           category: card.aesthetic,
           url: '#'
         });
@@ -2958,7 +3337,7 @@
       });
     }
 
-    // Roomie AI Chatbot Drawer & Logic
+    // Roomie AI Chatbot Drawer & Intelligent Logic
     function toggleRoomieDrawer(open) {
       const drawer = document.getElementById('roomieDrawer');
       const overlay = document.getElementById('roomieOverlay');
@@ -2992,7 +3371,7 @@
       input.value = '';
       SoundFX.play('click');
 
-      // Bot thinking response
+      // Generate context-aware reply
       setTimeout(() => {
         const reply = generateRoomieReply(text);
         appendChatMessage(reply, 'bot');
@@ -3011,38 +3390,40 @@
 
     function generateRoomieReply(prompt) {
       const p = prompt.toLowerCase();
-      if (p.includes('tube light') || p.includes('lighting') || p.includes('dark')) {
-        return `💡 <strong>Fixing Harsh Tube Lights:</strong><br>
-        1. <em>Never sit directly under the hospital-white tube light!</em><br>
-        2. Get a warm amber fairy light string (₹199) or a clip-on warm desk lamp.<br>
-        3. A sunset projection lamp (₹399) instantly turns clinical white walls into golden hour comfort.<br>
-        4. Place warm lights at two corners of the room for soft, flattering ambient reflection.`;
+      const lookName = activeInspiration ? activeInspiration.title : 'this look';
+
+      if (p.includes('1500') || p.includes('1,500') || p.includes('cheaper') || p.includes('lower') || p.includes('swap')) {
+        return `💰 <strong>Budget Swap for "${lookName}":</strong><br>
+        1. <strong>Keep:</strong> Warm Fairy Lights (₹249) + Cotton Bedsheet (₹499) = ₹748.<br>
+        2. <strong>Swap:</strong> Replace the heavy bedside lamp with a USB clip light (₹249) to save ₹150.<br>
+        3. <strong>Swap:</strong> Use DIY washi tape photo prints instead of framed art to save ₹200.<br>
+        <em>New Total: ~₹1,247 (Well under ₹1,500!)</em>`;
       }
-      if (p.includes('no-drill') || p.includes('wall') || p.includes('landlord') || p.includes('damage') || p.includes('hooks')) {
-        return `🧱 <strong>Landlord-Safe No-Drill Wall Hacks:</strong><br>
-        1. <strong>3M Command Picture Strips:</strong> Hold up to 2kg frames and pull off completely clean without peeling hostel paint.<br>
-        2. <strong>Washi Tape Photo Collage:</strong> Doesn't leave sticky residue like regular cello tape.<br>
-        3. <strong>Metal Wire Grid:</strong> Lean it against your desk or bedhead—clip photos and notes with mini wooden clips without piercing walls!`;
+      if (p.includes('no-drill') || p.includes('wall') || p.includes('nail') || p.includes('landlord') || p.includes('hang')) {
+        return `🧱 <strong>Zero-Damage Wall Hanging Hacks:</strong><br>
+        1. <strong>Command Picture Hanging Strips:</strong> Interlocking velcro holds tapestries and frames up to 2kg without chipping hostel lime wash.<br>
+        2. <strong>Washi Tape:</strong> Safe for printed polaroids and postcards; pulls off cleanly when moving out.<br>
+        3. <strong>Wire Grid Leaning:</strong> Don't drill! Simply lean your metal grid against your desk or bedhead and clip lights directly onto it.`;
       }
-      if (p.includes('small') || p.includes('tiny') || p.includes('storage') || p.includes('bigger')) {
-        return `📐 <strong>Small Hostel Room Space Savers:</strong><br>
-        1. <strong>Use Bed Riser Storage:</strong> Slide slim clear boxes under your bed frame for off-season clothes or footwear.<br>
-        2. <strong>Door-Hanging Shoe Rack:</strong> Hang behind the bathroom or closet door for snacks, toiletries, and chargers.<br>
-        3. <strong>Vertical Desk Riser:</strong> Lifts your laptop screen to eye level and gives you space underneath to store your notebook!`;
+      if (p.includes('small') || p.includes('shared') || p.includes('roommate') || p.includes('bunk')) {
+        return `📐 <strong>Shared / Small Hostel Room Advice:</strong><br>
+        1. <strong>Vertical Bedside Caddy:</strong> Hangs off your bedframe rail so you don't take up any floor space for books and phones.<br>
+        2. <strong>Directional Task Lighting:</strong> Use a focused clip-on lamp so you can study late without disturbing your roommate.<br>
+        3. <strong>Under-Bed Clear Bins:</strong> Slide extra bedding and winter wear out of sight.`;
       }
-      if (p.includes('500') || p.includes('budget') || p.includes('cheap') || p.includes('saver')) {
-        return `💰 <strong>Top Under ₹500 Hostel Upgrades:</strong><br>
-        • <strong>Fairy Clip Lights (₹199):</strong> Warm amber lighting + photo display.<br>
-        • <strong>Mesh Desk Wire Organizer (₹249):</strong> Immediately cleans messy cable & notebook clutter.<br>
-        • <strong>Faux Hanging Ivy Vines (₹199):</strong> Adds instant lush green aesthetic to dull concrete corners.`;
+      if (p.includes('fairy light') || p.includes('without fairy') || p.includes('instead of fairy')) {
+        return `💡 <strong>Fairy Light Alternatives:</strong><br>
+        1. <strong>Sunset Projection Lamp (₹399):</strong> Casts a soft golden halo onto your wall with zero wires hanging.<br>
+        2. <strong>Warm Mushroom Desk Lamp (₹399):</strong> Gentle diffuse bedside glow.<br>
+        3. <strong>Flameless LED Candles (Set of 3, ₹349):</strong> Flickering warm amber candlelight that's 100% hostel-safe (no real fire).`;
       }
-      if (p.includes('study') || p.includes('exam') || p.includes('desk')) {
-        return `📚 <strong>Exam Focus Desk Setup:</strong><br>
-        1. Keep the desk 80% empty. Cluttered desk = cluttered thoughts during revisions.<br>
-        2. Use a directional lamp angled away from your eyes to reduce late-night glare.<br>
-        3. Keep a hydration reminder bottle and a 4-slot pen caddy right next to your notebook!`;
+      if (p.includes('study') || p.includes('desk') || p.includes('exam')) {
+        return `📚 <strong>Study-Table Adaptation for "${lookName}":</strong><br>
+        1. Angle a warm gooseneck lamp onto your notebook to eliminate screen glare.<br>
+        2. Add a 4-slot mesh pen caddy (₹249) and a non-slip desk blotter (₹299).<br>
+        3. Keep your study table 80% free of clutter for peak focus during exam revisions!`;
       }
-      return `✨ That's a great hostel room question! For your room, I recommend focusing on <strong>layered lighting</strong> (warm lamp + fairy lights) and <strong>organized vertical surfaces</strong>. Check out your personalized setup in Step 4 above for tailored items under your budget!`;
+      return `✨ For <strong>${lookName}</strong> in your hostel room, I recommend keeping the core warm lighting and neutral bedding. Everything is 100% renter-friendly! Check the shoppable links in the checklist to grab the pieces.`;
     }
 
     // Board Drawer Logic
@@ -3070,7 +3451,7 @@
           <div style="text-align:center; padding: 40px 10px; color: var(--text-muted);">
             <div style="font-size: 36px; margin-bottom: 12px;">🧺</div>
             <h4 style="color:var(--text); margin-bottom: 6px;">Your Board is Empty</h4>
-            <p style="font-size: 13px;">Generate a setup in Step 4 or browse the gallery to save favorite items and room ideas!</p>
+            <p style="font-size: 13px;">Explore the hostel inspirations above or browse the gallery to save favorite setups and items!</p>
           </div>
         `;
         return;
@@ -3079,14 +3460,15 @@
       let html = `<div style="display:flex; flex-direction:column; gap:12px;">`;
       let total = 0;
       savedBoardItems.forEach((item, idx) => {
-        total += (item.price || 0);
+        const priceNum = typeof item.price === 'number' ? item.price : parseInt(String(item.price).replace(/[^0-9]/g, '')) || 0;
+        total += priceNum;
         html += `
           <div style="display:flex; align-items:center; gap:12px; padding:12px; border:1px solid var(--border); border-radius:var(--radius-sm); background:#ffffff;">
             <img src="${item.image}" alt="${item.title}" style="width:50px; height:50px; object-fit:cover; border-radius:8px;">
             <div style="flex-grow:1; min-width:0;">
               <h5 style="font-size:13px; font-weight:700; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${item.title}</h5>
               <div style="display:flex; align-items:center; gap:8px; margin-top:2px;">
-                <span style="font-size:12px; font-weight:800; color:var(--primary);">₹${item.price}</span>
+                <span style="font-size:12px; font-weight:800; color:var(--primary);">₹${priceNum.toLocaleString('en-IN')}</span>
                 <span style="font-size:10px; padding:2px 6px; background:#f1f5f9; border-radius:4px;">${item.category}</span>
               </div>
             </div>
@@ -3131,8 +3513,7 @@
     // Initial onload execution
     window.addEventListener('DOMContentLoaded', () => {
       updateBoardBadge();
-      // Initialize Step 4 default setup in background
-      renderStep4Setup();
+      renderStep4Experience();
     });
   </script>
 </body>
