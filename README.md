@@ -3,6 +3,10 @@
 > **Make Your Hostel Room Feel Like You.**
 > Choose your budget, vibe and room needs. Get personalized hostel room setups and shoppable product lists in minutes.
 
+[![Live on Vercel](https://img.shields.io/badge/Vercel-Live%20Demo-black?style=for-the-badge&logo=vercel)](https://dormglow-beryl.vercel.app)
+
+🌐 **Live Website:** [https://dormglow-beryl.vercel.app](https://dormglow-beryl.vercel.app)
+
 DormGlow is a modern, minimal, student-tested web application designed to help college hostelers across India transform generic, boring hostel rooms into personalized aesthetic sanctuaries on a student budget with **100% renter-friendly, zero-drill solutions**.
 
 ---
